@@ -87,9 +87,9 @@ WSGI_APPLICATION = 'okiko.wsgi.application'
 DATABASES = {
      'default': {
          'ENGINE': 'django.db.backends.mysql',
-         'NAME':'u1584479_okiko',
-         'USER':'u1584479_default',
-         'PASSWORD':'Oqrl3PI9GGA22rQw',
+         'NAME':'',
+         'USER':'',
+         'PASSWORD':'',
          'HOST':'localhost',
          'OPTIONS':{
            'init_command':"SET sql_mode='STRICT_TRANS_TABLES'"
@@ -138,8 +138,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 EMAIL_HOST = 'mail.hosting.reg.ru'
 EMAIL_PORT = 465
-EMAIL_HOST_USER = 'support@okiko.kudarov.site'
-EMAIL_HOST_PASSWORD = 'Raushan1956'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 

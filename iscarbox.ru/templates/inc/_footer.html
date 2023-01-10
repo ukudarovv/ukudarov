@@ -1,0 +1,26 @@
+{% load footer_tags %}
+<footer class="p-5 px-md-5">
+    <div class="container">
+        <div class="row pb-3">
+            <div class="col-6-md col-md">
+                <h5>Информация</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="py-1 d-block" href="{% url 'purchasereturns' %}">Возврат товара</a></li>
+                    <li><a class="py-1 d-block" href="{% url 'paymentmethods' %}">Способы оплаты</a></li>
+                    <li><a class="py-1 d-block" href="{% url 'develiry' %}">Доставка</a></li>
+                    <li><a class="py-1 d-block" href="{% url 'sitepolicy' %}">Политика сайта</a></li>
+                    <li><a class="py-1 d-block" href="/#contact">Контакты</a></li>
+                </ul>
+            </div>
+            <div class="col-6-md col-md">
+                <h5>О нас</h5>
+                {% get_contacts as contact %}
+                {% for item in contact %}
+            	    <p>{{ item.about }}</p>
+                {% endfor %}
+            </div>
+        </div>
+        <p>Все права защищены | &copy;<script>document.write(new Date().getFullYear());</script> - IsCarBox</p>
+
+    </div>
+</footer>

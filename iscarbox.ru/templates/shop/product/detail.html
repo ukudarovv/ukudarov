@@ -1,0 +1,234 @@
+{% extends 'base.html'%}
+{% load static %}
+{% load product_accessory %}
+{% block title %}
+    {{ product.name }}
+{% endblock %}
+
+
+
+{% block seo %}
+    {% for item in seo %}
+        <meta name="description" content="{{ item.description }}">
+        <meta name="keywords" content="{{ item.keywords }}">
+        {% if item.site_icon %}
+            <link href="{{ item.site_icon.url }}" rel="icon">
+            <link href="{{ item.site_icon.url }}" rel="apple-touch-icon">
+        {% endif %}
+        {% autoescape off %}
+            {{ item.google_analytics }}
+        {% endautoescape %}
+    {% endfor %}
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid mt-150 mb-100">
+        <div class="col-lg-12" style="display: flex;flex-wrap: wrap;">
+            <div class="col-lg-12 text-center">
+                <div>
+                    <h2>{{ product.name }}</h2>
+                </div>
+                <div>
+                    <h3 class="h3-responsive text-center mb-5 ml-xl-0 ml-4">
+                        <span class="{% if product.price_old > 0 %} red-text {% else %} white-text {% endif %}">
+                            <strong>{{ product.price }} руб.</strong>
+                        </span>
+                        {% if product.price_old > 0 %}
+                            <span class="grey-text">
+                                <small>
+                                  <s>{{ product.price_old }} руб.</s>
+                                </small>
+                            </span>
+                        {% endif %}
+                    </h3>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm">
+                <div class="row product-block-img">
+                    {% for item in product_material_2 %}
+                        <img src="{{ item.product_img.url }}" name="example_material_img" class="img-product img-fluid rounded mx-auto d-block" alt="{{ item.color_title }}">
+                    {% endfor %}
+                    {% for item in product_thread_2 %}
+                        <img src="{{ item.product_img.url }}" name="example_thread_img" class="img-product img-fluid rounded mx-auto d-block" alt="{{ item.color_title }}">
+                    {% endfor %}
+                    {% for item in product_border_2 %}
+                        <img src="{{ item.product_img.url }}" name="example_border_img" class="img-product img-fluid rounded mx-auto d-block" alt="{{ item.color_title }}">
+                    {% endfor %}
+                    <img src="" name="example_accessory_img" class="img-product img-fluid rounded mx-auto d-block" alt="">
+                </div>
+            </div>
+
+            <div class="col-md-6 col-sm product-block-about">
+                {% product_accessory as accessory %}
+                {% product_accessory_1 as accessory_1 %}
+                <ul class="nav md-tabs nav-justified grey lighten-3 mx-0" role="tablist">
+                    {% for item in accessory_1 %}
+                        {% if item.product == product %}
+                        <li class="nav-item">
+                            <a class="nav-link active dark-grey-text font-weight-bold" data-toggle="tab" href="#panel10" role="tab">Цвет</a>
+                        </li>
+                        {% endif %}
+                    {% endfor %}
+                    {% for item in accessory_1 %}
+                        {% if item.product == product %}
+                            {% if item.category.title != None %}
+                                <li class="nav-item">
+                                    <a class="nav-link dark-grey-text font-weight-bold" data-toggle="tab" href="#panel{{ item.category.id }}" role="tab">{{ item.category.title }}</a>
+                                </li>
+                            {% endif %}
+                        {% else %}
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+                <div class="tab-pane fade in show active" id="panel10" role="tabpanel">
+                    <div class="row">
+                        {% for item in product_material_2 %}
+                            <div class="col-lg-12 col-md-12 mb-4 align-items-stretch">
+                                <div style="text-align: center;margin-bottom: 15px;">
+                                    {% for item in product_material_2 %}
+                                        {% if item %}
+                                            <span class="about-title">{{ item.model_name }}</span>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                                <div>
+                                    <ul class="product_about">
+                                        {% for item in product_material %}
+                                            <button class="example" type="button" name="button" data-n="{{ item.color_title }}">
+                                                <a href="javascript:product_material_image('{{ item.product_img.url }}')">
+                                                    <img class="material_img" src="{{ item.color_img.url }}" alt="{{ item.color_title }}" data-val="{{ item.color_title }}">
+                                                </a>
+                                            </button>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        {% for item in product_thread_2 %}
+                            <div class="col-lg-12 col-md-12 mb-4 align-items-stretch">
+                                <div style="text-align: center;margin-bottom: 15px;">
+                                    {% for item in product_thread_2 %}
+                                        {% if item %}
+                                            <span class="about-title">{{ item.model_name }}</span>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                                <div>
+                                    <ul class="product_about">
+                                        {% for item in product_thread %}
+                                            <button class="example_1" type="button" name="button" data-n="{{ item.color_title }}">
+                                                <a href="javascript:product_thread_image('{{ item.product_img.url }}')">
+                                                    <img src="{{ item.color_img.url }}" alt="{{ item.color_title }}" data-val="{{ item.color_title }}">
+                                                </a>
+                                            </button>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        {% for item in product_border_2 %}
+                            <div class="col-lg-12 col-md-12 mb-4 align-items-stretch">
+                                <div style="text-align: center;margin-bottom: 15px;">
+                                    {% for item in product_border_2 %}
+                                        {% if item %}
+                                            <span class="about-title">{{ item.model_name }}</span>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                                <div>
+                                    <ul class="product_about">
+                                        {% for item in product_border %}
+                                            <button class="example_2" type="button" name="button" data-n="{{ item.color_title }}">
+                                                <a href="javascript:product_border_image('{{ item.product_img.url }}')">
+                                                    <img src="{{ item.color_img.url }}" alt="{{ item.color_title }}" data-val="{{ item.color_title }}">
+                                                </a>
+                                            </button>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                    {% for item in accessory_1 %}
+                        <div class="tab-pane fade" id="panel{{ item.category.id }}" role="tabpanel">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 mb-4 align-items-stretch">
+                                    {% for item in accessory %}
+                                        {% if item.product == product %}
+                                            <div>
+                                                <button class="example_3" type="button" name="button" data-n="{{ item.accessory_title }}">
+                                                    <a href="javascript:product_accessory_image('{{ item.product_img.url }}')">
+                                                        {% if item.accessory_img %}
+                                                            <img src="{{ item.accessory_img.url }}" alt="{{ item.accessory_title }}" data-val="{{ item.accessory_title }}">
+                                                        {% endif %}
+                                                    </a>
+                                                </button>
+                                            </div>
+                                        {% else %}
+
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                <div class="form-inline form-group">
+                    <form action="" style="padding: 0;" class="col-lg-12 col-md-12 mb-4 align-items-stretch" method="post" id="form_add_cart">
+                        {% csrf_token %}
+                        <select class="select" id="select">
+                            {% for item in product_material_3 %}
+                                {% if item %}
+                                    <option selected disabled>{{ item.color_title }}</option>
+                                {% endif %}
+                            {% endfor %}
+                            {% for item in product_material %}
+                                <option class="option" value="{{ item.color_title }}" name="{{ form_a.product_material.html_name }}" data-product_material = "{{ item.color_title }}" id="material">
+                                    {{ item.color_title }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                        <select class="select_1" id="select_1">
+                            {% for item in product_thread_3 %}
+                                {% if item %}
+                                    <option selected disabled>{{ item.color_title }}</option>
+                                {% endif %}
+                            {% endfor %}
+                            {% for item in product_thread %}
+                                <option class="option" value="{{ item.color_title }}" name="{{ form_a.product_thread.html_name }}" data-product_thread = "{{ item.color_title }}" id="thread">
+                                    {{ item.color_title }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                        <select class="select_2" id="select_2">
+                            {% for item in product_border_3 %}
+                                {% if item %}
+                                    <option selected disabled>{{ item.color_title }}</option>
+                                {% endif %}
+                            {% endfor %}
+                            {% for item in product_border %}
+                                <option class="option" value="{{ item.color_title }}" name="{{ form_a.product_border.html_name }}" data-product_border = "{{ item.color_title }}" id="border">
+                                    {{ item.color_title }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                        <select class="select_3" id="select_3">
+                            <option selected disabled>Не выбран</option>
+                            {% for item in accessory %}
+                                    <option class="option" name="{{ form_a.product_accessory.html_name }}" value="{{ item.accessory_title }}" data-product_accessory = "{{ item.accessory_title }}" id="accessory">
+                                        {{ item.accessory_title }}
+                                    </option>
+                             {% endfor %}
+                        </select>
+                        <div class="mb-3 mt-3">
+                            <input type="number" class="form-control" name="{{ form_a.quantity.html_name }}" id="quantity"  min="1" max="100">
+                        </div>
+                        <button type="submit" class="btn btn-success btn-lg btn-block" id="submit_btn" name="{{ form_a.product.html_name }}">
+                            Добавить в корзину
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

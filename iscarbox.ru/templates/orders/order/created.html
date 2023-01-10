@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Спасибо{% endblock %}
+
+
+{% block seo %}
+    {% for item in seo %}
+        <meta name="description" content="{{ item.description }}">
+        <meta name="keywords" content="{{ item.keywords }}">
+        {% if item.site_icon %}
+            <link href="{{ item.site_icon.url }}" rel="icon">
+            <link href="{{ item.site_icon.url }}" rel="apple-touch-icon">
+        {% endif %}
+        {% autoescape off %}
+            {{ item.google_analytics }}
+        {% endautoescape %}
+    {% endfor %}
+{% endblock %}
+
+{% block content %}
+<div class="container mt-150 mb-100">
+    <div class="text-center">
+        <h1>Заказ №{{ order.id }} оформлен</h1>
+        <p>Оператор свяжется с Вами в рабочее время с 8.00 до 18.00 МСК</p>
+        <hr>
+        <a href="/" class="btn btn-lg btn-secondary">Продолжить покупать</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block title %}Способ оплаты - IsCarBox{% endblock %}
+
+{% block seo %}
+    {% for item in seo %}
+        <meta name="description" content="{{ item.description }}">
+        <meta name="keywords" content="{{ item.keywords }}">
+        {% if item.site_icon %}
+            <link href="{{ item.site_icon.url }}" rel="icon">
+            <link href="{{ item.site_icon.url }}" rel="apple-touch-icon">
+        {% endif %}
+        {% autoescape off %}
+            {{ item.google_analytics }}
+        {% endautoescape %}
+    {% endfor %}
+{% endblock %}
+
+{% block content %}
+    {% for item in paymentmethods %}
+        <div class="container mt-150 mb-100">
+            {% autoescape off %}
+                {{ item.content }}
+            {% endautoescape %}
+        </div>
+    {% endfor %}
+{% endblock %}

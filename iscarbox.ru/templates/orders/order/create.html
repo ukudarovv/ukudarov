@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+
+{% block title %}Checkout{% endblock %}
+
+{% block seo %}
+    {% for item in seo %}
+        <meta name="description" content="{{ item.description }}">
+        <meta name="keywords" content="{{ item.keywords }}">
+        {% if item.site_icon %}
+            <link href="{{ item.site_icon }}" rel="icon">
+            <link href="{{ item.site_icon }}" rel="apple-touch-icon">
+        {% endif %}
+        {% autoescape off %}
+            {{ item.google_analytics }}
+        {% endautoescape %}
+    {% endfor %}
+{% endblock %}
+
+{% block content %}
+<div class="container mt-150 mb-100">
+    <div class="text-center">
+        <h1>Оформление заказа</h1>
+    </div>
+
+
+    {% if products_in_basket_count > 0 %}
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="tab-content pt-4">
+                    <div class="tab-pane fade in active show">
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <label for="{{ form.first_name.id_for_label }}" class="">Имя</label>
+                                    {{ form.first_name }}
+                                </div>
+                                <div class="col-md-6 mb-2">
+                                    <label for="{{ form.last_name.id_for_label }}" class="">Фамилия</label>
+                                    {{ form.last_name }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-12 mb-4">
+                                    <label for="{{ form.email.id_for_label }}" class="active">Email</label>
+                                    {{ form.email }}
+                                </div>
+                                <div class="col-lg-6 col-md-12 mb-4">
+                                    <label for="{{ form.phone.id_for_label }}" class="active">Номер телефона</label>
+                                    {{ form.phone }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4 col-md-12 mb-4">
+                                    <label for="{{ form.street.id_for_label }}" class="active">Улица</label>
+                                    {{ form.street }}
+                                </div>
+                                <div class="col-lg-4 col-md-6 mb-4">
+                                    <label for="{{ form.house.id_for_label }}" class="active">Дом</label>
+                                    {{ form.house }}
+                                </div>
+                                <div class="col-lg-4 col-md-6 mb-4">
+                                    <label for="{{ form.apartment.id_for_label }}" class="active">Номер квартиры</label>
+                                    {{ form.apartment }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4 col-md-12 mb-4">
+                                    <label for="{{ form.region.id_for_label }}">Регион</label>
+                                    {{ form.region }}
+                                </div>
+                                <div class="col-lg-4 col-md-6 mb-4">
+                                    <label for="{{ form.city.id_for_label }}">Город</label>
+                                    {{ form.city }}
+                                </div>
+                                <div class="col-lg-4 col-md-6 mb-4">
+                                    <label for="{{ form.postal_code.id_for_label }}" class="active">Индекс</label>
+                                    {{ form.postal_code }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 mb-4">
+                                    <label class="">Способ оплаты</label>
+                                    {% for radio in form.payment_method %}
+                                        <div class="col-lg-4 col-md-6 mb-2">
+                                            {{ radio.tag }}
+                                            <label class="form-check-label" for="{{ radio.id_for_label }}">
+                                                {{ radio.choice_label }}
+                                            </label>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 mb-4">
+                                    <label for="{{ form.message.id_for_label }}" class="">Комментарий к заказу</label>
+                                    {{ form.message }}
+                                </div>
+                            </div>
+
+                            <hr class="mb-4">
+                            <button class="btn btn-danger btn-lg btn-block waves-effect waves-light" type="submit">Оформить заказ</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4 mt-4">
+                <div class="card z-depth-0 border border-dark rounded-0" style="background-color: #2c303a;">
+                    <div class="card-body">
+                        <h4 class="mb-4 mt-1 h5 text-center font-weight-bold">Итог</h4>
+                        <hr>
+                        {% for item in products_in_basket %}
+                            <dl class="row">
+                                <dd class="col-sm-6">
+                                    <a href="{{ item.product.get_absolute_url }}">
+                                        {{ item.product.name }}
+                                    </a>
+                                </dd>
+                                <dd class="col-sm-6 total-cart">
+                                    {{ item.quantity }} x {{ item.product.price }} руб.
+                                </dd>
+                            </dl>
+                            <hr>
+                        {% endfor %}
+
+                        <dl class="row">
+                            <dt class="col-sm-6">
+                                Сумма заказа
+                            </dt>
+                            <dt class="col-sm-6 total-cart">
+                                {{ get_total_price }} руб.
+                            </dt>
+                        </dl>
+                    </div>
+                </div>
+          </div>
+        </div>
+    </div>
+    {% else %}
+    <div style="margin-left: -13px;" class="text-center">
+        <div class="col-md-12">
+            <span>Нет товаров для оформления заказа</span>
+        </div>
+        <div class="col-md-12 mt-3">
+            <a href="/#shop" class="btn btn-lg btn-secondary">Начать покупать</a>
+        </div>
+    </div>
+    {% endif %}
+
+</div>
+
+{% endblock %}

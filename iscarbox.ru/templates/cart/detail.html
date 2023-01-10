@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+    Корзина
+{% endblock %}
+
+{% block seo %}
+    {% for item in seo %}
+        <meta name="description" content="{{ item.description }}">
+        <meta name="keywords" content="{{ item.keywords }}">
+        {% if item.site_icon %}
+            <link href="{{ item.site_icon.url }}" rel="icon">
+            <link href="{{ item.site_icon.url }}" rel="apple-touch-icon">
+        {% endif %}
+        {% autoescape off %}
+            {{ item.google_analytics }}
+        {% endautoescape %}
+    {% endfor %}
+{% endblock %}
+
+{% block content %}
+<section class="mt-150 mb-100">
+		<div class="container">
+            <h1 class="cart-text-top">Корзина</h1>
+            {% if products_in_basket %}
+                {% for item in products_in_basket %}
+                    <div class="item">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12 col-sm-12 col-md-4 col-xl-4 text-center">
+                                    <div class="item-img">
+                                        <img src="{{ item.product_material.product_img.url }}" alt="{{ item.product_material.color_title }}">
+                                        <img src="{{ item.product_thread.product_img.url }}" alt="{{ item.product_thread.color_title }}">
+                                        <img src="{{ item.product_border.product_img.url }}" alt="{{ item.product_border.color_title }}">
+                                        <img src="{{ item.product_accessory.product_img.url }}" alt="{{ item.product_accessory.accessory_title }}">
+                                    </div>
+                                </div>
+                                <div class="col-6 col-sm-6 col-md-4 col-xl-4 no-gutters">
+                                    <div class="item-text">
+                                        <a href="{{ item.product.get_absolute_url }}">
+                                            <div class="item-text-title">{{ item.product.name }}</div>
+                                        </a>
+
+                                        <div class="item-text-list">
+                                            <div class="p">Цвет материала - {{ item.product_material }}</div>
+                                            <div class="p">Цвет нити - {{ item.product_border }}</div>
+                                            <div class="p">Цвет окантовки - {{ item.product_thread }}</div>
+                                            <div class="p">Аксессуар - {{ item.product_accessory }}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-sm-6 col-md-4 col-xl-4 no-gutters">
+                                    <div class="item-elements">
+                                        <div class="price-count">
+                                            <form method="post">
+                                                {% csrf_token %}
+                                                <div class="price-block">
+                                                    {% if item.product.price_old != 0 %}
+                                                        <span class="old-price-cart">{{ item.product.price_old }}</span>
+                                                    {% endif %}
+                                                    <span class="current-price product-price">{{ item.price }} <span>руб.</span></span>
+                                                </div>
+                                                <div class="count">
+                                                    <input type="text" style="display:none;"value="{{ item.id }}" name="{{ form_q.id.html_name }}">
+                                                    <input type="text" style="display:none;"value="{{ item.product.id }}" name="{{ form_q.product.html_name }}">
+                                                    <input type="number" class="count-num product-in-basket-quantity" id="quantity"  min="1" max="100" value="{{ item.quantity }}" name="{{ form_q.quantity.html_name }}">
+                                                    <button type="submit" class="btn btn-success btn-buy" id="submit_btn">
+                                                        <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-arrow-repeat" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                          <path fill-rule="evenodd" d="M2.854 7.146a.5.5 0 0 0-.708 0l-2 2a.5.5 0 1 0 .708.708L2.5 8.207l1.646 1.647a.5.5 0 0 0 .708-.708l-2-2zm13-1a.5.5 0 0 0-.708 0L13.5 7.793l-1.646-1.647a.5.5 0 0 0-.708.708l2 2a.5.5 0 0 0 .708 0l2-2a.5.5 0 0 0 0-.708z"/>
+                                                          <path fill-rule="evenodd" d="M8 3a4.995 4.995 0 0 0-4.192 2.273.5.5 0 0 1-.837-.546A6 6 0 0 1 14 8a.5.5 0 0 1-1.001 0 5 5 0 0 0-5-5zM2.5 7.5A.5.5 0 0 1 3 8a5 5 0 0 0 9.192 2.727.5.5 0 1 1 .837.546A6 6 0 0 1 2 8a.5.5 0 0 1 .501-.5z"/>
+                                                        </svg>
+                                                    </button>
+												</div>
+                                                <div class="count">
+                                                    <span class="current-price current-total-price total-product-in-basket-amount">{{ item.total_price }} <span>руб.</span></span>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="product-delete">
+                                            <form method="post">
+                                                {% csrf_token %}
+                                                <input type="text" style="display:none;"value="{{ item.id }}" name="{{ form_a.id.html_name }}">
+                                                <input type="text" style="display:none;"value="{{ item.product.id }}" name="{{ form_a.product.html_name }}">
+                                                <input type="text" style="display:none;"value="{{ item.product_material.id }}" name="{{ form_a.product_material.html_name }}">
+                                                <input type="text" style="display:none;"value="{{ item.product_border.id }}" name="{{ form_a.product_border.html_name }}">
+                                                <input type="text" style="display:none;"value="{{ item.product_thread.id }}" name="{{ form_a.product_thread.html_name }}">
+                                                <input type="text" style="display:none;"value="{{ item.product_accessory.id }}" name="{{ form_a.product_accessory.html_name }}">
+                                                <button type="submit" name="submit" class="example">
+                                                    <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-x-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                      <path fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                                                      <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z"/>
+                                                      <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z"/>
+                                                    </svg>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                    <div class="col-md-12 row justify-content-end">
+                        <div class="total">
+                            <span>Сумма заказа:</span>
+
+                            <span class="num total_order_amount">{{ get_total_price }} </span><span> руб.</span>
+                        </div>
+                    </div>
+                    <hr class="hr-cart">
+                    <div class="col-md-12 row justify-content-center">
+                        <a href="{% url "orders:order_create" %}" class="btn btn-lg btn-secondary">
+                            Оформить заказ
+                        </a>
+                    </div>
+            {% else %}
+                <div style="margin-left: -13px;">
+                    <div class="col-md-12 justify-content-start">
+                        <span>Ваша корзина пуста.</span>
+                    </div>
+                    <div class="col-md-12 justify-content-start mt-3">
+                        <a href="/#shop" class="btn btn-lg btn-secondary">Начать покупать</a>
+                    </div>
+                </div>
+            {% endif %}
+    	</div>
+	</section>
+{% endblock %}

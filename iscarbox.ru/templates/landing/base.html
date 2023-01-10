@@ -1,0 +1,195 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block title %}Главная{% endblock %}
+{% block seo %}
+    {% for item in seo %}
+        <meta name="description" content="{{ item.description }}">
+        <meta name="keywords" content="{{ item.keywords }}">
+        {% if item.site_icon %}
+            <link href="{{ item.site_icon.url }}" rel="icon">
+            <link href="{{ item.site_icon.url }}" rel="apple-touch-icon">
+        {% endif %}
+        {% autoescape off %}
+            {{ item.google_analytics }}
+        {% endautoescape %}
+    {% endfor %}
+{% endblock %}
+
+{% block content %}
+<section class="owl-carousel">
+    {% for item in carousels %}
+        <div class="slider-item" style="background-image: url('{% if item.photo %} {{ item.photo.url }} {% endif %}');">
+          	<div class="overlay"></div>
+            <div class="container">
+                <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
+                    <div class="col-md-8 col-sm-12 text-center">
+                        <h1>
+                            {% if item.title %}
+                                {{ item.title }}
+                            {% endif %}
+                        </h1>
+                        <hr>
+                        <p class="mb-4 mb-md-5">
+                            {% if item.content %}
+                                {{ item.content }}
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</section>
+
+<section class="ftco-menu mt-3" id="shop">
+	<div class="container-fluid no-gutters">
+		<div class="row justify-content-center mb-4">
+            <div class="col-md-7 heading-section text-center ftco-animate fadeInUp ftco-animated">
+                <span class="mb-5 section-title">Наша продукция</span>
+            </div>
+        </div>
+        <div class="row d-md-flex">
+    		<div class="col-lg-12" style="padding:0;">
+	    		<div class="row no-gutters">
+                    {% for item in products %}
+                        <div class="col-md-6" style="background-image: url('{% if item.image %} {{ item.image.url }} {% endif %}');position: relative;-webkit-background-size: cover;background-size: cover;background-position: center;background-repeat: no-repeat;">
+                            <div style="display: block;color: white;background-color: rgba(0,0,0,.5);">
+                                <div class="item-p item2-p">
+                                    <div class="item-title">{{ item.name }}</div>
+                                    <div class="item-price">
+                                        {% if item.price_old %}
+                                            <div class="old-price">{{ item.price_old }} руб.</div>
+                                        {% endif %}
+                                        <div class="current-price">{{ item.price }} руб.</div>
+                                    </div>
+                                    <div class="item-btn" data-href="#config"><a href="{{ item.get_absolute_url }}">Подробнее</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+	            </div>
+	        </div>
+	    </div>
+    </div>
+</section>
+<section class="ftco-help" id="help">
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-md-12 section-title">
+                <span>
+                    Как заказать?
+                </span>
+            </div>
+        </div>
+    	<div class="row">
+            <div class="col-md-3">
+                <div class="media d-block text-center block-6 services">
+                    <div class="d-flex justify-content-center align-items-center mb-3">
+                        <svg width="7em" height="7em" viewBox="0 0 16 16" class="bi bi-list-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3.854 2.146a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 3.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 7.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z"/>
+                        </svg>
+                    </div>
+                    <div class="media-body">
+                        <h3 class="heading">Заявка</h3>
+                        <p>Оформляете заявку на сайте</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="media d-block text-center block-6 services">
+                    <div class="d-flex justify-content-center align-items-center mb-3">
+                        <svg width="7em" height="7em" viewBox="0 0 16 16" class="bi bi-credit-card" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1H2zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7z"/>
+                            <path d="M2 10a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1z"/>
+                        </svg>
+                    </div>
+                    <div class="media-body">
+                        <h3 class="heading">Оплата</h3>
+                        <p>Оплачиваете заказ</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="media d-block text-center block-6 services">
+                    <div class="d-flex justify-content-center align-items-center mb-3">
+                        <svg width="7em" height="7em" viewBox="0 0 16 16" class="bi bi-headset" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd" d="M8 1a5 5 0 0 0-5 5v4.5H2V6a6 6 0 1 1 12 0v4.5h-1V6a5 5 0 0 0-5-5z"/>
+                          <path d="M11 8a1 1 0 0 1 1-1h2v4a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1V8zM5 8a1 1 0 0 0-1-1H2v4a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1V8z"/>
+                          <path fill-rule="evenodd" d="M13.5 8.5a.5.5 0 0 1 .5.5v3a2.5 2.5 0 0 1-2.5 2.5H8a.5.5 0 0 1 0-1h3.5A1.5 1.5 0 0 0 13 12V9a.5.5 0 0 1 .5-.5z"/>
+                          <path d="M6.5 14a1 1 0 0 1 1-1h1a1 1 0 1 1 0 2h-1a1 1 0 0 1-1-1z"/>
+                        </svg>
+                    </div>
+                    <div class="media-body">
+                        <h3 class="heading">Обработка заказа</h3>
+                        <p>При необходимости с вами свяжется наш менеджер</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="media d-block text-center block-6 services">
+                    <div class="d-flex justify-content-center align-items-center mb-3">
+                        <svg width="7em" height="7em" viewBox="0 0 16 16" class="bi bi-box-seam" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd" d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2l-2.218-.887zm3.564 1.426L5.596 5 8 5.961 14.154 3.5l-2.404-.961zm3.25 1.7l-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z"/>
+                        </svg>
+                    </div>
+                    <div class="media-body">
+                        <h3 class="heading">Доставка</h3>
+                        <p>Заказ формируется и отправляется в службу доставки</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section contact-section" style="background-image: url({% static 'images/contactbg.jpg' %});" id="contact">
+    <div class="contact-section2">
+        <div class="container mt-5 mb-5">
+          <div class="row block-9">
+      		<div class="col-md-4 contact-info ftco-animate fadeInUp ftco-animated">
+      			<div class="row">
+      				<div class="col-md-12 mb-4">
+      	              <h2 class="h4">Контакты</h2>
+      	            </div>
+                      {% for item in contacts %}
+                          <div class="col-md-12 mb-3">
+                              <p><span>Контактный номер:</span><br><a href="tel://+{{ item.numder_phone }}" class="a_footer">+{{ item.numder_phone }}</a></p>
+                          </div>
+                          <div class="col-md-12 mb-3">
+                              <p><span>Instagram:</span><br><a href="{{ item.instagram_url }}" class="a_footer" rel="noreferrer" target="_blank">{{ item.instagram_name }}</a></p>
+                          </div>
+                          <div class="col-md-12 mb-3">
+                              <p><span>Email:</span><br><a href="mailto:{{ item.email }}" class="a_footer">{{ item.email }}</a></p>
+                          </div>
+                      {% endfor %}
+      			</div>
+      		</div>
+      		<div class="col-md-1"></div>
+              <div class="col-md-6 ftco-animate fadeInUp ftco-animated">
+                  <form action="{% url 'index' %}" class="contact-form" method="post">
+                      {% csrf_token %}
+                      <div class="form-group">
+                          <label for="{{ form.first_name.id_for_label }}">Ваше имя:</label>
+                          {{ form.first_name }}
+                      </div>
+                      <div class="form-group">
+                          <label for="{{ form.phone_number.id_for_label }}">Номер телефона:</label>
+                          {{ form.phone_number }}
+                      </div>
+                      <div class="form-group">
+                          <label for="{{ form.message.id_for_label }}">Сообщение:</label>
+                          {{ form.message }}
+                      </div>
+                      <div class="form-group">
+                          <button type="submit" name="button" value="Отправить" class="btn btn-contact py-3 px-5 btn-block">Отправить</button>
+                      </div>
+                  </form>
+              </div>
+          </div>
+        </div>
+    </div>
+</section>
+<script type="text/javascript">
+    alert("Сайт находится в разработке!")
+</script>
+{% endblock %}

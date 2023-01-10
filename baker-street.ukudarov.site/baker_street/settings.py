@@ -91,9 +91,9 @@ WSGI_APPLICATION = 'baker_street.wsgi.application'
 DATABASES = {
      'default': {
          'ENGINE': 'django.db.backends.mysql',
-         'NAME':'u1584479_baker-street',
-         'USER':'u1584479_default',
-         'PASSWORD':'Oqrl3PI9GGA22rQw',
+         'NAME':'',
+         'USER':'',
+         'PASSWORD':'',
          'HOST':'localhost',
          'OPTIONS':{
            'init_command':"SET sql_mode='STRICT_TRANS_TABLES'"

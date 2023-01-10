@@ -1,0 +1,892 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>
+    {% block title %}
+    Baker Street - Главная
+    {% endblock %}
+  </title>
+
+  <!-- <link rel="stylesheet" href="{% static 'assets/css/vendor/bootstrap.min.css' %}"> -->
+  <link rel="stylesheet" href="{% static 'assets/css/vendor/vendor.min.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/css/style.min.css' %}">
+
+  <!-- <link rel="stylesheet" href="{% static 'assets/css/vendor/vandella.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/css/vendor/jellybelly.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/css/vendor/icofont.min.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/css/vendor/fontello.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/css/plugins/easyzoom.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/css/plugins/slick.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/css/plugins/nice-select.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/css/plugins/animate.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/css/plugins/magnific-popup.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/css/plugins/jquery-ui.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/css/plugins/plugins.min.css' %}">-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+  <style media="screen">
+    body::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    body::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.3);
+    }
+
+    body::-webkit-scrollbar-thumb {
+      background-color: #303030;
+    }
+
+    #scrollUp {
+      background-color: #303030;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main-wrapper main-wrapper-3">
+    <header class="header-area section-padding-1 transparent-bar">
+      <div class="header-large-device mt-10">
+        <div class="header-bottom sticky-bar">
+          <div class="container-fluid">
+            <div class="header-bottom-flex">
+              <div class="logo-menu-wrap">
+                <div class="logo">
+                  <a href="{% url 'admin_base' %}">
+                    <img src="{% static 'images/logo.png' %}" alt="logo" width="290">
+                  </a>
+                </div>
+              </div>
+              <div class="header-action-wrap header-action-flex header-action-width header-action-mrg-1">
+                <div class="same-style">
+                  <a href="{% url 'delivery_base' %}" class="mr-3"><i class="icofont-user-alt-3"></i></a>
+                  <a href="{% url 'logout' %}"><i class="icofont-logout"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="header-small-device header-small-ptb sticky-bar">
+        <div class="container-fluid">
+          <div class="row align-items-center">
+            <div class="col-6">
+              <div class="mobile-logo mobile-logo-width">
+                <a href="{% url 'admin_base' %}">
+                  <img alt="" src="{% static 'images/logo.png' %}" width="160">
+                </a>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="header-action-wrap header-action-flex header-action-mrg-1">
+                <div class="same-style header-info">
+                  <button class="mobile-menu-button-active">
+                    <span class="info-width-1"></span>
+                    <span class="info-width-2"></span>
+                    <span class="info-width-3"></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Mobile menu start -->
+    <div class="mobile-menu-active clickalbe-sidebar-wrapper-style-1">
+      <div class="clickalbe-sidebar-wrap">
+        <a class="sidebar-close"><i class="icofont-close-line"></i></a>
+        <div class="mobile-menu-content-area sidebar-content-100-percent">
+          <div class="clickable-mainmenu-wrap clickable-mainmenu-style1">
+            <nav>
+              <ul>
+                <li><a href="{% url 'delivery_base' %}">Режим доставщика</a></li>
+                <li><a href="{% url 'admin_base' %}">Главная</a></li>
+                <li><a href="{% url 'logout' %}">Выйти</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    {% block content %}
+
+    <style media="screen">
+      table {
+        border: 1px solid #ccc;
+        border-collapse: collapse;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        table-layout: fixed;
+      }
+
+      table caption {
+        font-size: 1.5em;
+        margin: .5em 0 .75em;
+      }
+
+      table tr {
+        background-color: #f8f8f8;
+        border: 1px solid #ddd;
+        padding: .35em;
+      }
+
+      table th,
+      table td {
+        padding: .625em;
+        text-align: center;
+      }
+
+      table th {
+        font-size: .85em;
+        letter-spacing: .1em;
+        text-transform: uppercase;
+      }
+
+      @media screen and (max-width: 600px) {
+        table {
+          border: 0;
+        }
+
+        table caption {
+          font-size: 1.3em;
+        }
+
+        table thead {
+          border: none;
+          clip: rect(0 0 0 0);
+          height: 1px;
+          margin: -1px;
+          overflow: hidden;
+          padding: 0;
+          position: absolute;
+          width: 1px;
+        }
+
+        table tr {
+          border-bottom: 3px solid #ddd;
+          display: block;
+          margin-bottom: .625em;
+        }
+
+        table td {
+          border-bottom: 1px solid #ddd;
+          display: block;
+          font-size: .8em;
+          text-align: right;
+        }
+
+        table td::before {
+          /*
+          * aria-label has no advantage, it won't be read inside a table
+          content: attr(aria-label);
+          */
+          content: attr(data-label);
+          float: left;
+          font-weight: bold;
+          text-transform: uppercase;
+        }
+
+        table td:last-child {
+          border-bottom: 0;
+        }
+
+        td:nth-of-type(1):before {
+          content: "Название";
+        }
+
+        td:nth-of-type(2):before {
+          content: "Осталось";
+        }
+
+        td:nth-of-type(3):before {
+          content: "Продано";
+        }
+
+        td:nth-of-type(4):before {
+          content: "Возврат";
+        }
+
+        td:nth-of-type(5):before {
+          content: "Акции";
+        }
+
+        td:nth-of-type(6):before {
+          content: "Всего за день";
+        }
+
+        .orders td:nth-of-type(1):before {
+          content: "Заказ №";
+        }
+
+        .orders td:nth-of-type(2):before {
+          content: "Магазин";
+        }
+
+        /* .orders td:nth-of-type(3):before { content: "Имя"; } */
+        .orders td:nth-of-type(4):before {
+          content: "Сумма";
+        }
+
+        .orders td:nth-of-type(5):before {
+          content: "Подробно";
+        }
+
+        .orders td:nth-of-type(6):before {
+          content: "Оплатил";
+        }
+
+        .refunds td:nth-of-type(1):before {
+          content: "Заказ №";
+        }
+
+        .refunds td:nth-of-type(2):before {
+          content: "Магазин";
+        }
+
+        .refunds td:nth-of-type(3):before {
+          content: "Сумма";
+        }
+
+        .refunds td:nth-of-type(4):before {
+          content: "Подробно";
+        }
+
+        .dop td:nth-of-type(1):before {
+          content: "Наименование";
+        }
+
+        .dop td:nth-of-type(2):before {
+          content: "Цена";
+        }
+
+        .dop td:nth-of-type(3):before {
+          content: "Кол-во";
+        }
+
+        .dop td:nth-of-type(4):before {
+          content: "Общая цена";
+        }
+      }
+
+
+
+      input {
+        background: #eceff8;
+        border: 2px solid #eceff8;
+        height: 12.8px;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        padding-left: 10px;
+        font-size: 14px;
+        color: #737373;
+        width: 12.8px;
+      }
+    </style>
+
+    <div class="my-account-wrapper pt-200 pb-160">
+      <div class="container">
+        <h1>Администрирование Baker Street</h1>
+        <div class="row pt-20">
+          <div class="col-lg-12">
+            <div class="tab-content tab-content-basic">
+              <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4">
+                          <p class="statistics-title">Заказы (Оплатили)</p>
+                          <h3 class="rate-percentage">{{ for_day.order }}₸</h3>
+                        </div>
+                        <div class="col-lg-3 col-md-4">
+                          <p class="statistics-title">Заказы (Оплатили на каспи)</p>
+                          <h3 class="rate-percentage">{{ for_day.order_kaspi }}₸</h3>
+                        </div>
+                        <div class="col-lg-3 col-md-4">
+                          <p class="statistics-title">Заказы (Оплатили наличными)</p>
+                          <h3 class="rate-percentage">{{ for_day.order_cash }}₸</h3>
+                        </div>
+                        <div class="col-lg-3 col-md-4">
+                          <p class="statistics-title">Заказы (Не оплатили)</p>
+                          <h3 class="rate-percentage">{{ for_day.order_debt }}₸</h3>
+                        </div>
+                        <div class="col-lg-3 col-md-4">
+                          <p class="statistics-title">Заказы (Не оплатилина каспи)</p>
+                          <h3 class="rate-percentage">{{ for_day.order_debt_kaspi }}₸</h3>
+                        </div>
+                        <div class="col-lg-3 col-md-4">
+                          <p class="statistics-title">Заказы (Не оплатили наличными)</p>
+                          <h3 class="rate-percentage">{{ for_day.order_debt_cash }}₸</h3>
+                        </div>
+                        <div class="col-lg-3 col-md-4">
+                          <p class="statistics-title">Заказы под реализацию (Оплатили)</p>
+                          <h3 class="rate-percentage">{{ for_day.order_realization }}₸</h3>
+                        </div>
+                        <div class="col-lg-3 col-md-4">
+                          <p class="statistics-title">Заказы под реализацию (Не оплатили)</p>
+                          <h3 class="rate-percentage">{{ for_day.order_realization_debt }}₸</h3>
+                        </div>
+                        <div class="col-lg-3 col-md-4">
+                          <p class="statistics-title">Возвраты</p>
+                          <h3 class="rate-percentage">{{ for_day.refund }}₸</h3>
+                        </div>
+                        <div class="col-lg-3 col-md-4">
+                          <p class="statistics-title">Акции</p>
+                          <h3 class="rate-percentage">{{ for_day.stocks }}₸</h3>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="myaccount-page-wrapper mt-50">
+              <div class="row">
+                <div class="col-lg-3 col-md-4">
+                    {% include "siteadmin/navbar.html" %}
+                </div>
+                <div class="col-lg-9 col-md-8 mb-30">
+                  <div class="container myaccount-content" style="background:white; padding: 30px;">
+                    <h3>Статистика продаж за сегодняшний день</h3>
+                    <h5>Товары</h5>
+                    <table>
+                      <thead>
+                        <tr>
+                          <th scope="col">Название</th>
+                          <th scope="col">Осталось</th>
+                          <th scope="col">Продано</th>
+                          <th scope="col">Возврат</th>
+                          <th scope="col">Акции</th>
+                          <th scope="col">Всего за день</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for item in prepared_products %}
+                        <tr>
+                          <td>
+                            <strong>{{ item.product.title }}</strong>
+                          </td>
+                          <td>{{ item.qty }}</td>
+                          <td>{{ item.sale_qty }}</td>
+                          <td>{{ item.refund_qty }}</td>
+                          <td>{{ item.stocks_qty }}</td>
+                          <td>{{ item.prepared_qty }}</td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                    <a href="{% url 'add_prepared_product' %}">
+                      <button name="submit" type="submit" class="btn btn-primary mt-15">Добавить</button>
+                    </a>
+                    <a href="{% url 'edit_prepared_product' %}">
+                      <button name="submit" type="submit" class="btn btn-primary mt-15">Изменить</button>
+                    </a>
+                    <br>
+                    <br>
+                    <h5>Заказы</h5>
+                    <table role="table" class="orders">
+                      <thead role="rowgroup">
+                        <tr role="row">
+                          <th role="columnheader">Заказ №</th>
+                          <th role="columnheader">Магазин</th>
+                          <!-- <th role="columnheader">Имя</th> -->
+                          <th role="columnheader">Сумма</th>
+                          <th role="columnheader">Подробно</th>
+                          <th role="columnheader">Оплатил</th>
+                        </tr>
+                      </thead>
+                      <tbody role="rowgroup">
+                        {% for item in orders %}
+                        <tr role="row">
+                          <td role="cell">{{ item.id }}</td>
+                          <td role="cell"><a href="{% url 'admin_shop_orders_detail' item.buyer_shop.id %}">{{ item.buyer_shop.title }}</a></td>
+                          <!-- <td role="cell">{{ item.buyer_shop.kaspi_name }}</td> -->
+                          <td role="cell">{{ item.total_price }}₸</td>
+                          <td role="cell">
+                            <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal-{{ item.id }}">
+                              Перейти
+                            </button>
+                            <div class="modal fade" id="exampleModal-{{ item.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Детализация заказа {{ item.id }}</h5>
+                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x"></i></button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <h4 class="text-center">Товары</h4>
+                                    <table class="table">
+                                      <thead>
+                                        <tr>
+                                          <th scope="col">Наименование</th>
+                                          <th scope="col">Цена</th>
+                                          <th scope="col">Кол-во</th>
+                                          <th scope="col">Общая цена</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody class="dop">
+                                        {% for item_p in order_products %}
+                                        {% if item_p.order.id == item.id  %}
+                                        <tr>
+                                          <td>
+                                            {{ item_p.product.title }}
+                                          </td>
+                                          <td>
+                                            <strong>{{ item_p.product.price }}</strong>₸
+                                          </td>
+                                          <td>{{ item_p.qty }}</td>
+                                          <td>{{ item_p.total_price }}₸</td>
+                                        </tr>
+                                        {% endif %}
+                                        {% endfor %}
+                                      </tbody>
+                                    </table>
+                                    <div>
+                                      <div class="container text-right">
+                                        Итого: <strong>{{ item.total_price }}</strong>₸
+                                      </div>
+                                    </div>
+                                    <hr>
+                                    <h4 class="text-center">Дополнительная информация</h4>
+                                    <div class="text-left">
+                                      <p>Заказчик: <strong>{{ item.buyer_shop.title }}</strong></p>
+                                      <p>Тип заказа: <strong>{{ item.get_buying_type_display }}</strong></p>
+                                      <p>Имя каспи переводящего: <strong>{{ item.buyer_shop.kaspi_name }}</strong></p>
+                                      <p>Оплата: <strong>{{ item.get_pay_display }}</strong></p>
+                                      <p>Статус заказ: <strong>{{ item.get_status_display }}</strong></p>
+                                      <p>Дата оформления: <strong>{{ item.created_at }}</strong></p>
+                                      <p>Дата получения: <strong>{{ item.order_date }}</strong></p>
+                                      <p>Комментарий к заказу: <strong>{% if item.comment %}{{ item.comment }}{% else %}Нет{% endif %}</strong></p>
+                                    </div>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <a href="{% url 'delete_order' order_id=item.id url='admin_base' url_id=0 %}" onclick="return proverka();">
+                                      <button type="button" class="btn btn-warning">Удалить</button>
+                                    </a>
+                                    <script type="text/javascript">
+                                      function proverka() {
+                                        if (confirm("Подтвердить")) {
+                                          return true;
+                                        } else {
+                                          return false;
+                                        }
+                                      }
+                                    </script>
+                                    <a href="{% url 'admin_shop_invoice_pdf_2' id=item.id %}" target="_blank">
+                                      <button type="button" class="btn btn-warning">Скачать 2</button>
+                                    </a>
+                                    <a href="{% url 'admin_shop_invoice_pdf' id=item.id %}" target="_blank">
+                                      <button type="button" class="btn btn-warning">Скачать</button>
+                                    </a>
+                                    <a href="{% url 'admin_shop_invoice_edit_pdf' id=item.id%}" target="_blank">
+                                      <button type="button" class="btn btn-warning">Редактировать</button>
+                                    </a>
+                                    <a href="{% url 'admin_shop_invoice' id=item.id %}" target="_blank">
+                                      <button type="button" class="btn btn-warning">Смотреть</button>
+                                    </a>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                          <td role="cell">
+                            {% if item.paid == False %}
+                            <input type="checkbox" id="checkbox{{ item.id }}">
+                            {% elif item.paid == True %}
+                            <input type="checkbox" id="checkbox{{ item.id }}" checked>
+                            {% endif %}
+                            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+                            <script type="text/javascript">
+                              $('#checkbox{{ item.id }}').on('click', function() {
+                                if ($(this).is(':checked')) {
+                                  url = "{% url 'change_status_pay_admin' id=item.id status=1 url='admin_base' %}"
+                                  document.location.href = url;
+                                } else {
+                                  url = "{% url 'change_status_pay_admin' id=item.id status=0 url='admin_base' %}"
+                                  document.location.href = url;
+                                }
+                              })
+                            </script>
+                          </td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                    <br>
+                    <br>
+                    <h5>Заказы (Под реализацию)</h5>
+                    <table role="table" class="orders">
+                      <thead role="rowgroup">
+                        <tr role="row">
+                          <th role="columnheader">Заказ №</th>
+                          <th role="columnheader">Магазин</th>
+                          <!-- <th role="columnheader">Имя</th> -->
+                          <th role="columnheader">Сумма</th>
+                          <th role="columnheader">Подробно</th>
+                          <th role="columnheader">Оплатил</th>
+                        </tr>
+                      </thead>
+                      <tbody role="rowgroup">
+                        {% for item in realization_orders %}
+                        <tr role="row">
+                          <td role="cell">{{ item.id }}</td>
+                          <td role="cell"><a href="{% url 'admin_shop_orders_detail' item.buyer_shop.id %}">{{ item.buyer_shop.title }}</a></td>
+                          <!-- <td role="cell">{{ item.buyer_shop.kaspi_name }}</td> -->
+                          <td role="cell">{{ item.total_price }}₸</td>
+                          <td role="cell">
+                            <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal-{{ item.id }}">
+                              Перейти
+                            </button>
+                            <div class="modal fade" id="exampleModal-{{ item.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Детализация заказа {{ item.id }}</h5>
+                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x"></i></button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <h4 class="text-center">Товары</h4>
+                                    <table class="table">
+                                      <thead>
+                                        <tr>
+                                          <th scope="col">Наименование</th>
+                                          <th scope="col">Цена</th>
+                                          <th scope="col">Кол-во</th>
+                                          <th scope="col">Общая цена</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody class="dop">
+                                        {% for item_p in realization_order_products %}
+                                        {% if item_p.order.id == item.id  %}
+                                        <tr>
+                                          <td>
+                                            {{ item_p.product.title }}
+                                          </td>
+                                          <td>
+                                            <strong>{{ item_p.product.price }}</strong>₸
+                                          </td>
+                                          <td>{{ item_p.qty }}</td>
+                                          <td>{{ item_p.total_price }}₸</td>
+                                        </tr>
+                                        {% endif %}
+                                        {% endfor %}
+                                      </tbody>
+                                    </table>
+                                    <div>
+                                      <div class="container text-right">
+                                        Итого: <strong>{{ item.total_price }}</strong>₸
+                                      </div>
+                                    </div>
+                                    <hr>
+                                    <h4 class="text-center">Дополнительная информация</h4>
+                                    <div class="text-left">
+                                      <p>Заказчик: <strong>{{ item.buyer_shop.title }}</strong></p>
+                                      <p>Имя каспи переводящего: <strong>{{ item.buyer_shop.kaspi_name }}</strong></p>
+                                      <p>Тип заказа: <strong>{{ item.get_buying_type_display }}</strong></p>
+                                      <p>Оплата: <strong>{{ item.get_pay_display }}</strong></p>
+                                      <p>Статус заказ: <strong>{{ item.get_status_display }}</strong></p>
+                                      <p>Дата оформления: <strong>{{ item.created_at }}</strong></p>
+                                      <p>Дата получения: <strong>{{ item.order_date }}</strong></p>
+                                      <p>Комментарий к заказу: <strong>{% if item.comment %}{{ item.comment }}{% else %}Нет{% endif %}</strong></p>
+                                    </div>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <a href="{% url 'admin_shop_invoice_pdf_2' id=item.id %}" target="_blank">
+                                      <button type="button" class="btn btn-warning">Скачать 2</button>
+                                    </a>
+                                    <a href="{% url 'admin_shop_invoice_pdf' id=item.id %}" target="_blank">
+                                      <button type="button" class="btn btn-warning">Скачать</button>
+                                    </a>
+                                    <a href="{% url 'admin_shop_invoice_edit_pdf' id=item.id%}" target="_blank">
+                                      <button type="button" class="btn btn-warning">Редактировать</button>
+                                    </a>
+                                    <a href="{% url 'admin_shop_invoice' id=item.id %}" target="_blank">
+                                      <button type="button" class="btn btn-warning">Смотреть</button>
+                                    </a>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                          <td role="cell">
+                            {% if item.paid == False %}
+                            <input type="checkbox" id="checkbox{{ item.id }}">
+                            {% elif item.paid == True %}
+                            <input type="checkbox" id="checkbox{{ item.id }}" checked>
+                            {% endif %}
+                            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+                            <script type="text/javascript">
+                              $('#checkbox{{ item.id }}').on('click', function() {
+                                if ($(this).is(':checked')) {
+                                  url = "{% url 'change_status_pay_admin' id=item.id status=1 url='admin_base' %}"
+                                  document.location.href = url;
+                                } else {
+                                  url = "{% url 'change_status_pay_admin' id=item.id status=0 url='admin_base' %}"
+                                  document.location.href = url;
+                                }
+                              })
+                            </script>
+                          </td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                    <br>
+                    <br>
+                    <h5>Возвраты</h5>
+                    <table role="table" class="refunds">
+                      <thead role="rowgroup">
+                        <tr role="row">
+                          <th role="columnheader">Заказ №</th>
+                          <th role="columnheader">Магазин</th>
+                          <th role="columnheader">Сумма</th>
+                          <th role="columnheader">Подробно</th>
+                        </tr>
+                      </thead>
+                      <tbody role="rowgroup">
+                        {% for item in refunds %}
+                        <tr role="row">
+                          <td role="cell">{{ item.id }}</td>
+                          <td role="cell"><a href="{% url 'admin_shop_refunds_detail' item.buyer_shop.id %}">{{ item.buyer_shop.title }}</a></td>
+                          <td role="cell">{{ item.total_price }}₸</td>
+                          <td role="cell">
+                            <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal-{{ item.id }}">
+                              Перейти
+                            </button>
+                            <div class="modal fade" id="exampleModal-{{ item.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Детализация возврата {{ item.id }}</h5>
+                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x"></i></button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <h4 class="text-center">Товары</h4>
+                                    <table class="table">
+                                      <thead>
+                                        <tr>
+                                          <th scope="col">Наименование</th>
+                                          <th scope="col">Цена</th>
+                                          <th scope="col">Кол-во</th>
+                                          <th scope="col">Общая цена</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody class="dop">
+                                        {% for item_p in refund_products %}
+                                        {% if item_p.refund.id == item.id  %}
+                                        <tr>
+                                          <td>
+                                            {{ item_p.product.title }}
+                                          </td>
+                                          <td>
+                                            <strong>{{ item_p.product.price }}</strong>₸
+                                          </td>
+                                          <td>{{ item_p.qty }}</td>
+                                          <td>{{ item_p.total_price }}₸</td>
+                                        </tr>
+                                        {% endif %}
+                                        {% endfor %}
+                                      </tbody>
+                                    </table>
+                                    <div>
+                                      <div class="container text-right">
+                                        Итого: <strong>{{ item.total_price }}</strong>₸
+                                      </div>
+                                    </div>
+                                    <hr>
+                                    <h4 class="text-center">Дополнительная информация</h4>
+                                    <div class="text-left">
+                                      <p>Заказчик: <strong>{{ item.buyer_shop.title }}</strong></p>
+                                      <p>Дата оформления: <strong>{{ item.created_at }}</strong></p>
+                                      <p>Дата получения: <strong>{{ item.order_date }}</strong></p>
+                                      <p>Комментарий к заказу: <strong>{% if item.comment %}{{ item.comment }}{% else %}Нет{% endif %}</strong></p>
+                                    </div>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                    <br>
+                    <br>
+                    <h5>Акции</h5>
+                    <table role="table" class="refunds">
+                      <thead role="rowgroup">
+                        <tr role="row">
+                          <th role="columnheader">Заказ №</th>
+                          <th role="columnheader">Магазин</th>
+                          <th role="columnheader">Сумма</th>
+                          <th role="columnheader">Подробно</th>
+                        </tr>
+                      </thead>
+                      <tbody role="rowgroup">
+                        {% for item in stocks %}
+                        <tr role="row">
+                          <td role="cell">{{ item.id }}</td>
+                          <td role="cell"><a href="{% url 'admin_shop_stocks_detail' item.buyer_shop.id %}">{{ item.buyer_shop.title }}</a></td>
+                          <td role="cell">{{ item.total_price }}₸</td>
+                          <td role="cell">
+                            <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal-{{ item.id }}">
+                              Перейти
+                            </button>
+                            <div class="modal fade" id="exampleModal-{{ item.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Детализация возврата {{ item.id }}</h5>
+                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x"></i></button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <h4 class="text-center">Товары</h4>
+                                    <table class="table">
+                                      <thead>
+                                        <tr>
+                                          <th scope="col">Наименование</th>
+                                          <th scope="col">Цена</th>
+                                          <th scope="col">Кол-во</th>
+                                          <th scope="col">Общая цена</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody class="dop">
+                                        {% for item_p in stock_products %}
+                                        {% if item_p.stocks.id == item.id  %}
+                                        <tr>
+                                          <td>
+                                            {{ item_p.product.title }}
+                                          </td>
+                                          <td>
+                                            <strong>{{ item_p.product.price }}</strong>₸
+                                          </td>
+                                          <td>{{ item_p.qty }}</td>
+                                          <td>{{ item_p.total_price }}₸</td>
+                                        </tr>
+                                        {% endif %}
+                                        {% endfor %}
+                                      </tbody>
+                                    </table>
+                                    <div>
+                                      <div class="container text-right">
+                                        Итого: <strong>{{ item.total_price }}</strong>₸
+                                      </div>
+                                    </div>
+                                    <hr>
+                                    <h4 class="text-center">Дополнительная информация</h4>
+                                    <div class="text-left">
+                                      <p>Заказчик: <strong>{{ item.buyer_shop.title }}</strong></p>
+                                      <p>Дата оформления: <strong>{{ item.created_at }}</strong></p>
+                                      <p>Дата получения: <strong>{{ item.order_date }}</strong></p>
+                                      <p>Комментарий к заказу: <strong>{% if item.comment %}{{ item.comment }}{% else %}Нет{% endif %}</strong></p>
+                                    </div>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    {% endblock %}
+
+
+
+
+    <footer class="footer-area bg-gray-6 pt-160">
+      <div class="footer-bottom">
+        <div class="container">
+          <div class="copyright-ptb-3 border-top-2">
+            <div class="row align-items-center">
+              <div class="col-lg-6 col-md-6">
+                <div class="copyright-2">
+                  <p>Copyright © 2021 - 2022 Baker Street - <a target="_blank" href=""> Все права защищены!</a></p>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6">
+                <div class="footer-menu footer-menu-right footer-menu-right-blue">
+                  <nav>
+                    <ul>
+                      <li><a href="#">Условия</a></li>
+                      <li><a href="#">Конфиденциальности</a></li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+
+
+  <script src="{% static 'assets/js/vendor/jquery-3.5.1.min.js' %}"></script>
+  <script>
+    $(document).ready(function() {
+      if (document.getElementById(value{{item_o.id}}) <= 1) {
+        $("#remove{{ item.id }}").css({
+          'display': 'block'
+        });
+        $("#add{{ item.id }}").css({
+          'display': 'none'
+        });
+      }
+    });
+  </script>
+  <script src="{% static 'assets/js/vendor/jquery-migrate-3.3.0.min.js' %}"></script>
+  <script src="{% static 'assets/js/main_js.js' %}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+  <!-- <script src="{% static 'assets/js/vendor/modernizr-3.6.0.min.js' %}"></script>
+  <script src="{% static 'assets/js/plugins/slick.js' %}"></script>
+  <script src="{% static 'assets/js/plugins/wow.js' %}"></script>
+  <script src="{% static 'assets/js/plugins/instafeed.js' %}"></script>
+  <script src="{% static 'assets/js/plugins/jquery.nice-select.min.js' %}"></script>
+  <script src="{% static 'assets/js/plugins/svg-injector.min.js' %}"></script>
+  <script src="{% static 'assets/js/plugins/mouse-parallax.js' %}"></script>
+  <script src="{% static 'assets/js/plugins/images-loaded.js' %}"></script>
+  <script src="{% static 'assets/js/plugins/isotope.js' %}"></script>
+  <script src="{% static 'assets/js/plugins/jquery-ui-touch-punch.js' %}"></script>
+  <script src="{% static 'assets/js/plugins/jquery-ui.js' %}"></script>
+  <script src="{% static 'assets/js/plugins/magnific-popup.js' %}"></script>
+  <script src="{% static 'assets/js/plugins/scrollup.js' %}"></script>
+  <script src="{% static 'assets/js/plugins/easyzoom.js' %}"></script>
+  <script src="{% static 'assets/js/plugins/ajax-mail.js' %}"></script>
+  <script src="{% static 'assets/js/plugins/countdown.js' %}"></script> -->
+</body>
+
+</html>

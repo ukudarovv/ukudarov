@@ -1,0 +1,24 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block title %}
+    Dina Atyrau - О Нас
+{% endblock %}
+{% block description %}
+    Dina Atyrau - О Нас
+{% endblock %}
+
+{% block content %}
+    {% for item in content %}
+        <div class="container mt-150 mb-100">
+            <nav aria-label="breadcrumb" class="pb-20">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="{% url 'base' %}">Главная</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">О нас</li>
+                </ol>
+            </nav>
+            {% autoescape off %}
+                {{ item.content }}
+            {% endautoescape %}
+        </div>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,169 @@
+{% extends 'delivery/base.html' %}
+{% load static %}
+
+{% block title %}
+Baker Street - Магазин {{ shop.title }}
+{% endblock %}
+{% block content %}
+<style media="screen">
+  .quantity {
+    width: 130px;
+    display: flex;
+  }
+</style>
+<div class="my-account-wrapper pt-200 pb-160">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10">
+        <h1>Новый заказ</h1>
+        <h5>Выберите товары</h5>
+      </div>
+      <div class="col-md-2">
+        <a href="{% url 'complete_order' id=shop.id %}">
+          <button type="button" name="button" class="btn btn-primary">Оформить заказ</button>
+        </a>
+      </div>
+    </div>
+    <div class="row pt-20">
+      <div class="col-lg-12">
+        <div class="myaccount-page-wrapper">
+          <div class="col-lg-12 col-md-12 mb-30">
+            <div class="product-tab-list-6 nav mb-140">
+              <a href="#all" class="active" data-toggle="tab">
+                Все
+              </a>
+              {% for item in categories %}
+              <a href="#category-{{ item.id }}" data-toggle="tab">
+                {{ item.title }}
+              </a>
+              {% endfor %}
+            </div>
+            <div class="tab-content">
+              <div id="all" class="tab-pane active">
+                <div class="row">
+                  {% for item in products %}
+                  <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+                    <div class="card">
+                      <img class="card-img" src="{% if item.image %}
+                          {{ item.image.url }}
+                      {% else %}
+                          {% static 'images/no_image.jpg' %}
+                      {% endif %}" alt="">
+                      <div class="card-body">
+                        <h4 class="card-title">{{ item.title }}</h4>
+                        <div class="buy d-flex justify-content-between align-items-center">
+                          <div class="price text-success">
+                            <h5 class="mt-1">{{ item.price }}₸</h5>
+                            {% for item_p_p in prepared_products %}
+                            {% if item.id == item_p_p.product.id %}
+                            <h5 class="mt-1">Количество: {{ item_p_p.qty }}</h5>
+                            {% for item_o in order_products %}
+                            {% if item.id == item_o.product.id %}
+                            <div class="quantity">
+                              <form action="{% url 'change_product_qty' shop_id=shop.id id=item_o.id %}" method="POST" style="display: flex;">
+                                {% csrf_token %}
+                                <input id="value{{ item_o.id }}" type="number" class="form-control" name="qty" style="width: 70px; margin-right: 5px;" min="1" value="{{ item_o.qty }}" max="{{ item_p_p.qty }}">
+                                <br>
+                                <button name="submit" type="submit" class="btn btn-primary"><i class="bi bi-arrow-clockwise"></i></button>
+                              </form>
+                              <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+                              <script>
+                                $(document).ready(function() {
+                                  if (document.getElementById(value{{item_o.id}}) <= 1) {
+                                    $("#remove{{ item.id }}").css({
+                                      'display': 'block'
+                                    });
+                                    $("#add{{ item.id }}").css({
+                                      'display': 'none'
+                                    });
+                                  }
+                                });
+                              </script>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                            {% endif %}
+                            {% endfor %}
+                          </div>
+
+                          <a href="{% url 'add_to_order' shop_id=shop.id id=item.id order_id=order.id %}" id="add{{ item.id }}" class="btn btn-danger mt-3">Добавить</a>
+
+                          <a href="{% url 'delete_from_order' shop_id=shop.id id=item.id order_id=order.id %}" id="remove{{ item.id }}" class="btn btn-danger mt-3" style="display: none;">Удалить</a>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>
+              </div>
+              {% for item_c in categories %}
+              <div id="category-{{ item_c.id }}" class="tab-pane">
+                <div class="row">
+                  {% for item in products %}
+                  {% if item.category.id == item_c.id %}
+                  <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+                    <div class="card">
+                      <img class="card-img" src="{% if item.image %}
+                          {{ item.image.url }}
+                      {% else %}
+                          {% static 'images/no_image.jpg' %}
+                      {% endif %}" alt="">
+                      <div class="card-body">
+                        <h4 class="card-title">{{ item.title }}</h4>
+                        <div class="buy d-flex justify-content-between align-items-center">
+                          <div class="price text-success">
+                            <h5 class="mt-1">{{ item.price }}₸</h5>
+                            {% for item_p_p in prepared_products %}
+                            {% if item.id == item_p_p.product.id %}
+                            <h5 class="mt-1">Количество: {{ item_p_p.qty }}</h5>
+                            {% for item_o in order_products %}
+                            {% if item.id == item_o.product.id %}
+                            <div class="quantity">
+                              <form action="{% url 'change_product_qty' shop_id=shop.id id=item_o.id %}" method="POST" style="display: flex;">
+                                {% csrf_token %}
+                                <input id="value{{ item_o.id }}" type="number" class="form-control" name="qty" style="width: 70px; margin-right: 5px;" min="1" value="{{ item_o.qty }}" max="{{ item_p_p.qty }}">
+                                <br>
+                                <button name="submit" type="submit" class="btn btn-primary"><i class="bi bi-arrow-clockwise"></i></button>
+                              </form>
+                              <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+                              <script>
+                                $(document).ready(function() {
+                                  if (document.getElementById(value{{item_o.id}}) <= 1) {
+                                    $("#remove{{ item.id }}").css({
+                                      'display': 'block'
+                                    });
+                                    $("#add{{ item.id }}").css({
+                                      'display': 'none'
+                                    });
+                                  }
+                                });
+                              </script>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                            {% endif %}
+                            {% endfor %}
+                          </div>
+
+                          <a href="{% url 'add_to_order' shop_id=shop.id id=item.id order_id=order.id %}" id="add{{ item.id }}" class="btn btn-danger mt-3">Добавить</a>
+
+                          <a href="{% url 'delete_from_order' shop_id=shop.id id=item.id order_id=order.id %}" id="remove{{ item.id }}" class="btn btn-danger mt-3" style="display: none;">Удалить</a>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {% endif %}
+                  {% endfor %}
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Dina Atyrau - Корзина
+{% endblock %}
+{% block description %}
+    Дина Атырау - Корзина
+{% endblock %}
+
+{% block content %}
+<div class="breadcrumb-area breadcrumb-mt breadcrumb-ptb-2">
+    <div class="container">
+        <div class="breadcrumb-content">
+            <h2>Корзина</h2>
+            <ul>
+                <li>
+                    <a href="{% url 'base' %}">Главная </a>
+                </li>
+                <li><span> > </span></li>
+                <li class="active">Корзина</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="cart-area bg-gray">
+    <div class="container">
+        <div class="cart-table-content">
+            {% if cart.products.count %}
+                <div class="table-content table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Товар</th>
+                                <th class="th-text-center">Цена</th>
+                                <th class="th-text-center">Количество</th>
+                                <th class="th-text-center">Общая цена</th>
+                                <th class="th-text-center">Удалить</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in cart.products.all %}
+                              <tr>
+                                  <td class="cart-product">
+                                      <div class="product-img-info-wrap">
+                                          <div class="product-img">
+                                              <a href="#"><img src="{{ item.product.image.url }}" alt=""></a>
+                                          </div>
+                                          <div class="product-info">
+                                              <h4><a href="#">{{ item.product.title }}</a></h4>
+                                          </div>
+                                      </div>
+                                  </td>
+                                  <td class="product-price"><span class="amount">{{ item.product.price }}₸</span></td>
+                                  <td class="cart-quality">
+                                    <form action="{% url 'change_qty' slug=item.product.slug %}" method="POST" style="display: flex;">
+                                      {% csrf_token %}
+                                      <input type="number" class="form-control" name="qty" style="width: 100px; margin-right: 5px; margin-left: 25px;" min="1" value="{{ item.qty }}">
+                                      <br>
+                                      <button name="submit" type="submit" class="btn btn-primary"><i class="bi bi-arrow-clockwise"></i></button>
+                                    </form>
+                                  </td>
+                                  <td class="product-total"><span>{{ item.final_price }}₸</span></td>
+                                  <td class="product-remove"><a href="{% url 'delete_from_cart' slug=item.product.slug %}"><img class="inject-me" src="{% static 'assets/images/icon-img/close.svg' %}" alt=""></a></td>
+                              </tr>
+                            {% endfor %}
+                            <tr style="text-align: center;">
+                              <td colspan="1"></td>
+                              <td>Итого:</td>
+                              <td>{{ cart.total_products }}</td>
+                              <td><strong>{{ cart.final_price }} ₸</strong></td>
+                              <td colspan="1"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="cart-shiping-update-wrapper">
+                    <a href="{% url 'checkout' %}">Оформить заказ</a>
+                </div>
+            {% else %}
+                <h3>Ваша корзина пуста</h3>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,70 @@
+{% extends 'siteadmin/base.html' %}
+{% load static %}
+
+{% block title %}
+    Baker Street - Магазин {{ shop.title }}
+{% endblock %}
+{% block content %}
+<div class="my-account-wrapper pt-200 pb-160">
+    <div class="container">
+      <nav aria-label="breadcrumb" class="pb-20">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'admin_base' %}">Главная</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ shop.title }}</li>
+          </ol>
+      </nav>
+      <h1>{{ shop.title }}</h1>
+        <div class="row pt-20">
+            <div class="col-lg-12">
+                <div class="myaccount-page-wrapper">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4">
+                            <div class="myaccount-tab-menu nav" role="tablist">
+                                <a href="{% url 'admin_shop_detail' id=shop.id %}">Данные магазина</a>
+                            </div>
+                            <div class="myaccount-tab-menu nav" role="tablist">
+                                <a href="{% url 'admin_shop_edit' id=shop.id %}">Редактировать данные магазина</a>
+                            </div>
+                            <div class="myaccount-tab-menu nav" role="tablist">
+                                <a href="{% url 'admin_shop_edit_admin' id=shop.id %}">Редактировать данные администратора магазина</a>
+                            </div>
+                            <div class="myaccount-tab-menu nav" role="tablist">
+                                <a href="{% url 'admin_shop_orders_detail' id=shop.id %}">Заказы</a>
+                            </div>
+                            <div class="myaccount-tab-menu nav" role="tablist">
+                                <a href="{% url 'admin_shop_stocks_detail' id=shop.id %}">Акции</a>
+                            </div>
+                            <div class="myaccount-tab-menu nav" role="tablist">
+                                <a href="{% url 'admin_shop_refunds_detail' id=shop.id %}">Возвраты</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-9 col-md-8 mb-30">
+                            <div class="container myaccount-content" style="background:white; padding: 30px;">
+                                <h4>Контактные данные магазина:</h4>
+                                Имя каспи переводящего: {{ shop.kaspi_name }}
+                                <br>
+                                Номер телефона: <a href="tel:{{ shop.phone }}"> <span>{{ shop.phone }}</span> </a>
+                                <br>
+                                Адрес: <a target="_blank" href="{{ shop.gis_link }}">{{ shop.address }}</a>
+                                <br>
+                                ИИН/БИН: {{ shop.iin_bin }}
+                                <br>
+                                <br>
+                                <hr>
+                                <br>
+                                <h4>Контактные данные администратора магазина:</h4>
+                                Имя: {{ shop.customer.first_name }}
+                                <br>
+                                Email: <a href="mailto:{{ shop.email }}">{{ shop.customer.email }}</a>
+                                <br>
+                                Номер телефона: <a href="tel:{{ shop.phone }}"> <span>{{ shop.customer.phone }}</span> </a>
+
+                            </div>
+                        </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+{% endblock content %}

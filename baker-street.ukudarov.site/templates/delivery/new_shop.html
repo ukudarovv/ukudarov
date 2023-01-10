@@ -1,0 +1,37 @@
+{% extends 'delivery/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block title %}
+    Baker Street
+{% endblock %}
+{% block content %}
+
+<div class="login-register-area bg-gray pt-155 pb-160">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7 col-md-12 ml-auto mr-auto">
+                <div class="login-register-wrapper">
+                    <div class="login-register-tab-list nav">
+                        <h4> Добавление магазина </h4>
+                    </div>
+                    <div class="tab-content">
+                        <div id="lg1" class="tab-pane active">
+                            <div class="login-form-container">
+                              <div class="login-register-form">
+                                  <form action="" method="POST">
+                                      {% csrf_token %}
+                                      {{ form|crispy }}
+                                      <input type="submit" class="btn btn-success btn-block" value="Добавить">
+                                  </form>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

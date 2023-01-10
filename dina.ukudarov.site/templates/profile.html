@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% block title %}
+    Dina Atyrau - Мой профиль
+{% endblock %}
+
+{% block content %}
+
+
+<div class="my-account-wrapper bg-gray pt-200 pb-160">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="myaccount-page-wrapper">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4">
+                            {% include "inc/left_panel_profile.html" %}
+                        </div>
+                        <div class="col-lg-9 col-md-8">
+                            {% if messages %}
+                                {% for message in messages %}
+                                  <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    <strong>{{ message }}</strong>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                {% endfor %}
+                            {% endif %}
+                            <div class="tab-content" id="myaccountContent">
+                                <div class="tab-pane fade show active" id="dashboad" role="tabpanel">
+                                    <div class="myaccount-content">
+                                        <h3>Аккаунт пользователя {{ request.user.username }}</h3>
+                                        <div class="welcome">
+                                            <label class="">ФИО: {{ customer.first_name }} {{ customer.last_name }}</label>
+                                            <br>
+                                            <label class="">Пол:
+                                                {% if customer.get_sex_display != None  %}
+                                                    {{ customer.get_sex_display }}
+                                                {% else %}
+                                                    Нет
+                                                {% endif %}
+                                            </label>
+                                            <br>
+                                            <label class="">Email:
+                                                {% if customer.email != None  %}
+                                                    {{ customer.email }}
+                                                {% else %}
+                                                    Нет
+                                                {% endif %}
+                                            </label>
+                                            <br>
+                                            <label class="">Номер телефона:
+                                                {% if customer.phone != None  %}
+                                                    {{ customer.phone }}
+                                                {% else %}
+                                                    Нет
+                                                {% endif %}
+                                            </label>
+                                            <br>
+                                            <label class="">Адрес:
+                                                {% if customer.address != None  %}
+                                                    {{ customer.address }}
+                                                {% else %}
+                                                    Нет
+                                                {% endif %}
+                                            </label>
+                                            <br>
+                                            <hr>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,97 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block title %}
+    Okiko - Мой профиль
+{% endblock %}
+{% block content %}
+<div class="my-account-wrapper bg-gray pt-50 pb-160">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="myaccount-page-wrapper">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4">
+                            <div class="myaccount-tab-menu nav" role="tablist">
+                                <a href="{% url 'admin_profile' %}">Мой профиль</a>
+                                <a href="{% url 'edit_admin_profile' %}">Редактировать профиль</a>
+                                <a href="{% url 'logout' %}" class="list-group-item">Выйти</a>
+                            </div>
+                            <div class="myaccount-tab-menu nav mt-4" role="tablist">
+                                <a href="{% url 'edit_univ_detail' %}">Редактировать данные заведения</a>
+                                <a href="{% url 'edit_univ_contact' %}">Редактировать контактные данные</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-9 col-md-8">
+
+                            <div class="tab-content" id="myaccountContent">
+                                <div class="tab-pane fade show active" id="dashboad" role="tabpanel">
+                                    <div class="myaccount-content">
+                                        <h3>Профиль администратора</h3>
+                                        <div class="welcome">
+                                            <label class="">ФИО: {{ user.first_name }} {{ user.last_name }}</label>
+                                            <br>
+                                            <label class="">Email:
+                                                    {{ user.email }}
+                                            </label>
+                                            <br>
+                                            <label class="">Номер телефона:
+                                                    {{ user.phone }}
+                                            </label>
+                                            <br>
+                                            <label class="">Дата создания профиля:
+                                                    {{ user.created_at }}
+                                            </label>
+                                            <br>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="myaccount-content mt-3">
+                                <h3>Данные {{ university.title }}</h3>
+                                <div class="welcome">
+                                    <label class="">Email:
+                                        {{ contact.email }}
+                                    </label>
+                                    <br>
+                                    <label class="">Номер телефона:
+                                        {{ contact.phone }}
+                                    </label>
+                                    <br>
+                                    <label class="">Адрес:
+                                        {{ contact.location }}
+                                    </label>
+                                    <br>
+                                    <label class="">Сайт:
+                                        {{ contact.website }}
+                                    </label>
+                                    <br>
+                                    <label class="">Страна:
+                                        {{ university.country.name }}
+                                    </label>
+                                    <br>
+                                    <label class="">Город:
+                                        {{ university.city.name }}
+                                    </label>
+                                    <br>
+                                    <label class="">Общежитие:
+                                        {% if university.hostel == True %} Есть {% else %} Нет {% endif %}
+                                    </label>
+                                    <br>
+                                    <label class="">Государственный:
+                                        {% if university.governmental == True %} Да {% else %} Нет {% endif %}
+                                    </label>
+                                    <br>
+                                    <label class="">Описание:
+                                        {{ university.description }}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

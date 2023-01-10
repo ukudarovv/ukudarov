@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+{% load search_filter %}
+{% load static %}
+{% block title %}
+    Dina Atyrau - {{ category.name }}
+{% endblock %}
+{% block description %}
+    Дина Атырау - {{ category.name }}
+{% endblock %}
+{% block productfilter %}
+{% endblock productfilter %}
+{% block content %}
+    <style media="screen">
+        input{
+          background: #eceff8;
+          border: 2px solid #eceff8;
+          height: 12.8px;
+          -webkit-box-shadow: none;
+          box-shadow: none;
+          padding-left: 10px;
+          font-size: 14px;
+          color: #737373;
+          width: 12.8px;
+        }
+    </style>
+    <div class="shop-area pt-150 pb-160">
+        <div class="container">
+            <div class="row flex-row-reverse">
+                <div class="col-lg-9">
+                    <div class="tab-content">
+                        <div id="shop-categorie-1" class="tab-pane active">
+                            <div class="tab-content pt-30">
+                                <div id="shop-1" class="tab-pane active">
+                                    <div class="row">
+                                        {% for product in category_products %}
+                                            <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                                                <div class="product-wrap mb-50">
+                                                    <div class="product-img product-img-zoom mb-25">
+                                                        <a href="{{ product.get_absolute_url }}">
+                                                            <img src="{{ product.image.url }}" alt="">
+                                                        </a>
+                                                    </div>
+                                                    <div class="product-content">
+                                                        <h4><a href="{{ product.get_absolute_url }}">{{ product.title }}</a></h4>
+                                                        <div class="product-price">
+                                                            <span>{{ product.price }}₸</span>
+                                                            <!-- <span class="old-price">$ 130</span> -->
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-action-position-1 text-center">
+                                                        <div class="product-content">
+                                                            <h4><a href="{{ product.get_absolute_url }}">{{ product.title }}</a></h4>
+                                                            <div class="product-price">
+                                                                <span>{{ product.price }}₸</span>
+                                                                <!-- <span class="old-price">$ 130</span> -->
+                                                            </div>
+                                                        </div>
+                                                        <div class="product-action-wrap">
+                                                            <div class="product-action-cart">
+                                                              {% if request.user.is_authenticated %}
+                                                                  <a href="{% url 'add_to_cart' slug=product.slug %}">
+                                                                      <button title="Add to Cart" class='btn btn-success my-2'>
+                                                                          Добавить в корзину
+                                                                      </button>
+                                                                  </a>
+                                                               {% else %}
+                                                                   <a href="{% url 'login' %}">
+                                                                       <button title="Add to Cart" class='btn btn-success my-2'>
+                                                                          Добавить в корзину
+                                                                      </button>
+                                                                  </a>
+                                                              {% endif %}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                <!-- <div class="pro-pagination-style text-center mt-50">
+                                    <ul>
+                                        <li><a class="active" href="#">1</a></li>
+                                        <li><a href="#"><i class="icofont-long-arrow-right"></i></a></li>
+                                    </ul>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="shop-sidebar-style">
+                        <div class="sidebar-widget">
+                            <h4 class="pro-sidebar-title">Категории</h4>
+                            <div class="sidebar-widget-categori mt-45 mb-70">
+                                <ul>
+                                {% for p_category  in categories_p %}
+
+                                      <li><a href="{{ p_category.get_absolute_url }}">{{ p_category.name }}</a></li>
+
+                                {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="sidebar-widget">
+                            <h4 class="pro-sidebar-title">Поиск</h4>
+                            <form class="d-flex mt-3" action="{% url 'category_detail' slug=category.slug %}" method="GET">
+                              <input class="form-control me-2" name="search" type="search" placeholder="Поиск товара" aria-label="Search">
+                              <button class="btn btn-outline-success" type="submit">Поиск</button>
+                            </form>
+                        </div>
+                        <div class="sidebar-widget pt-20">
+                            <h4 class="pro-sidebar-title">Фильтр</h4>
+                            <form action="{% url 'category_detail' slug=category.slug %}" method="GET">
+                                {{ category|product_spec }}
+                                <p class="text-center">
+                                    <button class="btn btn-outline-success" type="submit">Поиск</button>
+                                    <button class="btn btn-outline-info" type="submit">Сбросить</button>
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

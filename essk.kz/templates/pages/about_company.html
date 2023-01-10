@@ -1,0 +1,41 @@
+{% extends 'index.html'%}
+{% load static %}
+{% block title %}
+    ESSK - О компании
+{% endblock %}
+
+{% block content %}
+
+<div class="breadcrumbs">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="bread-inner">
+          <ul class="bread-list">
+            <li><a href="{% url 'main' %}">Главная<i class="ti-arrow-right"></i></a></li>
+            <li class="active"><a href="#">О нас</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="about-us section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-12">
+        <div class="about-content">
+          <h3>TOO "Expert Security Systems Kazakhstan"</h3>
+          <p>С 2009 года компания «Expert Security Systems Kazakhstan » специализируется на поставке комплексных систем безопасности и пожаротушения, а также осуществляет электромонтажные работы, индивидуальные проекты «под ключ» для узкоспециализированных производственных и коммерческих организаций.</p>
+          <div class="button">
+            <a href="{% url 'contacts' %}" class="btn">Контакты</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-12">
+        <iframe src="https://yandex.ru/map-widget/v1/?z=12&ol=biz&oid=61753339504" width="100%" height="400" frameborder="0"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

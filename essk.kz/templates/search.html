@@ -1,0 +1,204 @@
+{% extends 'index.html'%}
+{% load static %}
+{% block title %}
+    ESSK - Поиск
+{% endblock %}
+
+{% block content %}
+
+<div class="breadcrumbs">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="bread-inner">
+          <ul class="bread-list">
+            <li><a href="{% url 'main' %}">Главная<i class="ti-arrow-right"></i></a></li>
+            <li class="active">Результаты поиска</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="product-area shop-sidebar shop section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-12">
+        <div class="row">
+          <div class="col-12">
+
+            <div class="shop-top">
+              <div class="shop-shorter">
+                <div class="single-shorter">
+                  <label>Сортировка по цене:</label>
+                  <select>
+                    <option selected="selected">Высокая</option>
+                    <option>Низкая</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="row">
+            {% for item in page_obj %}
+                <div class="col-xl-3 col-lg-4 col-md-4 col-6">
+                  <div class="single-product">
+                    <div class="product-img">
+                      <a href="{{ item.get_absolute_url }}">
+                        <img class="default-img" src="{% if item.image %}
+                                                          {{ item.image.url }}
+                                                      {% else %}
+                                                          {% static 'images/no_image.jpg' %}
+                                                      {% endif %}" alt="#">
+                        <img class="hover-img" src="{% if item.image %}
+                                                        {{ item.image.url }}
+                                                    {% else %}
+                                                        {% static 'images/no_image.jpg' %}
+                                                    {% endif %}" alt="#">
+                      </a>
+                      <div class="button-head">
+                        <div class="product-action">
+                          <a data-toggle="modal" data-target="#productModel{{ item.id }}" title="Quick View" href="#"><i class=" ti-eye"></i><span>Быстрый просмотр</span></a>
+                          <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Избранное</span></a>
+                          <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Сравнить</span></a>
+                        </div>
+                        <div class="product-action-2">
+                          <a title="Add to cart" href="{% url 'add_to_cart' id=item.id %}">В корзину</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="product-content">
+                      <h3><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></h3>
+                      <div class="product-price">
+                        {% if item.price > 0 %}
+                            <span>{{ item.price }}₸</span>
+                        {% elif item.price == 0 %}
+                            <span>Нет цены</span>
+                        {% endif %}
+                        {% if item.new_price > 0 %}
+                            <span class="old">{{ item.price }}₸</span>
+                            <span>{{ item.new_price }}₸</span>
+                        {% endif %}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="row">
+          <div class="pagination">
+              <ul class="pagination-list">
+                  {% if page_obj.has_previous %}
+                      <li><a href="?page={{ page_obj.previous_page_number }}" aria-label="Previous"><i class="ti-arrow-left"></i></a></li>
+                  {% else %}
+                      <li class="disabled">
+                        <a><i class="ti-arrow-left"></i></a>
+                      </li>
+                  {% endif %}
+
+                  {% for i in page_obj.paginator.page_range %}
+                      {% if page_obj.number == i %}
+                          <li class="active"><a href="#">{{ i }}</a></li>
+                      {% elif i > page_obj.number|add:'-5' and i < page_obj.number|add:'5'  %}
+                          <li><a href="?page={{ i }}">{{ i }}</a></li>
+                      {% endif %}
+                  {% endfor %}
+
+                  {% if page_obj.has_next %}
+                      <li><a href="?page={{ page_obj.next_page_number }}" aria-label="Next"><i class="ti-arrow-right"></i></a></li>
+                  {% else %}
+                      <li class="disabled">
+                        <a><i class="ti-arrow-right"></i></a>
+                      </li>
+                  {% endif %}
+                </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% for item in page_obj %}
+    <div class="modal fade" id="productModel{{ item.id }}" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="ti-close" aria-hidden="true"></span></button>
+              </div>
+              <div class="modal-body">
+                  <div class="row no-gutters">
+                      <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                          <div class="product-gallery">
+                            <div class="quickview-slider-active">
+                                <div class="single-slider">
+                                  <img src="{% if item.image %}
+                                                {{ item.image.url }}
+                                            {% else %}
+                                                {% static 'images/no_image.jpg' %}
+                                            {% endif %}" alt="#">
+                                </div>
+                            </div>
+                          </div>
+                      </div>
+                      <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                          <div class="quickview-content">
+                              <h2>{{ item.title }}</h2>
+                              <div class="quickview-ratting-review">
+                                  <div class="quickview-ratting-wrap">
+                                      <div class="quickview-ratting">
+                                          <!-- <i class="yellow fa fa-star"></i> -->
+                                          <i class="fa fa-star"></i>
+                                          <i class="fa fa-star"></i>
+                                          <i class="fa fa-star"></i>
+                                          <i class="fa fa-star"></i>
+                                          <i class="fa fa-star"></i>
+                                      </div>
+                                      <a href="#"> (0 Отзывы)</a>
+                                  </div>
+                                  <div class="quickview-stock">
+                                      <!-- <span><i class="fa fa-check-circle-o"></i> В наличии</span> -->
+                                      <span>Наличие уточняйте у менеджера</span>
+                                  </div>
+                              </div>
+                              <h3>
+                                  {% if item.price > 0 %}
+                                      {{ item.price }}₸
+                                  {% elif item.price == 0 %}
+                                      Нет цены
+                                  {% endif %}
+
+                                  {% if item.new_price > 0 %}
+                                    <span class="old">{{ item.price }}₸</span>
+                                    <span>{{ item.new_price }}₸</span>
+                                  {% endif %}
+                              </h3>
+                              <div class="quickview-peragraph">
+                                  <p>{{ item.m_description }}</p>
+                              </div>
+                              <div class="add-to-cart mt-3">
+                                  <a href="{% url 'add_to_cart' id=item.id %}" class="btn">В корзину</a>
+                                  <a href="#" class="btn min"><i class="ti-heart"></i></a>
+                                  <a href="#" class="btn min"><i class="fa fa-compress"></i></a>
+                              </div>
+                              <div class="default-social">
+                                  <h4 class="share-now">Поделиться:</h4>
+                                  <ul>
+                                      <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                                      <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                                      <li><a class="youtube" href="#"><i class="fa fa-pinterest-p"></i></a></li>
+                                      <li><a class="dribbble" href="#"><i class="fa fa-google-plus"></i></a></li>
+                                  </ul>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+{% endfor %}
+{% endblock %}

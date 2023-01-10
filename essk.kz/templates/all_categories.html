@@ -1,0 +1,48 @@
+{% extends 'index.html'%}
+{% load static %}
+{% block title %}
+    ESSK - Категории
+{% endblock %}
+
+{% block content %}
+<style media="screen">
+
+  .d-orange{
+    color: #1a3b4c;
+  }
+  .d-orange:hover{
+    color: darkorange;
+  }
+  .bold-t{
+    font-weight: bold;
+  }
+</style>
+<section class="blog-single shop-blog grid section">
+    <div class="container">
+        <div class="row">
+            {% for category in categories %}
+                {% if category.parent == None %}
+                    <div class="col-lg-12 col-md-12 col-12 mb-3">
+                        <h4><a href="#" class="d-orange">{{ category.title }} <i class="fa fa-angle-right" aria-hidden="true"></i></a></h4>
+                    </div>
+                    {% for s_category in categories %}
+                        {% if category.id == s_category.parent.id  %}
+                            <div class="col-lg-3 col-md-4 col-6 mb-3">
+                                <h6><a href="{{ s_category.get_absolute_url }}" class="d-orange bold-t">{{ s_category.title }}</a></h6>
+                                <div style="display: grid;" class="mt-2">
+                                  {% for s_s_category in categories %}
+                                      {% if s_category.id == s_s_category.parent.id  %}
+                                            <a href="{{ s_s_category.get_absolute_url }}" class="d-orange"><span>{{ s_s_category.title }}</span></a>
+                                        {% endif %}
+                                  {% endfor %}
+                                </div>
+                            </div>
+                          {% endif %}
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}

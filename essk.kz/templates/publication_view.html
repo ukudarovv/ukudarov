@@ -1,0 +1,96 @@
+{% extends 'index.html'%}
+{% load static %}
+{% block title %}
+    ESSK - {{ publication.title}}
+{% endblock %}
+
+{% block content %}
+<!-- Breadcrumbs -->
+<div class="breadcrumbs">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="bread-inner">
+          <ul class="bread-list">
+            <li><a href="{% url 'main' %}">Главная<i class="ti-arrow-right"></i></a></li>
+            <li><a href="{{ publication.category.get_absolute_url }}">{{ publication.category.title }}<i class="ti-arrow-right"></i></a></li>
+            <li class="active">{{ publication.title}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Breadcrumbs -->
+
+<!-- Start Blog Single -->
+<section class="blog-single section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-12">
+        <div class="blog-single-main">
+          <div class="row">
+            <div class="col-12">
+              <div class="image">
+                <img src="{% if publication.image_2 %}
+                              {{ publication.image_2.url }}
+                          {% else %}
+                              {% static 'images/no_image.jpg' %}
+                          {% endif %}" alt="#">
+              </div>
+              <div class="blog-detail">
+                <h2 class="blog-title">{{ publication.title}}</h2>
+                <div class="blog-meta">
+                  <span class="author"><a href="{{ publication.category.get_absolute_url }}"><i class="fa fa-th-large"></i>{{ publication.category.title }}</a><a href="#"><i class="fa fa-calendar"></i>{{ publication.created_at_date.date }}</a></span>
+                </div>
+                <div class="content">
+                  {% autoescape off %}
+                      {{ publication.description }}
+                  {% endautoescape %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-12">
+        <div class="main-sidebar">
+
+          <div class="single-widget category">
+            <h3 class="title">Категории</h3>
+            <ul class="categor-list">
+              {% for item in all_category %}
+                  <li><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></li>
+              {% endfor %}
+
+            </ul>
+          </div>
+
+          <div class="single-widget recent-post">
+            <h3 class="title">Последние публикации</h3>
+            {% for item in last_publication %}
+                <div class="single-post">
+                  <div class="image">
+                    <img src="{% if item.image %}
+                                  {{ item.image.url }}
+                              {% else %}
+                                  {% static 'images/no_image.jpg' %}
+                              {% endif %}" alt="#">
+                  </div>
+                  <div class="content">
+                    <h5><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></h5>
+                    <ul class="comment">
+                      <li><i class="fa fa-calendar" aria-hidden="true"></i>{{ item.created_at_date.date }}</li>
+                    </ul>
+                  </div>
+                </div>
+            {% endfor %}
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--/ End Blog Single -->
+{% endblock %}

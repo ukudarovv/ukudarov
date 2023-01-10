@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Dina Atyrau - Заказ завершен
+{% endblock %}
+
+{% block content %}
+<div class="breadcrumb-area breadcrumb-mt breadcrumb-ptb-2">
+    <div class="container">
+        <div class="breadcrumb-content">
+            <h2>Заказ завершен</h2>
+            <ul>
+                <li>
+                    <a href="{% url 'base' %}">Главная </a>
+                </li>
+                <li><span> > </span></li>
+                <li class="active"> Заказ завершен </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="order-complete-area bg-gray pt-200 pb-160">
+    <div class="container">
+        <div class="order-complete-title">
+            <h3>Спасибо за заказ!</h3>
+            <p>Менеджер с Вами свяжется!</p>
+            <p>Номер заказа №{{ new_order.id }}.</p>
+            <a href="{% url 'base' %}">Вернуться на главную страницу</a>
+        </div>
+    </div>
+</div>
+{% endblock content %}

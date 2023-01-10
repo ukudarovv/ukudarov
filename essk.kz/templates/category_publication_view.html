@@ -1,0 +1,118 @@
+{% extends 'index.html'%}
+{% load static %}
+{% block title %}
+    ESSK - {{ category.title }}
+{% endblock %}
+
+{% block content %}
+<div class="breadcrumbs">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="bread-inner">
+          <ul class="bread-list">
+            <li><a href="{% url 'main' %}">Главная<i class="ti-arrow-right"></i></a></li>
+            <li class="active">{{ category.title}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="blog-single shop-blog grid section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-12">
+        <div class="row">
+            {% for item in page_obj %}
+                <div class="col-lg-6 col-md-6 col-12">
+
+                  <div class="shop-single-blog">
+                    <img src="{% if item.image %}
+                                  {{ item.image.url }}
+                              {% else %}
+                                  {% static 'images/no_image.jpg' %}
+                              {% endif %}" alt="#">
+                    <div class="content">
+                      <p class="date">{{ item.created_at_date.date }}</p>
+                      <a href="{{ item.get_absolute_url }}" class="title">{{ item.title }}</a>
+                    </div>
+                  </div>
+
+                </div>
+            {% endfor %}
+
+          <div class="col-12">
+
+            <div class="pagination">
+              <ul class="pagination-list">
+                {% if page_obj.has_previous %}
+                    <li><a href="?page={{ page_obj.previous_page_number }}" aria-label="Previous"><i class="ti-arrow-left"></i></a></li>
+                {% else %}
+                    <li class="disabled">
+                      <a><i class="ti-arrow-left"></i></a>
+                    </li>
+                {% endif %}
+
+                {% for i in page_obj.paginator.page_range %}
+                    {% if page_obj.number == i %}
+                        <li class="active"><a href="#">{{ i }}</a></li>
+                    {% elif i > page_obj.number|add:'-5' and i < page_obj.number|add:'5'  %}
+                        <li><a href="?page={{ i }}">{{ i }}</a></li>
+                    {% endif %}
+                {% endfor %}
+
+                {% if page_obj.has_next %}
+                    <li><a href="?page={{ page_obj.next_page_number }}" aria-label="Next"><i class="ti-arrow-right"></i></a></li>
+                {% else %}
+                    <li class="disabled">
+                      <a><i class="ti-arrow-right"></i></a>
+                    </li>
+                {% endif %}
+              </ul>
+            </div>
+        </div>
+
+
+        </div>
+      </div>
+      <div class="col-lg-4 col-12">
+        <div class="main-sidebar">
+
+          <div class="single-widget category">
+            <h3 class="title">Категории</h3>
+            <ul class="categor-list">
+              {% for item in all_category %}
+                  <li><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></li>
+              {% endfor %}
+
+            </ul>
+          </div>
+
+          <div class="single-widget recent-post">
+            <h3 class="title">Последние публикации</h3>
+            {% for item in last_publication %}
+                <div class="single-post">
+                  <div class="image">
+                    <img src="{% if item.image %}
+                                  {{ item.image.url }}
+                              {% else %}
+                                  {% static 'images/no_image.jpg' %}
+                              {% endif %}" alt="#">
+                  </div>
+                  <div class="content">
+                    <h5><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></h5>
+                    <ul class="comment">
+                      <li><i class="fa fa-calendar" aria-hidden="true"></i>{{ item.created_at_date.date }}</li>
+                    </ul>
+                  </div>
+                </div>
+            {% endfor %}
+          </div>
+
+        </div>
+      </div>
+  </div>
+</section>
+{% endblock %}

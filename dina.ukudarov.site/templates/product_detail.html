@@ -1,0 +1,402 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Dina Atyrau - {{ product.title }}
+{% endblock %}
+{% block description %}
+    Дина Атырау - {{ product.title }}, {{ product.category.name }},{{ product.category.parent_category.name }}
+{% endblock %}
+{% block content %}
+
+<div class="product-details-area slider-mt-7 pb-160">
+    <style media="screen">
+        .yellow-rait{
+            color: #f5b223!important;
+        }
+    </style>
+    <div class="container-fluid p-0">
+        <div class="container pt-100">
+          <nav aria-label="breadcrumb" class="pb-20">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'base' %}">Главная</a></li>
+                <li class="breadcrumb-item"><a href="{{ product.category.middle_category.parent_category.get_absolute_url }}">{{ product.category.middle_category.parent_category.name }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ product.category.middle_category.get_absolute_url }}">{{ product.category.middle_category.name }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ product.category.get_absolute_url }}">{{ product.category.name }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ product.title }}</li>
+              </ol>
+          </nav>
+          {% if messages %}
+              {% for message in messages %}
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                  <strong>{{ message }}</strong>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+              {% endfor %}
+          {% endif %}
+        </div>
+        <div class="row no-gutters">
+            <div class="col-xl-6 col-lg-6 col-md-12">
+                <div class="bg-gray product-details-2-img-wrap pt-40 text-center">
+                    <div class="product-details-3-img-slider dot-style-8">
+                        <div class="product-details-2-img text-center">
+                            <img src="{{ product.image.url }}" alt="">
+                        </div>
+                        {% if product.image_2 %}
+                          <div class="product-details-2-img text-center">
+                              <img src="{{ product.image_2.url }}" alt="">
+                          </div>
+                        {% endif %}
+                        {% if product.image_3 %}
+                          <div class="product-details-2-img text-center">
+                              <img src="{{ product.image_3.url }}" alt="">
+                          </div>
+                        {% endif %}
+                        {% if product.image_4 %}
+                          <div class="product-details-2-img text-center">
+                              <img src="{{ product.image_4.url }}" alt="">
+                          </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-12">
+                <div class="product-details-content quickview-content product-details-content-3">
+                    <h2>{{ product.title }}</h2>
+                    <div class="product-ratting-review-wrap">
+                        <div class="product-ratting-digit-wrap">
+                          {% for rating_p in rating %}
+                            <div class="product-ratting">
+                                {% if rating_p.average_rating == 0 %}
+                                    <i class="icon-star-empty"></i>
+                                    <i class="icon-star-empty"></i>
+                                    <i class="icon-star-empty"></i>
+                                    <i class="icon-star-empty"></i>
+                                    <i class="icon-star-empty"></i>
+                                {% elif rating_p.average_rating >= 0.50 and rating_p.average_rating <= 1.49 %}
+                                    <i class="icon-rating"></i>
+                                    <i class="icon-star-empty"></i>
+                                    <i class="icon-star-empty"></i>
+                                    <i class="icon-star-empty"></i>
+                                    <i class="icon-star-empty"></i>
+                                {% elif rating_p.average_rating >= 1.50 and rating_p.average_rating <= 2.49 %}
+                                    <i class="icon-rating"></i>
+                                    <i class="icon-rating"></i>
+                                    <i class="icon-star-empty"></i>
+                                    <i class="icon-star-empty"></i>
+                                    <i class="icon-star-empty"></i>
+                                {% elif rating_p.average_rating >= 2.50 and rating_p.average_rating <= 3.49 %}
+                                    <i class="icon-rating"></i>
+                                    <i class="icon-rating"></i>
+                                    <i class="icon-rating"></i>
+                                    <i class="icon-star-empty"></i>
+                                    <i class="icon-star-empty"></i>
+                                {% elif rating_p.average_rating >= 3.50 and rating_p.average_rating <= 4.49 %}
+                                    <i class="icon-rating"></i>
+                                    <i class="icon-rating"></i>
+                                    <i class="icon-rating"></i>
+                                    <i class="icon-rating"></i>
+                                    <i class="icon-star-empty"></i>
+                                {% elif rating_p.average_rating >= 4.50 %}
+                                    <i class="icon-rating"></i>
+                                    <i class="icon-rating"></i>
+                                    <i class="icon-rating"></i>
+                                    <i class="icon-rating"></i>
+                                    <i class="icon-rating"></i>
+                                {% endif %}
+                            </div>
+                            <div class="product-digit">
+                                <span>{{ rating_p.average_rating }}</span>
+                            </div>
+                          {% endfor %}
+                        </div>
+                        <div class="product-review-order">
+                            <span>{{ reviews_count }} {% if reviews_count <= 1 %} Отзыв{% else %} Отзыва{% endif %}</span>
+                            <span>{{ product.order_qty }} {% if product.order_qty <= 1 %} Заказ{% else %} Заказа{% endif %} </span>
+                        </div>
+                    </div>
+                    <div class="pro-details-price" style="display:block;">
+                        <span>{{ product.price }}₸</span>
+                        {% if product.contractual_price == True %}
+                          <p>Договорная цена</p>
+                        {% endif %}
+
+                    </div>
+                    <div class="product-details-meta">
+                        <ul>
+                            <li><span>Категория:</span> <a href="{{ product.category.get_absolute_url }}">{{ product.category.name }}</a></li>
+                            <li><span>Магазин:</span> <a href="{{ product.shop.get_absolute_url }}">{{ product.shop }}</a></li>
+                            {% if product.category.middle_category.parent_category.name != "Услуги" %}
+                              <li><span>Статус:</span> {{ product.get_status_product_display }}
+                            {% endif %}
+                        </ul>
+                    </div>
+                    <div class="pro-details-action-wrap">
+                        <div class="pro-details-buy-now">
+                            {% if product.category.middle_category.parent_category.name != "Услуги" %}
+                              {% if request.user.is_authenticated %}
+                                  <a href="{% url 'add_to_cart' slug=product.slug %}">В корзину</a>
+                               {% else %}
+                                   <a href="{% url 'login' %}">В корзину</a>
+                              {% endif %}
+                            {% else %}
+                              {% if request.user.is_authenticated %}
+
+                                  <!-- Button trigger modal -->
+                                  <a type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                      Оформить заявку
+                                  </a>
+
+                                  <!-- Modal -->
+                                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title" id="exampleModalLabel">Форма для заявки</h5>
+                                        </div>
+                                        <form action="" method="POST" enctype="multi-part/formdata">
+                                            <div class="modal-body">
+                                              <div class="row">
+                                                  {%csrf_token%}
+                                                  {{ form_2|crispy }}
+                                              </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                                              <button type="submit" class="btn btn-primary">Отправить</button>
+                                            </div>
+                                        </form>
+                                      </div>
+                                    </div>
+                                  </div>
+                              {% else %}
+                                   <a href="{% url 'login' %}">Оформить заявку</a>
+                              {% endif %}
+
+                            {% endif %}
+                        </div>
+                        <div class="pro-details-action">
+                            <a title="Add to Wishlist" href="#"><i class="icon-heart"></i></a>
+
+                            <a class="social" title="Social" href="#"><i class="icon-share"></i></a>
+                            <div class="product-dec-social">
+                                <a class="facebook" title="Facebook" href="#"><i class="icon-social-facebook-square"></i></a>
+                                <a class="twitter" title="Twitter" href="#"><i class="icon-social-twitter"></i></a>
+                                <a class="instagram" title="Instagram" href="#"><i class="icon-social-instagram"></i></a>
+                                <a class="pinterest" title="Pinterest" href="#"><i class="icon-social-pinterest"></i></a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="description-review-wrapper pb-155">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="dec-review-topbar nav mb-65">
+                    <a class="active" data-toggle="tab" href="#des-details1">Описание</a>
+                    {% if product.get_features %}
+                        <a data-toggle="tab" href="#des-details2">Характеристики</a>
+                    {% endif %}
+                    <a data-toggle="tab" href="#des-details3">Отзывы</a>
+                </div>
+                <div class="tab-content dec-review-bottom">
+                    <div id="des-details1" class="tab-pane active">
+                        <div class="description-wrap">
+                            {{ product.description }}
+                        </div>
+                    </div>
+                    <div id="des-details2" class="tab-pane">
+                        <div class="specification-wrap table-responsive">
+                            <table>
+                                <tbody>
+                                    {% for f_name, f_value in product.get_features.items %}
+                                       <tr>
+                                           <th scope="row">{{ f_name }}</th>
+                                           <td>{{ f_value }}</td>
+                                       </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div id="des-details3" class="tab-pane">
+                        {% if reviews %}
+                            {% for item in reviews %}
+                                <div class="review-wrapper">
+                                    <div class="single-review">
+                                        <div class="review-content" style="width:100%;">
+                                            <div class="review-top-wrap">
+                                                <div class="review-name">
+                                                    <h5><span>{{ item.customer.user.username }}</span> - {{ item.created_at_date }}</h5>
+                                                </div>
+                                                <div class="review-rating">
+                                                {% if item.rating == 1 %}
+                                                    <i class="yellow icon-rating"></i>
+                                                    <i class="icon-rating"></i>
+                                                    <i class="icon-rating"></i>
+                                                    <i class="icon-rating"></i>
+                                                    <i class="icon-rating"></i>
+                                                {% elif item.rating == 2 %}
+                                                    <i class="yellow icon-rating"></i>
+                                                    <i class="yellow icon-rating"></i>
+                                                    <i class="icon-rating"></i>
+                                                    <i class="icon-rating"></i>
+                                                    <i class="icon-rating"></i>
+                                                {% elif item.rating == 3 %}
+                                                    <i class="yellow icon-rating"></i>
+                                                    <i class="yellow icon-rating"></i>
+                                                    <i class="yellow icon-rating"></i>
+                                                    <i class="icon-rating"></i>
+                                                    <i class="icon-rating"></i>
+                                                {% elif item.rating == 4 %}
+                                                    <i class="yellow icon-rating"></i>
+                                                    <i class="yellow icon-rating"></i>
+                                                    <i class="yellow icon-rating"></i>
+                                                    <i class="yellow icon-rating"></i>
+                                                    <i class="icon-rating"></i>
+                                                {% elif item.rating == 5 %}
+                                                    <i class="yellow icon-rating"></i>
+                                                    <i class="yellow icon-rating"></i>
+                                                    <i class="yellow icon-rating"></i>
+                                                    <i class="yellow icon-rating"></i>
+                                                    <i class="yellow icon-rating"></i>
+                                                {% endif %}
+                                                </div>
+                                            </div>
+                                            <p>{{ item.comment }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <h3>У данной услуги еще нет отзывов</h3>
+                        {% endif %}
+                        {% if request.user.is_authenticated %}
+                            <div class="ratting-form-wrapper">
+                                  <span>Добавить отзыв</span>
+                                  <p>В вашем отзыве будет указано ваше имя пользователя. Обязательные поля помечены *</p>
+                                  <div class="ratting-form">
+                                      <form action="" method="POST" enctype="multi-part/formdata">
+                                          <div class="row">
+                                              {%csrf_token%}
+                                              {{ form.non_field_errors }}
+                                              <div class="col-lg-12">
+                                                  {{ form.rating.errors }}
+                                                  <label for="id_subject">Ваш оценка:*</label>
+                                                  <div class="star-box-wrap">
+                                                      <div class="single-ratting-star">
+                                                          <a id="rai-1" class="">
+                                                            <i class="icon-rating"></i>
+                                                          </a>
+                                                      </div>
+                                                      <div class="single-ratting-star">
+                                                          <a id="rai-2">
+                                                            <i class="icon-rating"></i>
+                                                            <i class="icon-rating"></i>
+                                                        </a>
+                                                      </div>
+                                                      <div class="single-ratting-star">
+                                                          <a id="rai-3">
+                                                            <i class="icon-rating"></i>
+                                                            <i class="icon-rating"></i>
+                                                            <i class="icon-rating"></i>
+                                                          </a>
+                                                      </div>
+                                                      <div class="single-ratting-star">
+                                                          <a id="rai-4">
+                                                            <i class="icon-rating"></i>
+                                                            <i class="icon-rating"></i>
+                                                            <i class="icon-rating"></i>
+                                                            <i class="icon-rating"></i>
+                                                          </a>
+                                                      </div>
+                                                      <div class="single-ratting-star">
+                                                          <a id="rai-5">
+                                                            <i class="icon-rating"></i>
+                                                            <i class="icon-rating"></i>
+                                                            <i class="icon-rating"></i>
+                                                            <i class="icon-rating"></i>
+                                                            <i class="icon-rating"></i>
+                                                          </a>
+                                                      </div>
+                                                      <div style="display: none;">
+                                                        {{ form.rating }}
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="col-md-12">
+                                                  <div class="rating-form-style mb-20">
+                                                    {{ form.comment.errors }}
+                                                    <label for="id_subject">Ваш отзыв:*</label>
+                                                    {{ form.comment }}
+                                                  </div>
+                                              </div>
+                                              <div class="col-lg-12">
+                                                  <div class="form-submit">
+                                                      <input type="submit" value="Отправить">
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </form>
+                                  </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://snipp.ru/cdn/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $('#rai-1').click(function(){
+        	$('#id_rating').val('1');
+          $('#rai-1').addClass("yellow-rait");
+          $('#rai-2').removeClass("yellow-rait");
+          $('#rai-3').removeClass("yellow-rait");
+          $('#rai-4').removeClass("yellow-rait");
+          $('#rai-5').removeClass("yellow-rait");
+        });
+        $('#rai-2').click(function(){
+        	$('#id_rating').val('2');
+          $('#rai-1').removeClass("yellow-rait");
+          $('#rai-2').addClass("yellow-rait");
+          $('#rai-3').removeClass("yellow-rait");
+          $('#rai-4').removeClass("yellow-rait");
+          $('#rai-5').removeClass("yellow-rait");
+        });
+        $('#rai-3').click(function(){
+        	$('#id_rating').val('3');
+          $('#rai-1').removeClass("yellow-rait");
+          $('#rai-2').removeClass("yellow-rait");
+          $('#rai-3').addClass("yellow-rait");
+          $('#rai-4').removeClass("yellow-rait");
+          $('#rai-5').removeClass("yellow-rait");
+        });
+        $('#rai-4').click(function(){
+        	$('#id_rating').val('4');
+          $('#rai-1').removeClass("yellow-rait");
+          $('#rai-2').removeClass("yellow-rait");
+          $('#rai-3').removeClass("yellow-rait");
+          $('#rai-4').addClass("yellow-rait");
+          $('#rai-5').removeClass("yellow-rait");
+        });
+        $('#rai-5').click(function(){
+        	$('#id_rating').val('5');
+          $('#rai-1').removeClass("yellow-rait");
+          $('#rai-2').removeClass("yellow-rait");
+          $('#rai-3').removeClass("yellow-rait");
+          $('#rai-4').removeClass("yellow-rait");
+          $('#rai-5').addClass("yellow-rait");
+        });
+    </script>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,189 @@
+{% extends 'siteadmin/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block title %}
+   Администрирование  Baker Street
+{% endblock %}
+
+{% block content %}
+<style media="screen">
+  table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+  }
+
+  table caption {
+  font-size: 1.5em;
+  margin: .5em 0 .75em;
+  }
+
+  table tr {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: .35em;
+  }
+
+  table th,
+  table td {
+  padding: .625em;
+  text-align: center;
+  }
+
+  table th {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  }
+
+  @media screen and (max-width: 600px) {
+    table {
+      border: 0;
+    }
+
+    table caption {
+      font-size: 1.3em;
+    }
+
+    table thead {
+      border: none;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+    }
+
+    table tr {
+      border-bottom: 3px solid #ddd;
+      display: block;
+      margin-bottom: .625em;
+    }
+
+    table td {
+      border-bottom: 1px solid #ddd;
+      display: block;
+      font-size: .8em;
+      text-align: right;
+    }
+
+    table td::before {
+      /*
+      * aria-label has no advantage, it won't be read inside a table
+      content: attr(aria-label);
+      */
+      content: attr(data-label);
+      float: left;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    table td:last-child {
+      border-bottom: 0;
+    }
+    td:nth-of-type(1):before { content: "Логин"; }
+    td:nth-of-type(2):before { content: "Имя"; }
+    td:nth-of-type(3):before { content: "Номер"; }
+    td:nth-of-type(4):before { content: "Магазин"; }
+    td:nth-of-type(5):before { content: ""; }
+
+    }
+    input {
+        background: #eceff8;
+        border: 2px solid #eceff8;
+        height: 12.8px;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        padding-left: 10px;
+        font-size: 14px;
+        color: #737373;
+        width: 12.8px;
+    }
+
+</style>
+<div class="my-account-wrapper pt-200 pb-160">
+    <div class="container">
+        <div class="row pt-20">
+            <div class="col-lg-12">
+                <div class="myaccount-page-wrapper">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4">
+                            {% include "siteadmin/navbar.html" %}
+
+                        </div>
+                        <div class="col-lg-9 col-md-8">
+                            <div class="tab-content" id="myaccountContent">
+                                <div class="tab-pane fade show active" id="dashboad" role="tabpanel">
+                                    <div class="myaccount-content">
+                                      <div class="row">
+                                          <div class="col-md-12">
+                                              <h3 style="border-bottom: 0 !important;">Администраторы магазинов</h3>
+                                          </div>
+                                      </div>
+                                      <div class="row">
+                                          <div class="col-md-12">
+                                              <div class="col-md-12">
+                                                  <table role="table">
+                                                      <thead role="rowgroup">
+                                                          <tr role="row">
+                                                            <th role="columnheader">Логин</th>
+                                                            <th role="columnheader">Имя</th>
+                                                            <th role="columnheader">Номер</th>
+                                                            <th role="columnheader">Магазин</th>
+                                                            <th role="columnheader"></th>
+                                                          </tr>
+                                                      </thead>
+                                                      <tbody role="rowgroup">
+                                                          {% for item in users %}
+                                                              <tr role="row">
+                                                                <td role="cell">{{ item.user.username }}</td>
+                                                                <td role="cell">{{ item.first_name }}</td>
+                                                                <td role="cell"><a href="tel:{{ item.phone }}">{{ item.phone }}</a></td>
+                                                                {% for item_s in shops %}
+                                                                    {% if item.id == item_s.customer.id %}
+                                                                        <td role="cell"><a href="{% url 'admin_shop_detail' id=item_s.id %}">{{ item_s.title }}</a></td>
+                                                                    {% endif %}
+                                                                {% endfor %}
+                                                                <td>
+                                                                    <a href="{% url 'admin_shops_delete' id=item.id %}" onclick="return proverka();">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="11.314" height="11.314" viewBox="0 0 11.314 11.314" class="injected-svg inject-me">
+                                                                        <g id="Group_1415" data-name="Group 1415" transform="translate(-1251.843 -711.843)">
+                                                                          <line id="Line_10" data-name="Line 10" x2="14" transform="translate(1252.55 712.55) rotate(45)" fill="none" stroke="#cbcbcb" stroke-width="2"></line>
+                                                                          <line id="Line_11" data-name="Line 11" x2="14" transform="translate(1252.55 722.45) rotate(-45)" fill="none" stroke="#cbcbcb" stroke-width="2"></line>
+                                                                        </g>
+                                                                        </svg>
+                                                                    </a>
+                                                                    <script type="text/javascript">
+                                                                      function proverka() {
+                                                                            if (confirm("Подтвердить")) {
+                                                                                return true;
+                                                                            } else {
+                                                                                return false;
+                                                                            }
+                                                                        }
+                                                                    </script>
+                                                                </td>
+                                                              </tr>
+                                                          {% endfor %}
+                                                      </tbody>
+                                                  </table>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+  </div>
+</div>
+{% endblock content %}

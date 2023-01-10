@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Dina Atyrau - Изменение характеристик товара
+{% endblock %}
+
+{% block content %}
+
+<div class="category-validator-div" style="margin-top:150px;">
+  Товар <p id="product-title">{{ product }}</p>
+</div>
+<div class="product" style="margin-top: 30px;">
+</div>
+{% block productfeaturesupdate %}
+<div class="col-md-12 product-features-update-list">
+</div>
+{% endblock productfeaturesupdate %}
+{% endblock %}
+
+{% block js %}
+<script>
+    $(window).load ( function(){
+            getProduct('{{ product.id }}', '{{ product }}')
+
+
+    });
+    $(document).on('click', '#save-updated-features', function (){
+        let featureNames = [];
+        let featureCurrentValues = [];
+        let newFeatureValues = []
+       $('.feature-name').children('input').each(function () {
+           featureNames.push(this.value); // "this" is the current element in the loop
+       })
+       $('.feature-current-value').children('input').each(function () {
+            featureCurrentValues.push(this.value)
+        })
+       $('select[name="feature-value"] option:selected').each(function () {
+            newFeatureValues.push(this.text)
+      })
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        let csrftoken = getCookie('csrftoken');
+        let data = {
+            features_names: featureNames,
+            features_current_values: featureCurrentValues,
+            new_feature_values: newFeatureValues,
+            product: $(".product").text(),
+            csrfmiddlewaretoken: csrftoken
+        }
+        $.ajaxSetup({ traditional: true });
+        $.ajax({
+            method: "POST",
+            data: data,
+            url: '/product-specs/update-product-features-ajax/',
+            success: function (data){
+                data.result
+            }
+        })
+    })
+    function getProduct(productId, title){
+        $(".product-features-update-list").css('display', 'block')
+        $(".product-feature-choices").css('display', 'block')
+        $(".product-feature-choices-values").css('display', 'block')
+        let data = {
+            product_id: productId
+        }
+        $.ajax({
+            method: "GET",
+            data:data,
+            dataType: "json",
+            url: "/product-specs/show-product-features-for-update/",
+            success: function (data){
+                $(".product-features-update-list").append(
+                    data.result
+                )
+            }
+        })
+    }
+
+    $('input[name="search-text"]').on('input', function(){
+        if(this.value.length == 0){
+            $(".search-results").css('display', 'none')
+        }else{
+            $('.product').empty()
+            $(".search-results").css('display', 'block')
+        }
+        $("#search-product-results").empty()
+        let data = {
+            query: this.value,
+            category_id: $('select[name="category-validators"] option').filter(':selected').val()
+        }
+
+        $.ajax({
+        method: "GET",
+        dataType: "json",
+        data: data,
+        url: "/product-specs/search-product/",
+        success: function(data){
+            let items = []
+            if(data.result.length < 1){
+                $('#no-results').css('display', 'block')
+            }else{
+                $('#no-results').css('display', 'none')
+            }
+            $.each(data, function (index, value) {
+                $.each(value, function (idx, v){
+                    if($.inArray(v, items) == -1){
+                        items.push(v)
+                        $('#search-product-results').append(
+                            '<li class="list-group-item list-group-item-action" ' +
+                            'onclick="getProduct(\'' + v.id + '\', \'' + v.title + '\')" ' +
+                            'style="cursor: pointer" id="product-' +
+                            v.id + '">'
+                            + v.title +
+                            ' | ' +
+                            v.price +
+                            ' руб.' +
+                            '</li>')
+                            }
+                        })
+                    })
+                }
+            })
+    })
+</script>
+{% endblock js %}

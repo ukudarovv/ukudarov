@@ -1,0 +1,169 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}
+    GidHalal - {{ restaurant.title }}
+{% endblock %}
+{% block content %}
+<div class="my-account-wrapper bg-gray pt-200 pb-160">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="myaccount-page-wrapper">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4">
+                            <div class="myaccount-tab-menu nav" role="tablist">
+    <a href="/profile/">Мой профиль</a>
+    <a href="/profile_update/">Редактировать профиль</a>
+    <a href="/cart/">Текущая корзина</a>
+    <a href="/profile/orders_history/">История заказов</a>
+    <a href="/password_change/" "="">Изменить пароль</a>
+    <a href="/support/">Служба поддержки</a>
+    <a href="/complaints/">Жалобы</a>
+
+    <a href="/logout/" class="list-group-item">Выйти</a>
+</div>
+
+
+    <div class="myaccount-tab-menu nav mt-4" role="tablist">
+
+            <a href="/shop_update/">Редактировать данные магазина</a>
+
+        <a href="/shop-product/">Товары магазина</a>
+        <a href="/shop-service/">Услуги магазина</a>
+        <a href="/shop_order/">Заказы магазина</a>
+        <a href="/shop_request/">Заявки магазина</a>
+        <!-- <a href="/profile/">Статистика магазина</a> -->
+        <a href="/shop-staff/">Работники магазина</a>
+    </div>
+
+
+                        </div>
+                        <div class="col-lg-9 col-md-8">
+
+                            <div class="tab-content" id="myaccountContent">
+                                <div class="tab-pane fade show active" id="dashboad" role="tabpanel">
+                                    <div class="myaccount-content">
+                                        <h3>Аккаунт пользователя ukudarov</h3>
+                                        <div class="welcome">
+                                            <label class="">ФИО: Umar Kudarov</label>
+                                            <br>
+                                            <label class="">Пол:
+
+                                                    Мужчина
+
+                                            </label>
+                                            <br>
+                                            <label class="">Email:
+
+                                                    ukudarovv@gmail.com
+
+                                            </label>
+                                            <br>
+                                            <label class="">Номер телефона:
+
+                                                    87479030408
+
+                                            </label>
+                                            <br>
+                                            <label class="">Адрес:
+
+                                                    Нет
+
+                                            </label>
+                                            <br>
+                                            <hr>
+                                        </div>
+                                    </div>
+
+                                      <div class="myaccount-content mt-3">
+                                          <h3>Данные магазина Kudarov</h3>
+                                          <div class="welcome">
+                                            <label class="">Название магазина:
+                                                Kudarov
+                                            </label>
+                                            <br>
+                                            <label class="">Категории магазина:
+
+                                                    Электроника,
+
+                                            </label>
+                                            <br>
+                                            <label class="">Ваша должность:
+                                                Директор
+                                            </label>
+                                            <br>
+                                            <label class="">Статус магазина:
+                                                Активный
+                                            </label>
+                                            <br>
+                                            <label class="">Адрес магазина:
+                                                Dina
+                                            </label>
+                                            <br>
+                                            <label class="">Email магазина:
+                                                9kudarov9@gmail.com
+                                            </label>
+                                            <br>
+                                            <label class="">Номер телефона магазина:
+                                                +77479030408
+                                            </label>
+                                            <br>
+                                            <hr>
+                                            <label class="">Дата регистрации магазина: 3 апреля 2021 г. 0:33</label>
+                                            <br>
+                                            <label class="">Дата окончания срока:
+                                                5 апреля 2022 г. 0:57
+                                            </label>
+                                            <br>
+                                          </div>
+                                      </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        Accordion Item #1
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        Accordion Item #2
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        Accordion Item #3
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Dina Atyrau - Заявки магазина
+{% endblock %}
+
+{% block content %}
+<div class="my-account-wrapper bg-gray pt-200 pb-160">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="myaccount-page-wrapper">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4">
+                            {% include "inc/left_panel_profile.html" %}
+                        </div>
+                        <div class="col-lg-9 col-md-8">
+                            <div class="tab-content" id="myaccountContent">
+                                <div class="tab-pane fade show active" id="dashboad" role="tabpanel">
+                                    <div class="myaccount-content">
+                                      <div class="row">
+                                          <div class="col-md-12">
+                                              <h3>Заявки магазина</h3>
+                                          </div>
+                                      </div>
+                                      <div class="row">
+                                          <div class="col-md-12">
+                                              {% if not requests.count %}
+                                                  <div class="col-md-12">
+                                                      <h3>У вас еще нет заявок.</h3>
+                                                  </div>
+                                              {% else %}
+                                                  <div class="col-md-12">
+                                                      <table class="table">
+                                                          <thead>
+                                                              <th scope="col">Заявка №</th>
+                                                              <th scope="col">Статус</th>
+                                                              <th scope="col">Дата</th>
+                                                              <th scope="col">Дополнительно</th>
+                                                          </thead>
+                                                          <tbody>
+                                                              {% for request in requests %}
+                                                                  <tr>
+                                                                      <th scope="row">{{ request.id }}</th>
+                                                                      <td>
+                                                                        {% if request.get_status_display != "Заявка выполнена" %}
+                                                                          {% if request.get_status_display != "Заявка отменена" %}
+                                                                            <form action="{% url 'chg_request_status' id=request.id  %}" class="pt-20" method="POST" style="display: flex;">
+                                                                                {% csrf_token %}
+                                                                                <select name="status_request" style="width:160px;" class="select form-control" id="id_status_product">
+                                                                                      <option value="" selected="">{{ request.get_status_display }}</option>
+                                                                                      {% if request.get_status_display != "Заявка в обработке" %}
+                                                                                          <option value="STATUS_IN_PROGRESS">Заявка в обработке</option>
+                                                                                      {% endif %}
+                                                                                      <option value="STATUS_CANCELLED">Заявка отменена</option>
+
+                                                                                      <option value="STATUS_COMPLETED">Заявка выполнена</option>
+
+                                                                                </select>
+                                                                                <br>
+                                                                                <button name="submit" type="submit" class="btn btn-primary"><i class="bi bi-arrow-clockwise"></i></button>
+                                                                            </form>
+                                                                          {% else %}
+                                                                            {{ request.get_status_display }}
+                                                                          {% endif %}
+                                                                        {% else %}
+                                                                          {{ request.get_status_display }}
+                                                                        {% endif %}
+                                                                      </td>
+                                                                      <td>{{ request.created_at }}</td>
+                                                                      <td>
+                                                                          <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal-{{ request.id }}">
+                                                                              Дополнительно
+                                                                          </button>
+                                                                          <div class="modal fade" id="exampleModal-{{ request.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                              <div class="modal-dialog modal-lg">
+                                                                                  <div class="modal-content">
+                                                                                      <div class="modal-header">
+                                                                                          <h5 class="modal-title" id="exampleModalLabel">Детализация заявки</h5>
+                                                                                          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x"></i></button>
+                                                                                      </div>
+                                                                                      <div class="modal-body">
+                                                                                          <h4 class="text-center">Услуга</h4>
+                                                                                          <table class="table">
+                                                                                              <thead>
+                                                                                                  <tr>
+                                                                                                      <th scope="col">Изобажение</th>
+                                                                                                      <th scope="col">Наименование</th>
+                                                                                                      <th scope="col">Цена</th>
+                                                                                                  </tr>
+                                                                                              </thead>
+                                                                                              <tbody>
+                                                                                                  <tr>
+                                                                                                      <td class="w-25">
+                                                                                                          <img src="{{ request.service.image.url }}" alt="" class="img-fluid">
+                                                                                                      </td>
+                                                                                                      <th scope="row">
+                                                                                                          <a href="{{ request.service.get_absolute_url }}">
+                                                                                                              {{ request.service.title }}
+                                                                                                          </a>
+                                                                                                      </th>
+                                                                                                      <td>
+                                                                                                          <strong>{{ request.service.price }}</strong>₸
+                                                                                                      </td>
+                                                                                                  </tr>
+                                                                                              </tbody>
+                                                                                          </table>
+                                                                                          <hr>
+                                                                                          <h4 class="text-center">Дополнительная информация</h4>
+                                                                                          <p>Имя: <strong>{{ request.first_name }}</strong></p>
+                                                                                          <p>Телефон: <strong>{{ request.phone }}</strong></p>
+                                                                                          <p>Дата оформления: <strong>{{ request.created_at }}</strong></p>
+                                                                                          <p>Комментарий к заказу: <strong>{% if request.comment %}{{ request.comment }}{% else %}Нет{% endif %}</strong></p>
+                                                                                      </div>
+                                                                                      <div class="modal-footer">
+                                                                                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                                                                                      </div>
+                                                                                  </div>
+                                                                              </div>
+                                                                          </div>
+                                                                      </td>
+                                                                  </tr>
+                                                              {% endfor %}
+                                                          </tbody>
+                                                      </table>
+                                                  </div>
+                                              {% endif %}
+                                          </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

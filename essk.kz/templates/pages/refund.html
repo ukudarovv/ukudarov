@@ -1,0 +1,22 @@
+{% extends 'index.html'%}
+{% load static %}
+{% block title %}
+    ESSK - Возврат
+{% endblock %}
+
+{% block content %}
+    <style media="screen">
+        .contents ul, ul li {
+            list-style: unset !important;
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+    <div class="contents container mt-5 mb-5">
+        {% for item in content %}
+            {% autoescape off %}
+                {{ item.content }}
+            {% endautoescape %}
+        {% endfor %}
+    </div>
+{% endblock %}

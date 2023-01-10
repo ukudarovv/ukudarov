@@ -1,0 +1,188 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block title %}
+    Okiko - Университет {{ university.title }}
+{% endblock %}
+{% block content %}
+<div class="_216b01">
+    <div class="container-fluid">
+        <div class="row justify-content-md-center">
+            <div class="col-md-10">
+                <div class="section3125 rpt145">
+                    <div class="row">
+                        <div class="col-lg-7">
+                            <div class="dp_dt150">
+                                <div class="img148">
+                                    <img src="{% if item.logo %}
+                                                  {{ item.logo.url }}
+                                              {% else %}
+                                                  {% static 'image/no_photo.jpg' %}
+                                              {% endif %}" alt="">
+                                </div>
+                                <div class="prfledt1">
+                                    <h2>{{ university.title }} ({{ university.abbreviation }})</h2>
+                                    <span>{% if university.city.region.name %} {{ university.city.region.name }}, {% endif %} {{ university.city.name }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-5">
+                            <a href="#" class="_216b12">
+                                <span><i class="uil uil-windsock"></i></span>Сообщить
+                            </a>
+                            <div class="rgt-145">
+                                <ul class="tutor_social_links">
+                                    <li><a href="#" class="fb"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#" class="tw"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#" class="ln"><i class="fab fa-linkedin-in"></i></a></li>
+                                    <li><a href="#" class="yu"><i class="fab fa-youtube"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="_215b15">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="course_tabs">
+                    <nav>
+                        <div class="nav nav-tabs tab_crse" id="nav-tab" role="tablist">
+                            <a class="nav-item nav-link active" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-selected="true">Основная информация</a>
+                            <a class="nav-item nav-link" id="nav-courses-tab" data-toggle="tab" href="#nav-courses" role="tab" aria-selected="false">Образовательные программы</a>
+                            <a class="nav-item nav-link" id="nav-reviews-tab" data-toggle="tab" href="#nav-reviews" role="tab" aria-selected="false">Специальности</a>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="_215b17">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="course_tab_content">
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade active show" id="nav-about" role="tabpanel">
+                            <div class="_htg451">
+                                <div class="_htg452">
+                                    <h6>Аббревиатура:</h6>
+                                    <span>{{ university.abbreviation }}</span>
+                                    <hr>
+                                    <h6>Код ВУЗа:</h6>
+                                    <span>{{ university.code }}</span>
+                                    <hr>
+                                    <h6>Пороговый балл для поступления:</h6>
+                                    <span>{{ university.threshold_score }}</span>
+                                    <hr>
+                                    <h6>Регион:</h6>
+                                    <span>{% if university.city.region.name %} {{ university.city.region.name }}, {% endif %} {{ university.city.name }}</span>
+                                    <hr>
+                                    <h6>Категория:</h6>
+                                    <span>{{ university.category }}</span>
+                                    <hr>
+                                    <h6>Тип ВУЗа:</h6>
+                                    <span>{{ university.type }}</span>
+                                    <hr>
+                                    <h6>Старые названия:</h6>
+                                    <span>{{ university.old_title }}</span>
+                                    <hr>
+                                    <h6>Количество общежитий:</h6>
+                                    <span>{{ university.qty_dormitories }}</span>
+                                    <hr>
+                                    <h3>Описание</h3>
+                                    <p>{{ university.description }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="nav-courses" role="tabpanel">
+                            <div class="crse_content">
+                                <div class="_14d25">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="catey-tabs">
+                                                <ul class="nav nav-pills justify-content-center mb-3" id="pills-tab" role="tablist">
+                                                    {% for item in university.scientific_degrees_educational_programs.all %}
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" id="apills-{{ item.id }}-tab" data-toggle="pill" href="#apills-{{ item.id }}" role="tab" aria-controls="apills-{{ item.id }}" aria-selected="false">{{ item.title }}</a>
+                                                        </li>
+                                                    {% endfor %}
+                                                </ul>
+                                                <div class="tab-content" id="pills-tabContent">
+                                                    {% for item in university.scientific_degrees_educational_programs.all %}
+                                                        <div class="tab-pane fade active show" id="apills-{{ item.id }}" role="tabpanel" aria-labelledby="apills-{{ item.id }}-tab">
+                                                            <div class="certicates">
+                                                                <div class="row">
+                                                                    {% for item_1 in educational_programs %}
+                                                                        {% if item_1.scientific_degrees.id == item.id %}
+                                                                            <div class="fcrse_1 mt-30">
+                                                                                <div class="hs_content">
+                                                                                    <a href="{{ item_1.get_absolute_url }}" class="crse14s title900">{{ item_1.code }} {{ item_1.title }}</a>
+                                                                                    <a href="#" class="crse-cate">{{ item_1.groups_of_educational_programs }}</a>
+                                                                                </div>
+                                                                            </div>
+                                                                        {% endif %}
+                                                                    {% endfor %}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    {% endfor %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="nav-reviews" role="tabpanel">
+                            <div class="student_reviews">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="catey-tabs">
+                                            <ul class="nav nav-pills justify-content-center mb-3" id="pills-tab" role="tablist">
+                                                {% for item in university.scientific_degrees_specializations.all %}
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" id="bpills-{{ item.id }}-tab" data-toggle="pill" href="#bpills-{{ item.id }}" role="tab" aria-controls="bpills-{{ item.id }}" aria-selected="false">{{ item.title }}</a>
+                                                    </li>
+                                                {% endfor %}
+                                            </ul>
+                                            <div class="tab-content" id="pills-tabContent">
+                                                {% for item in university.scientific_degrees_specializations.all %}
+                                                    <div class="tab-pane fade active show" id="bpills-{{ item.id }}" role="tabpanel" aria-labelledby="bpills-{{ item.id }}-tab">
+                                                        <div class="certicates">
+                                                            <div class="row">
+                                                                {% for item_1 in university_specializations %}
+                                                                    {% if item_1.specializations.scientific_degrees.id == item.id %}
+                                                                        <div class="fcrse_1 mt-30">
+                                                                            <div class="hs_content">
+                                                                                <a href="{{ item_1.specializations.get_absolute_url }}" class="crse14s title900">{{ item_1.specializations.code }} {{ item_1.specializations.title }}</a>
+                                                                                <a href="#" class="crse-cate">{{ item_1.specializations.unt_subjects }}</a>
+                                                                            </div>
+                                                                        </div>
+                                                                    {% endif %}
+                                                                {% endfor %}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

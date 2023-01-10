@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+    Dina Atyrau - Авторизация
+{% endblock %}
+{% block description %}
+    Дина Атырау - Авторизация, Вход
+{% endblock %}
+{% block content %}
+<div class="breadcrumb-area breadcrumb-mt breadcrumb-ptb-2">
+    <div class="container">
+        <div class="breadcrumb-content text-center">
+            <h2>Авторизация</h2>
+            <ul>
+                <li>
+                    <a href="{% url 'base' %}">Главная </a>
+                </li>
+                <li><span> > </span></li>
+                <li class="active">Авторизация</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="login-register-area bg-gray pt-20 pb-160">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7 col-md-12 ml-auto mr-auto">
+                <div class="login-register-wrapper">
+                    <div class="login-register-tab-list nav">
+                        <a>
+                            <h4> Авторизация </h4>
+                        </a>
+                        <a href="{% url 'registration' %}">
+                            <h4> Регистрация </h4>
+                        </a>
+                    </div>
+                    <div class="tab-content">
+                        <div id="lg1" class="tab-pane active">
+                            <div class="login-form-container">
+                                  <div class="login-register-form">
+                                    <form action="" method="POST">
+                                        {% csrf_token %}
+                                        {{ form|crispy }}
+                                        <input type="submit" class="btn btn-success btn-block" value="Войти">
+                                    </form>
+                                    <a href="{% url 'password_reset' %}">Забыли пароль?</a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+    </div>
+</div>
+
+{% endblock %}

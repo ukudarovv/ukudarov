@@ -1,0 +1,67 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block title %}
+    Dina Atyrau - О Дине
+{% endblock %}
+{% block description %}
+    Dina Atyrau - О Дине
+{% endblock %}
+
+{% block content %}
+
+<style media="screen">
+  #twitch-embed iframe{
+    width:800px;
+    height:500px;
+  }
+</style>
+    <div class="container mt-150 mb-100">
+
+      <!-- <iframe src="https://player.twitch.tv/?channel=sdnconstruction&parent=dina-atyrau.com" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620"></iframe> -->
+
+
+      <!-- Add a placeholder for the Twitch embed -->
+      <!-- <div id="twitch-embed">
+
+      </div> -->
+
+      <!-- Load the Twitch embed script -->
+      <!-- <script src="https://player.twitch.tv/js/embed/v1.js"></script> -->
+
+      <!-- Create a Twitch.Player object. This will render within the placeholder div -->
+      <!-- <script type="text/javascript">
+        new Twitch.Player("twitch-embed", {
+          channel: "ukudarov"
+        });
+      </script> -->
+
+
+        <div class="mt-100" style="display: grid;">
+            <h3>Курс:</h3>
+            <a href="{% static '/videos/1) Приветствие, правила, программа.mp4' %}" download>Скачать видео 1</a>
+            <a href="{% static '/videos/2) Вопросы - ответы по программе 1 недели.mp4' %}" download>Скачать видео 2</a>
+            <a href="{% static '/videos/3) Распаковка Личности и Экспертности.mp4' %}" download>Скачать видео 3</a>
+            <a href="{% static '/videos/4) Распаковка Личности и Экспертности 2.mp4' %}" download>Скачать видео 4</a>
+            <a href="{% static '/videos/5) Ответы на вопросы по программе 2 недели.mp4' %}" download>Скачать видео 5</a>
+            <a href="{% static '/videos/6) Запуск последовательность и стратегии.mp4' %}" download>Скачать видео 6</a>
+            <a href="{% static '/videos/7) Продюсирование Типы блогеров, какой продукт лучше запускать на аудиторию эксперта и лайфстайл блогера.mp4' %}" download>Скачать видео 7</a>
+            <a href="{% static '/videos/8) Ведение инстаграм как повысить охваты и вовлечение.mp4' %}" download>Скачать видео 8</a>
+            <a href="{% static '/videos/9) Как понять кого лучше запускать себя или эксперта.mp4' %}" download>Скачать видео 9</a>
+            <a href="{% static '/videos/10) Про ценообразование и тарифы.mp4' %}" download>Скачать видео 10</a>
+            <a href="{% static '/videos/11) Ответы на вопросы по программе 3-4 недели.mp4' %}" download>Скачать видео 11</a>
+            <a href="{% static '/videos/12) Стратегическое планирование на 2021 - 2022.mp4' %}" download>Скачать видео 12</a>
+            <a href="{% static '/videos/13) Ответы на вопросы, лайфхаки, мотивация.mp4' %}" download>Скачать видео 13</a>
+            <a href="{% static '/videos/14) Ответы на вопросы Немного о практике и о ценах на курс.mp4' %}" download>Скачать видео 14</a>
+            <a href="{% static '/videos/15) Ответы на вопросы Немного о практике и о ценах на курс 2.mp4' %}" download>Скачать видео 15</a>
+            <a href="{% static '/videos/16) Прогрев в сториз через сторителлинг.mp4' %}" download>Скачать видео 16</a>
+            <a href="{% static '/videos/17) Ответы на вопросы.mp4' %}" download>Скачать видео 17</a>
+            <br>
+            <br>
+            <a href="{% static '/activator/WinRAR_setup.exe' %}" download><button type="button" class="btn btn-primary btn-lg">Сначало это скачай! Это WinRAR</button></a>
+            <br>
+            <a href="{% static '/file/KMS.Tools.zip' %}" download><button type="button" class="btn btn-primary btn-lg">Активатор</button></a>
+            <br>
+            <!-- <a href="{% static '/activator/Microsoft_Office_2016_Windows.exe' %}" download><button type="button" class="btn btn-primary btn-lg">Это Microsoft Office </button></a> -->
+        </div>
+    </div>
+{% endblock %}

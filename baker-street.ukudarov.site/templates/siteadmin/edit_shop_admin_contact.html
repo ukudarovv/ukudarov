@@ -1,0 +1,71 @@
+{% extends 'siteadmin/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block title %}
+    Baker Street - Магазин {{ shop.title }}
+{% endblock %}
+{% block content %}
+<div class="my-account-wrapper pt-200 pb-160">
+    <div class="container">
+      <nav aria-label="breadcrumb" class="pb-20">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'admin_base' %}">Главная</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ shop.title }}</li>
+          </ol>
+      </nav>
+      <h1>{{ shop.title }}</h1>
+        <div class="row pt-20">
+            <div class="col-lg-12">
+                <div class="myaccount-page-wrapper">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4">
+                            <div class="myaccount-tab-menu nav" role="tablist">
+                                <a href="{% url 'admin_shop_detail' id=shop.id %}">Данные магазина</a>
+                            </div>
+                            <div class="myaccount-tab-menu nav" role="tablist">
+                                <a href="{% url 'admin_shop_edit' id=shop.id %}">Редактировать данные магазина</a>
+                            </div>
+                            <div class="myaccount-tab-menu nav" role="tablist">
+                                <a href="{% url 'admin_shop_edit_admin' id=shop.id %}">Редактировать данные администратора магазина</a>
+                            </div>
+                            <div class="myaccount-tab-menu nav" role="tablist">
+                                <a href="{% url 'admin_shop_orders_detail' id=shop.id %}">Заказы</a>
+                            </div>
+                            <div class="myaccount-tab-menu nav" role="tablist">
+                                <a href="{% url 'admin_shop_stocks_detail' id=shop.id %}">Акции</a>
+                            </div>
+                            <div class="myaccount-tab-menu nav" role="tablist">
+                                <a href="{% url 'admin_shop_refunds_detail' id=shop.id %}">Возвраты</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-9 col-md-8">
+
+                            <div class="tab-content" id="myaccountContent">
+                                <div class="tab-pane fade show active" id="dashboad" role="tabpanel">
+                                    <div class="myaccount-content">
+                                      <div class="row">
+                                          <div class="col-md-12">
+                                              <h3>Редактирование данных администратора магазина "{{ shop.title }}"</h3>
+                                          </div>
+                                      </div>
+                                      <div class="row">
+                                          <div class="col-md-12">
+                                              <form method="POST" enctype="multipart/form-data">
+                                                  {%csrf_token%}
+                                                  {{form|crispy}}
+                                                  <button name="submit" type="submit" class="btn btn-primary mt-15">Изменить</button>
+                                              </form>
+                                          </div>
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+{% endblock content %}

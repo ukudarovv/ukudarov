@@ -1,0 +1,42 @@
+{% extends 'base.html'%}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}
+    Okiko - Поиск ВУЗов по типу
+{% endblock %}
+{% block content %}
+<div class="sa4d25">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12 col-lg-8">
+                <div class="section3125">
+                    <div class="explore_search">
+                        <div class="ui search focus">
+                            <form class="d-flex mt-3" action="{% url 'search_univ' %}" method="GET">
+                                <div class="ui left icon input swdh11">
+                                    <input class="prompt srch_explore" name="search" type="search" placeholder="Поиск университетов" aria-label="Search">
+                                    <i class="uil uil-search-alt icon icon2"></i>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="_14d25">
+                    <div class="row">
+                      {% for item in universities %}
+                          <div class="fcrse_1 mt-30">
+                              <div class="hs_content">
+                                  <a href="{{ item.get_absolute_url }}" class="crse14s title900">{{ item.code }} - {{ item.title }} ({{ item.abbreviation }})</a>
+                                  <a href="#" class="crse-cate">{{ item.type }} | {{ item.category }}</a>
+                              </div>
+                          </div>
+                      {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block title %}
+    Okiko - "Направление подготовки {{ areas_of_training.title }}
+{% endblock %}
+{% block content %}
+<div class="_216b01">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-10">
+                <div class="section3125 rpt145">
+                    <div class="row">
+                        <div class="col-lg-7">
+                            <div class="dp_dt150">
+                                <div class="prfledt1">
+                                    <h2>{{ areas_of_training.code }} {{ areas_of_training.title }}</h2>
+                                    <span>{{ areas_of_training.scientific_degrees }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="_215b15">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="course_tabs">
+                    <nav>
+                        <div class="nav nav-tabs tab_crse" id="nav-tab" role="tablist">
+                            <a class="nav-item nav-link active" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-selected="true">Группы образовательных программ</a>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="_215b17">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="course_tab_content">
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade active show" id="nav-about" role="tabpanel">
+                            <div class="_htg451">
+                                <div class="_htg452">
+                                    {% for item in groups_of_educational_programs %}
+                                        <div class="fcrse_1 mt-30">
+                                            <div class="hs_content">
+                                                <a href="{{ item.get_absolute_url }}" class="crse14s title900">{{ item.code }} {{ item.title }}</a>
+                                                <a href="" class="crse-cate">{{ item.scientific_degrees }}</a>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

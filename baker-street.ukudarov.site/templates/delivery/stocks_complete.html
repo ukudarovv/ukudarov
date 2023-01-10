@@ -1,0 +1,52 @@
+{% extends 'delivery/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block title %}
+    Baker Street - Магазин {{ shop.title }}
+{% endblock %}
+{% block content %}
+<div class="my-account-wrapper pt-200 pb-160">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Акция</h1>
+                <h5>Заполните форму</h5>
+            </div>
+        </div>
+        <div class="checkout-area bg-gray">
+            <div class="container">
+              <form method="POST">
+                  <div class="row">
+                      <div class="col-lg-6">
+                          <div class="checkout-left-wrap">
+                              {%csrf_token%}
+                              {{form|crispy}}
+                          </div>
+                      </div>
+                      <div class="col-lg-6">
+                          <div class="payment-details mb-40">
+                              <h4 class="checkout-title">Товары</h4>
+                              <ul>
+                                  {% for item in stock_products %}
+                                      <li>{{ item.product.title }} <span>{{ item.product.price }}₸ x {{ item.qty }}</span></li>
+                                  {% endfor %}
+                              </ul>
+                              <div class="total-order">
+                                  <ul>
+                                      <li>Итого: <span>{{ total_price }}₸</span></li>
+                                  </ul>
+                              </div>
+                          </div>
+                          <button type="submit" class="btn btn-success btn-block mb-3" name="button">Оформить возврат</button>
+                      </div>
+                  </div>
+                </form>
+                <div class="back-continue-wrap">
+                    <a href="{% url 'make_stocks' id=shop.id %}">Назад</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

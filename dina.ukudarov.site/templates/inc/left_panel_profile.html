@@ -1,0 +1,27 @@
+<div class="myaccount-tab-menu nav" role="tablist">
+    <a href="{% url 'profile' %}" >Мой профиль</a>
+    <a href="{% url 'profile_update' %}" >Редактировать профиль</a>
+    <a href="{% url 'cart' %}" >Текущая корзина</a>
+    <a href="{% url 'orders_history' %}" >История заказов</a>
+    <a href="{% url 'password_change' %}"">Изменить пароль</a>
+    <a href="{% url 'support' %}" >Служба поддержки</a>
+    <a href="{% url 'complaints' %}" >Жалобы</a>
+    {% if request_to_work %}
+        <a href="{% url 'request_to_work' %}" class="list-group-item">Запросы на работу</a>
+    {% endif %}
+    <a href="{% url 'logout' %}" class="list-group-item">Выйти</a>
+</div>
+
+{% if customer.get_job_display %}
+    <div class="myaccount-tab-menu nav mt-4" role="tablist">
+        {% if customer.get_job_display == "Директор" %}
+            <a href="{% url 'shop_update' %}">Редактировать данные магазина</a>
+        {% endif %}
+        <a href="{% url 'shop_product_detail' %}">Товары магазина</a>
+        <a href="{% url 'shop_service_detail' %}">Услуги магазина</a>
+        <a href="{% url 'shop_order' %}">Заказы магазина</a>
+        <a href="{% url 'shop_request' %}">Заявки магазина</a>
+        <!-- <a href="{% url 'profile' %}">Статистика магазина</a> -->
+        <a href="{% url 'shop_staff_detail' %}">Работники магазина</a>
+    </div>
+{% endif %}

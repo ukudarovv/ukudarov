@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Dina Atyrau - Запросы на работу
+{% endblock %}
+{% block description %}
+    Dina Atyrau - Запросы на работу
+{% endblock %}
+
+{% block content %}
+<div class="my-account-wrapper bg-gray pt-200 pb-160">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="myaccount-page-wrapper">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4">
+                            {% include "inc/left_panel_profile.html" %}
+                        </div>
+                        <div class="col-lg-9 col-md-8">
+                            <div class="tab-content" id="myaccountContent">
+                                <div class="tab-pane fade show active" id="dashboad" role="tabpanel">
+                                    <div class="myaccount-content">
+                                      <div class="row">
+                                          <div class="col-md-12">
+                                              <h3>Запросы на работу</h3>
+                                          </div>
+                                      </div>
+                                      <div class="row">
+                                        {% if messages %}
+                                            {% for message in messages %}
+                                              <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                                <strong>{{ message }}</strong>
+                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                  <span aria-hidden="true">&times;</span>
+                                                </button>
+                                              </div>
+                                            {% endfor %}
+                                        {% endif %}
+                                          <div class="col-md-12">
+                                            <table class="table">
+                                              <thead>
+                                                <tr>
+                                                  <th scope="col">ID</th>
+                                                  <th scope="col">От</th>
+                                                  <th scope="col">Должность</th>
+                                                  <th scope="col">Дата</th>
+                                                  <th scope="col">Ответ</th>
+                                                </tr>
+                                              </thead>
+                                              <tbody>
+                                                {% for item in request_to_work %}
+                                                    <tr>
+                                                        <th scope="row">{{ item.id }}</th>
+                                                        <td>{{ item.shop }}</td>
+                                                        <td>{{ item.job }}</td>
+                                                        <td>{{ item.created_at }}</td>
+                                                        <td>
+                                                            <form method="POST" action="{% url 'request_to_work_request' id=item.shop.id %}">
+                                                                {% csrf_token %}
+                                                                {{form|crispy}}
+                                                                <button name="submit" type="submit" class="btn btn-primary">Отправить</button>
+                                                            </form>
+                                                        </td>
+                                                    </tr>
+                                                {% endfor %}
+                                              </tbody>
+                                            </table>
+                                          </div>
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

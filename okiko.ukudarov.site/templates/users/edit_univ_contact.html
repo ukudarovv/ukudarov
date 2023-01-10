@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Okiko - Редактирование данных
+{% endblock %}
+
+{% block content %}
+<div class="my-account-wrapper bg-gray pt-200 pb-160">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="myaccount-page-wrapper">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4">
+                            <div class="myaccount-tab-menu nav" role="tablist">
+                                <a href="{% url 'admin_profile' %}">Мой профиль</a>
+                                <a href="{% url 'edit_admin_profile' %}">Редактировать профиль</a>
+                                <a href="{% url 'logout' %}" class="list-group-item">Выйти</a>
+                            </div>
+                            <div class="myaccount-tab-menu nav mt-4" role="tablist">
+                                <a href="{% url 'edit_univ_detail' %}">Редактировать данные заведения</a>
+                                <a href="{% url 'edit_univ_contact' %}">Редактировать контактные данные</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-9 col-md-8">
+                            <div class="tab-content" id="myaccountContent">
+                                <div class="tab-pane fade show active" id="dashboad" role="tabpanel">
+                                    <div class="myaccount-content">
+                                      <div class="row">
+                                          <div class="col-md-12">
+                                              <h3>Редактирование контактных данных "{{ university.title }}"</h3>
+                                          </div>
+                                      </div>
+                                      <div class="row">
+                                          <div class="col-md-12">
+                                              <form method='POST' enctype="multipart/form-data">
+                                                  {%csrf_token%}
+                                                  {{form|crispy}}
+                                                  <button name="submit" type="submit" class="btn btn-primary">Изменить</button>
+                                              </form>
+                                          </div>
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

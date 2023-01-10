@@ -1,0 +1,153 @@
+{% load static %}
+<!--
+<section class="shop-services section home">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 col-md-6 col-12">
+
+        <div class="single-service">
+          <i class="ti-rocket"></i>
+          <h4>Free shiping</h4>
+          <p>Orders over $100</p>
+        </div>
+
+      </div>
+      <div class="col-lg-3 col-md-6 col-12">
+
+        <div class="single-service">
+          <i class="ti-reload"></i>
+          <h4>Free Return</h4>
+          <p>Within 30 days returns</p>
+        </div>
+
+      </div>
+      <div class="col-lg-3 col-md-6 col-12">
+
+        <div class="single-service">
+          <i class="ti-lock"></i>
+          <h4>Sucure Payment</h4>
+          <p>100% secure payment</p>
+        </div>
+
+      </div>
+      <div class="col-lg-3 col-md-6 col-12">
+        <div class="single-service">
+          <i class="ti-tag"></i>
+          <h4>Best Peice</h4>
+          <p>Guaranteed price</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<!-- Start Shop Newsletter
+<section class="shop-newsletter section">
+  <div class="container">
+    <div class="inner-top">
+      <div class="row">
+        <div class="col-lg-8 offset-lg-2 col-12">
+          <div class="inner">
+            <h4>Новостная рассылка</h4>
+            <p> Subscribe to our newsletter and get <span>10%</span> off your first purchase</p>
+            <form action="mail/mail.php" method="get" target="_blank" class="newsletter-inner">
+              <input name="EMAIL" placeholder="Your email address" required="" type="email">
+              <button class="btn">Subscribe</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ End Shop Newsletter -->
+
+<footer class="footer">
+  <!-- Footer Top -->
+  <div class="footer-top section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5 col-md-6 col-12">
+          <!-- Single Widget -->
+          <div class="single-footer about">
+            <div class="logo">
+              <a href="{% url 'main' %}"><img src="{% static 'logo/logo_w.png' %}" alt="#"></a>
+            </div>
+            <p class="text">С 2009 года компания «Expert Security Systems Kazakhstan » специализируется на поставке комплексных систем безопасности и пожаротушения, а также осуществляет электромонтажные работы, индивидуальные проекты «под ключ» для узкоспециализированных производственных и коммерческих организаций.</p>
+            <p class="call">Остались вопросы? <span><a href="tel:87075577444">+7(707) 557 7444</a></span></p>
+          </div>
+          <!-- End Single Widget -->
+        </div>
+        <div class="col-lg-2 col-md-6 col-12">
+          <!-- Single Widget -->
+          <div class="single-footer links">
+            <h4>Информация</h4>
+            <ul>
+              <li><a href="{% url 'about_company' %}">О компании</a></li>
+              <li><a href="{% url 'certificates' %}">Сертификаты</a></li>
+              <li><a href="{% url 'partners' %}">Партнеры компании</a></li>
+              <li><a href="{% url 'contacts' %}">Контакты</a></li>
+            </ul>
+          </div>
+          <!-- End Single Widget -->
+        </div>
+        <div class="col-lg-2 col-md-6 col-12">
+          <!-- Single Widget -->
+          <div class="single-footer links">
+            <h4>Покупателям</h4>
+            <ul>
+              <li><a href="{% url 'payment' %}">Способы оплаты</a></li>
+              <!-- <li><a href="{% url 'refund' %}">Возврат</a></li> -->
+              <li><a href="{% url 'delivery' %}">Доставка</a></li>
+              <li><a href="{% url 'warranty' %}">Гарантия</a></li>
+              <!-- <li><a href="#">Сервисный центр</a></li> -->
+            </ul>
+          </div>
+          <!-- End Single Widget -->
+        </div>
+        <div class="col-lg-3 col-md-6 col-12">
+          <!-- Single Widget -->
+          <div class="single-footer social">
+            <h4>Контакты</h4>
+            <!-- Single Widget -->
+            <div class="contact">
+              <ul>
+                <li>Казахстан, г. Атырау</li>
+                <li>улица Ермеккали Бигалиев, 9а</li>
+                <li><a href="mailto:info@essk.kz">info@essk.kz</a></li>
+                <li><a href="tel:+77075577444">+7(707)557-74-44</a></li>
+              </ul>
+            </div>
+            <!-- End Single Widget -->
+            <ul>
+              <li><a href="https://yandex.kz/profile/61753339504" target="_blank"><i class="ti-yahoo"></i></a></li>
+              <li><a href="https://www.facebook.com/esskkz/" target="_blank"><i class="ti-facebook"></i></a></li>
+              <li><a href="https://www.instagram.com/esskkz/" target="_blank"><i class="ti-instagram"></i></a></li>
+              <li><a href="https://www.youtube.com/channel/UCETYDThGAqXD674KcVHaasw" target="_blank"><i class="ti-youtube"></i></a></li>
+            </ul>
+          </div>
+          <!-- End Single Widget -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Footer Top -->
+  <div class="copyright">
+    <div class="container">
+      <div class="inner">
+        <div class="row">
+          <div class="col-lg-6 col-12">
+            <div class="left">
+              <p>Copyright © 2022 <a href="https://ukudarov.site" target="_blank">Made by Umar Kudarov</a>  -  All Rights Reserved.</p>
+            </div>
+          </div>
+          <div class="col-lg-6 col-12">
+            <div class="right">
+              <img src="{% static 'images/payments.png' %}" alt="#">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

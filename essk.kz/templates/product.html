@@ -1,0 +1,248 @@
+{% extends 'index.html'%}
+{% load static %}
+{% block title %}
+    ESSK - Товар {{ product.title }}
+{% endblock %}
+{% block description %}
+    {{ product.m_description }}
+{% endblock %}
+{% block content %}
+
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="bread-inner">
+                    <ul class="bread-list">
+                        <li><a href="{% url 'main' %}">Главная<i class="ti-arrow-right"></i></a></li>
+                        <li class="active"><a href="{{ product.get_absolute_url }}">{{ product.title }}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<section class="shop single section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-lg-6 col-12">
+                        <div class="product-gallery">
+                            <div class="flexslider-thumbnails">
+                                <ul class="slides">
+                                    <li data-thumb="{% if product.image %}
+                                                        {{ product.image.url }}
+                                                    {% else %}
+                                                        {% static 'images/no_image.jpg' %}
+                                                    {% endif %}" rel="adjustX:10, adjustY:">
+                                        <img src="{% if product.image or product.image == None %}
+                                                      {{ product.image.url }}
+                                                  {% else %}
+                                                      {% static 'images/no_image.jpg' %}
+                                                  {% endif %}" alt="#">
+                                    </li>
+                                    {% for item in product_photos %}
+                                        <li data-thumb="{% if item.image %}
+                                                            {{ item.image.url }}
+                                                        {% else %}
+                                                            {% static 'images/no_image.jpg' %}
+                                                        {% endif %}" rel="adjustX:10, adjustY:">
+                                            <img src="{% if item.image %}
+                                                          {{ item.image.url }}
+                                                      {% else %}
+                                                          {% static 'images/no_image.jpg' %}
+                                                      {% endif %}" alt="#">
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-12">
+                        <div class="product-des">
+                            <div class="short">
+                                <h4>{{ product.title }}</h4>
+                                <div class="rating-main">
+                                    <ul class="rating">
+                                        <!-- <li><i class="fa fa-star"></i></li> -->
+                                        <!-- <li><i class="fa fa-star-half-o"></i></li> -->
+                                        <li class="dark"><i class="fa fa-star-o"></i></li>
+                                        <li class="dark"><i class="fa fa-star-o"></i></li>
+                                        <li class="dark"><i class="fa fa-star-o"></i></li>
+                                        <li class="dark"><i class="fa fa-star-o"></i></li>
+                                        <li class="dark"><i class="fa fa-star-o"></i></li>
+                                    </ul>
+                                    <a href="#" class="total-review">(0) Отзывов</a>
+                                </div>
+                                {% if product.price > 0 %}
+                                    <p class="price">{{ product.price }}₸</p>
+                                {% elif product.price == 0 %}
+                                    <p class="price">Нет цены</p>
+                                {% endif %}
+
+                                {% if product.new_price > 0 %}
+                                  <p class="price"><span class="discount">{{ product.new_price }}₸</span><s>{{ product.price }}₸</s> </p>
+                                {% endif %}
+                                <p class="description">{{ product.m_description }}</p>
+                            </div>
+
+                            <div class="product-buy">
+                                <div class="add-to-cart">
+                                    <a href="{% url 'add_to_cart' id=product.id %}" class="btn">В корзину</a>
+                                    <a href="#" class="btn min"><i class="ti-heart"></i></a>
+                                    <a href="#" class="btn min"><i class="fa fa-compress"></i></a>
+                                </div>
+                                <p class="cat">Категория:<a href="{{ product.category.get_absolute_url }}">{{ product.category.title }}</a></p>
+                                <p class="availability">На складе: Наличие уточняйте у менеджера</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="product-info">
+                            <div class="nav-main">
+                                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                    <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#description" role="tab">Описание</a></li>
+                                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#reviews" role="tab">Отзывы</a></li>
+                                </ul>
+                            </div>
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade show active" id="description" role="tabpanel">
+                                    <div class="tab-single">
+                                        <div class="row">
+                                            <div class="col-12 mt-5">
+                                                {% autoescape off %}
+                                                    {{ product.description }}
+                                                {% endautoescape %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="reviews" role="tabpanel">
+                                    <div class="tab-single review-panel">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="ratting-main">
+                                                    <div class="avg-ratting">
+                                                        <h4>{{ feed_backs_count }} {% if feed_backs_count == 1 %}отзыв{% elif feed_backs_count == 2 or feed_backs_count == 3 or feed_backs_count == 4 %}отзыва{% else %}отзывов{% endif %}</h4>
+                                                    </div>
+
+                                                    {% for item in feed_backs %}
+                                                        <div class="single-rating">
+                                                            <div class="rating-author">
+                                                                <img src="{% static 'images/profile.png' %}" alt="#">
+                                                            </div>
+                                                            <div class="rating-des">
+                                                                <h6>{{ item.first_name }}</h6>
+                                                                <div class="ratings">
+                                                                    <ul class="rating">
+                                                                        {% if item.point == 1 %}
+                                                                          <li><i class="fa fa-star"></i></li>
+                                                                          <li><i class="fa fa-star-o"></i></li>
+                                                                          <li><i class="fa fa-star-o"></i></li>
+                                                                          <li><i class="fa fa-star-o"></i></li>
+                                                                          <li><i class="fa fa-star-o"></i></li>
+                                                                        {% elif item.point == 2 %}
+                                                                          <li><i class="fa fa-star"></i></li>
+                                                                          <li><i class="fa fa-star"></i></li>
+                                                                          <li><i class="fa fa-star-o"></i></li>
+                                                                          <li><i class="fa fa-star-o"></i></li>
+                                                                          <li><i class="fa fa-star-o"></i></li>
+                                                                        {% elif item.point == 3 %}
+                                                                          <li><i class="fa fa-star"></i></li>
+                                                                          <li><i class="fa fa-star"></i></li>
+                                                                          <li><i class="fa fa-star"></i></li>
+                                                                          <li><i class="fa fa-star-o"></i></li>
+                                                                          <li><i class="fa fa-star-o"></i></li>
+                                                                        {% elif item.point == 4 %}
+                                                                          <li><i class="fa fa-star"></i></li>
+                                                                          <li><i class="fa fa-star"></i></li>
+                                                                          <li><i class="fa fa-star"></i></li>
+                                                                          <li><i class="fa fa-star"></i></li>
+                                                                          <li><i class="fa fa-star-o"></i></li>
+                                                                        {% elif item.point == 5 %}
+                                                                          <li><i class="fa fa-star"></i></li>
+                                                                          <li><i class="fa fa-star"></i></li>
+                                                                          <li><i class="fa fa-star"></i></li>
+                                                                          <li><i class="fa fa-star"></i></li>
+                                                                          <li><i class="fa fa-star"></i></li>
+                                                                        {% endif %}
+                                                                    </ul>
+                                                                    <div class="rate-count">(<span>{{ item.point }}</span>)</div>
+                                                                </div>
+                                                                <p>{{ item.text }}</p>
+                                                            </div>
+                                                        </div>
+                                                    {% endfor %}
+
+                                                </div>
+                                                <div class="comment-review">
+                                                    <div class="add-review">
+                                                        <h5>Добавить отзыв</h5>
+                                                        <p>Ваш адрес электронной почты не будет опубликован. Обязательные поля отмечены *</p>
+                                                    </div>
+                                                    <h4>Ваша оценка:*</h4>
+                                                    <div class="review-inner">
+                                                        <div class="ratings">
+                                                            <ul class="rating">
+                                                                <li><i class="fa fa-star"></i></li>
+                                                                <li><i class="fa fa-star"></i></li>
+                                                                <li><i class="fa fa-star"></i></li>
+                                                                <li><i class="fa fa-star"></i></li>
+                                                                <li><i class="fa fa-star"></i></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <form class="form" method="post" action="">
+                                                    {% csrf_token %}
+                                                    <div class="row">
+                                                        <div class="col-lg-6 col-12">
+                                                            <div class="form-group">
+                                                                <label for="{{ form.first_name.id_for_label }}">Имя<span>*</span></label>
+                                                                {{ form.first_name }}
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6 col-12">
+                                                            <div class="form-group">
+                                                                <label for="{{ form.email.id_for_label }}">Email<span>*</span></label>
+                                                                {{ form.email }}
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-12 col-12">
+                                                            <div class="form-group">
+                                                                <label for="{{ form.text.id_for_label }}">Напишите отзыв<span>*</span></label>
+                                                                {{ form.text }}
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-12 col-12">
+                                                            <div class="form-group">
+                                                                <label for="{{ form.point.id_for_label }}">Point<span>*</span></label>
+                                                                {{ form.point }}
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-12 col-12">
+                                                            <div class="form-group button5">
+                                                                <button type="submit" class="btn">Отправить</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

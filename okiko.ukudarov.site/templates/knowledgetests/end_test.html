@@ -1,0 +1,83 @@
+{% extends 'base.html'%}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}
+    Okiko - Тесты
+{% endblock %}
+{% block content %}
+<div class="_215b15">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="title126">
+                    <h2>Результаты по тесту "{{ user_test.knowledge_test.title }}"</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="faq1256">
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-md-6">
+                <div class="certi_form rght1528">
+                    <div class="test_result_bg">
+                        <ul class="test_result_left">
+                            <li>
+                                <div class="result_dt">
+                                    <i class="uil uil-check right_ans"></i>
+                                    <p>Правильно<span>({{ user_test.finish_question }})</span></p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="result_dt">
+                                    <i class="uil uil-times wrong_ans"></i>
+                                    <p>Неправильно<span>({{ user_test.wrong_question }})</span></p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="result_dt">
+                                    <h4>{{ user_test.finish_question }}</h4>
+                                    <p>Из {{ user_test.all_question }}</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-12">
+    <div class="table-responsive mt-30">
+        <table class="table ucp-table">
+            <thead class="thead-s">
+                <tr>
+                    <th scope="col">Вопрос</th>
+                    <th scope="col">Ваш ответ</th>
+                    <th scope="col">Результат</th>
+                </tr>
+            </thead>
+            <tbody>
+              {% for item in user_answer %}
+                  <tr>
+                    <td>{{ item.user_test_question.title }}</td>
+
+                    {% if item.isnt_answer == True %}
+                        <td>Нет ответа</td>
+                        <td>Вы не ответили</td>
+                    {% else %}
+                        <td>{{ item.user_test_answer.title }}</td>
+                        {% if item.correct_answer == True %}
+                            <td>Правильно</td>
+                        {% else %}
+                            <td>Не правильно</td>
+                        {% endif %}
+                    {% endif %}
+                  </tr>
+              {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

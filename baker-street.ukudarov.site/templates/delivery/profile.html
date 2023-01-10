@@ -1,0 +1,49 @@
+{% extends 'delivery/base.html' %}
+{% load static %}
+
+{% block title %}
+    Baker Street - Мой профиль
+{% endblock %}
+{% block content %}
+<div class="my-account-wrapper pt-200 pb-160">
+    <div class="container">
+      <nav aria-label="breadcrumb" class="pb-20">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'delivery_base' %}">Главная</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Мой профиль</li>
+          </ol>
+      </nav>
+      <h1>{{ shop.title }}</h1>
+        <div class="row pt-20">
+            <div class="col-lg-12">
+                <div class="myaccount-page-wrapper">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4">
+                            <div class="myaccount-tab-menu nav" role="tablist">
+                                <a href="{% url 'delivery_profile' %}">Данные профиля</a>
+                            </div>
+                            <div class="myaccount-tab-menu nav" role="tablist">
+                                <a href="{% url 'delivery_profile_edit' %}">Редактировать данные</a>
+                            </div>
+                            <div class="myaccount-tab-menu nav" role="tablist">
+                                <a href="{% url 'logout' %}">Выйти</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-9 col-md-8 mb-30">
+                            <div class="container myaccount-content" style="background:white; padding: 30px;">
+                                <h4>Данные профиля:</h4>
+                                Имя: {{ deliveryman.first_name }}
+                                <br>
+                                Email: <a href="mailto:{{ deliveryman.email }}">{{ deliveryman.email }}</a>
+                                <br>
+                                Номер телефона: <a href="tel:{{ deliveryman.phone }}"> <span>{{ deliveryman.phone }}</span> </a>
+
+                            </div>
+                        </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+{% endblock content %}

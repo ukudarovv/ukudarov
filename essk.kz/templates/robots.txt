@@ -1,0 +1,20 @@
+User-agent: *
+Disallow: /
+Disallow: /admin/
+Sitemap: https://essk.kz/sitemap.xml
+
+User-agent: Yandex
+Allow: /
+Disallow: /cgi-bin/
+Disallow: /admin/
+Disallow: /cart/
+
+User-agent: Googlebot
+Allow: /
+Disallow: /cgi-bin/
+Disallow: /admin/
+Disallow: /cart/
+
+
+Host: https://essk.kz/
+Sitemap: https://essk.kz/sitemap.xml

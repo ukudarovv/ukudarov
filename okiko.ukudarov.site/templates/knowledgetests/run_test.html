@@ -1,0 +1,107 @@
+{% extends 'base.html'%}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}
+    Okiko - Тест {{ knowledge_test.title }}
+{% endblock %}
+{% block content %}
+<script src="https://snipp.ru/cdn/jquery/2.1.1/jquery.min.js"></script>
+<div class="_215b15">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="title126">
+                    <h2>{{ knowledge_test.title }}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="faq1256">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6">
+                <div class="certi_form rght1528">
+                    <div class="test_timer_bg">
+                        <ul class="test_timer_left">
+                            <li>
+                                <div class="timer_time">
+                                    <h4>{{ knowledge_test.all_question }}</h4>
+                                    <p>Вопросы</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="timer_time">
+                                    <div id="countdown">
+                                      <h4><span class="display">60</span></h4>
+                                      <p>Время</p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7 col-md-6">
+                <div class="certi_form">
+                    <div class="all_ques_lest">
+                        <div class="ques_item">
+                            <div class="ques_title">
+                                <span>{{ test_question.title }}</span>
+                            </div>
+                            <div class="ui form">
+                                <div class="grouped fields">
+                                    {% for answer in question_answer %}
+                                        <div class="field fltr-radio">
+                                            <div class="ui radio checkbox" id="flexRadioDefault{{ answer.position }}">
+                                                <input type="radio" name="flexRadioDefault">
+                                                <label for="flexRadioDefault{{ answer.position }}">{{ answer.title }}</label>
+                                            </div>
+                                        </div>
+                                        <script type="text/javascript">
+                                            $('#flexRadioDefault{{ answer.position }}').click(function(){
+                                              $('#id_user_test_answer_id').val('{{ answer.position }}');
+                                            });
+                                        </script>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <form method='POST' enctype="multipart/form-data">
+                        {%csrf_token%}
+                        <div style="display: none;">
+                        {{ form.user_test_question_id }}
+                        {{ form.user_test_answer_id }}
+                        </div>
+                        <button class="test_submit_btn" type="submit">Ответить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function(d){
+      $('#id_user_test_question_id').val('{{ test_question.id }}');
+  });
+  (function (d) {
+    var display = d.querySelector('#countdown .display') // меняющаяся цифра
+    var timeLeft = parseInt(display.innerHTML) // оставшееся время
+
+    var timer = setInterval(function(){
+      if (--timeLeft >= 0) { // если таймер всё еще больше нуля
+        display.innerHTML = timeLeft // обновляем цифру
+      } else {
+          $('#id_user_test_question_id').val('{{ test_question.id }}');
+          $('#id_user_test_answer_id').val('0');
+          var elems = document.getElementsByClassName("test_submit_btn");
+          elems[0].click();
+        // d.querySelector('#countdown h1').style.display = 'none' // прячем теекст
+        // d.querySelector('#countdown button').style.display = 'block' // показываем кнопку
+        // clearInterval(timer) // удаляем таймер
+      }
+    }, 1000)  // таймер срабатывает каждые 1000 msec (1 sec)
+  })(document);
+</script>
+{% endblock %}

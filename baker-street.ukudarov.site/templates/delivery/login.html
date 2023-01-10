@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Baker Street - Авторизация</title>
+
+
+  <link rel="stylesheet" href="{% static 'assets/css/vendor/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/css/vendor/vendor.min.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/css/style.min.css' %}">
+
+  <style media="screen">
+    body::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    body::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.3);
+    }
+
+    body::-webkit-scrollbar-thumb {
+      background-color: #303030;
+    }
+
+    #scrollUp {
+      background-color: #303030;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="login-register-area bg-gray pt-155 pb-160">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-7 col-md-12 ml-auto mr-auto">
+          <div class="login-register-wrapper">
+            <div class="login-register-tab-list nav">
+              <h4> Авторизация </h4>
+            </div>
+            <div class="tab-content">
+              <div id="lg1" class="tab-pane active">
+                <div class="login-form-container">
+                  <div class="login-register-form">
+                    <form action="" method="POST">
+                      {% csrf_token %}
+                      {{ form }}
+                      <input type="submit" class="btn btn-success btn-block" value="Войти">
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="{% static 'assets/js/main_js.js' %}"></script>
+  <script src="{% static 'assets/js/vendor/jquery-3.5.1.min.js' %}"></script>
+</body>
+
+</html>

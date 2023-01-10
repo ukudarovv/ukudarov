@@ -1,0 +1,145 @@
+{% extends 'siteadmin/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block title %}
+   Администрирование  Baker Street
+{% endblock %}
+
+{% block content %}
+<style media="screen">
+  table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+  }
+
+  table caption {
+  font-size: 1.5em;
+  margin: .5em 0 .75em;
+  }
+
+  table tr {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: .35em;
+  }
+
+  table th,
+  table td {
+  padding: .625em;
+  text-align: center;
+  }
+
+  table th {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  }
+
+  @media screen and (max-width: 600px) {
+    table {
+      border: 0;
+    }
+
+    table caption {
+      font-size: 1.3em;
+    }
+
+    table thead {
+      border: none;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+    }
+
+    table tr {
+      border-bottom: 3px solid #ddd;
+      display: block;
+      margin-bottom: .625em;
+    }
+
+    table td {
+      border-bottom: 1px solid #ddd;
+      display: block;
+      font-size: .8em;
+      text-align: right;
+    }
+
+    table td::before {
+      /*
+      * aria-label has no advantage, it won't be read inside a table
+      content: attr(aria-label);
+      */
+      content: attr(data-label);
+      float: left;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    table td:last-child {
+      border-bottom: 0;
+    }
+    td:nth-of-type(1):before { content: "Название"; }
+    td:nth-of-type(2):before { content: "Осталось"; }
+    td:nth-of-type(3):before { content: "Продано"; }
+    td:nth-of-type(4):before { content: "Возврат"; }
+    }
+
+</style>
+<div class="my-account-wrapper pt-200 pb-160">
+    <div class="container">
+        <div class="row pt-20">
+            <div class="col-lg-12">
+                <div class="myaccount-page-wrapper">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4">
+                            {% include "siteadmin/navbar.html" %}
+
+                        </div>
+                        <div class="col-lg-9 col-md-8">
+                            <div class="container myaccount-content" style="background:white; padding: 30px;">
+                                <h3>Заготовленные товары на завтра</h3>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                          <th scope="col">Название</th>
+                                          <th scope="col">Осталось</th>
+                                          <th scope="col">Продано</th>
+                                          <th scope="col">Возврат</th>
+                                          <th scope="col">Всего за день</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                      {% for item in prepared_products %}
+                                          <tr>
+                                            <td>
+                                                <strong>{{ item.product.title }}</strong>
+                                            </td>
+                                            <td>{{ item.qty }}</td>
+                                            <td>{{ item.sale_qty }}</td>
+                                            <td>{{ item.refund_qty }}</td>
+                                            <td>{{ item.prepared_qty }}</td>
+                                          </tr>
+                                      {% endfor %}
+                                    </tbody>
+                                </table>
+                                <a href="{% url 'next_add_prepared_product' %}">
+                                    <button name="submit" type="submit" class="btn btn-primary mt-15">Добавить</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

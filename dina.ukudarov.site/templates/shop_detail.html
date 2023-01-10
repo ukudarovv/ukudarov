@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Dina Atyrau - Магазин {% for item in shop %} {{ item.shop_name }} {% endfor %}
+{% endblock %}
+{% block description %}
+    Дина Атырау - Магазин {% for item in shop %} {{ item.shop_name }}, {% endfor %}
+{% endblock %}
+{% block content %}
+<style media="screen">
+  .my-account-wrapper{
+    background-image: url({% static 'img/bg.png' %});
+    background-position: center top;
+    background-repeat: no-repeat;
+  }
+</style>
+{% for item in shop %}
+
+<div class="my-account-wrapper pt-200 pb-160">
+    <div class="container">
+      <nav aria-label="breadcrumb" class="pb-20">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'base' %}">Главная</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'shops_view' %}">Магазины</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ item.shop_name }}</li>
+          </ol>
+      </nav>
+      <h1>{{ item.shop_name }}</h1>
+        <div class="row pt-20">
+            <div class="col-lg-12">
+                <div class="myaccount-page-wrapper">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4">
+                            <div class="container-fluid" style="background:white;" role="tablist">
+                              <img src="{% if item.shop_image %}
+                                          {{ item.shop_image.url }}
+                                        {% else %}
+                                          {% static 'img/no_image.jpg' %}
+                                        {% endif %}
+                                       " alt="" style="width: 270px; margin-left: -15px;">
+                               <div class="container pt-10 pb-10">
+                                 <h4>Дина базар:</h4>
+                                 <h5>{{ item.shop_address }}</h5>
+                                 <hr>
+                                 <a href="{% url 'main_plan' %}">На карте</a>
+
+                               </div>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-9 col-md-8">
+                            <div class="container" style="background:white; padding: 30px;">
+                                <h4>Категории товаров:</h4>
+                                {% for item in item.category.all %}
+                                    — {{ item.name }} <br>
+                                {% endfor %}
+                                <br>
+                                <h4>Описание:</h4>
+                                {{ item.description }}
+                                <br>
+                                <br>
+                                <h4>Контактные данные:</h4>
+                                Email: <a href="mailto:{{ item.shop_email }}">{{ item.shop_email }}</a>
+                                <br>
+                                Номер телефона: <a href="tel:{{ item.shop_phone }}"> <span>{{ item.shop_phone }}</span> </a>
+                                <br>
+                                <br>
+                                {% if item.instagram or item.facebook or item.vk %}
+                                    <h4>Соц.Сети:</h4>
+                                    <ul class="social-link list-unstyled m-t-40 m-b-10" style="display: flex;">
+                                        {% if item.instagram %}
+                                          <li style="margin-right: 5px;">
+                                            <a href="https://www.instagram.com/{{ item.instagram }}" target="_blank">
+                                              <img src="data:image/png;base64,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"/>
+                                            </a>
+                                          </li>
+                                        {% endif %}
+                                        {% if item.whatsapp %}
+                                          <li style="margin-right: 5px;" class="mt-1">
+                                            <a href="whatsapp://send?phone={{ item.whatsapp }}" target="_blank">
+                                              <img src="data:image/png;base64,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"/>
+                                            </a>
+                                          </li>
+                                        {% endif %}
+                                        {% if item.telegram %}
+                                          <li style="margin-right: 5px;" class="mt-1">
+                                            <a href="https://t.me/{{ item.telegram }}" target="_blank">
+                                              <img style="width: 43px;"
+                                                  src="data:image/png;base64,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"/>
+                                            </a>
+                                          </li>
+                                        {% endif %}
+                                        {% if item.vk %}
+                                          <li style="margin-right: 5px;">
+                                            <a href="https://vk.com/{{ item.vk }}" target="_blank">
+                                              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAADdklEQVRoge2YXUhTYRzGn/dsLqdmU3Nptb4o7cYyNCg1qKirijAC7aZu6iYqcKG76AuipCl4YUUgRUFESISVRhdFCWWGjSgLLIlVUpvV/MzJ1rZzupgtjmfvme/R0zLO72r7/9+P53n3fg7Q0NDQiCckVoG5ts7tgoAKAIUAktWXBADwQsBzwgl1LvvKZrmCsgayqjrPEMA2tdoYIaTabc87Qk3TEmMjf0sdVWzwAtn2tTavJVqOo1Uamzb/BDrCW2k5qgEABSpoUYQAUkjLyRlIUUGLUmbSEnIGpgWagXijGYg3etYK7bZcLEw3AACCvIDKm1/Q6BiI5J/ZcrFgLP+bDx4/imu7JW2VFaahZsc8JOjC56nT40dJlHJyMP8CxoQ/VfQcwaENmaL8w3c/JHUWz54hiaUadTixJTsiHgBcgwFWOewGXvSMSsTlzzdGvl9+2jehdg6uz4QpSSeKNTz2sMphN9DaLR3h0lWmyGen52fMNpZmzsC+ktmi2JP3I3jwVtp2LJgNtLwehi/Ai2JlBWlITQyPZogX5DskgH3HPBj0f6ZOICTg6B0Xq5Rwe6wV+r1BNL0cEsVSjTrsXpM+ofoHN5ixdon4WVH/8Bu6v/pZpQBQuI1ebPNAGDfQB9ZnIntWArXOogwDSvNNOLzZLIp3uX2of/RdiQwACg10uX1oejkoiqUadThbbkHOHOmOAwBPq3JxfpcFek78BLE1fUEgJD/t5FB8kJ2+14thX0gUK1qSjFZrDlM7JOajVh7FBtxDAZxodk+udwDnyi1IT2Y+TyNM6irR6BiY8L5fVPMOe658Qr83KIpb0gy4sMsCTuEvMem70LE7Ltx7Mxyz3Me+n7jfNYydDR8wMCqeeuuWpeDQRjOlpjyTNsALwP7rPbjW0T+h8m97fdh79ZNk4Vo3mbHKksTc/5TcRv3B8KWu4sZn9I2bItFod3px8q54/eg5guNbspj7Vr56otDoGMDtV0MoL0xDab4Jy7MSYdATtDtHJGUvtfVhrsmAvcUZkQtdkoF9PKlLJ7uqU/nmrALumhVRtU77B41mIN781wakW0e8IKCelHQDAhyqiFEA4elaqAYIJ9SpI4cdniNULVQDLvvKZhBSrY4kBghO9drz7tLTMZhT+XqrjvBWAWQ1/t4/1iNEQAfPkTo58RoaGhrx5xfzIvXn+sbXTAAAAABJRU5ErkJggg=="/>
+                                            </a>
+                                          </li>
+                                        {% endif %}
+                                        {% if item.facebook %}
+                                          <li style="margin-right: 5px;">
+                                            <a href="https://www.facebook.com/{{ item.facebook }}" target="_blank">
+                                              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAABuklEQVRoge2ZsU7CQBzGv38xLsDqQAIJzwAmLpoSmbCG1CfwFXDRxFElTvgmoNEymQAmJkYdfAWNRlcJLBJ6DixEuEKvvWtN7rd+vf99X+6u/acHaDQaTZTQogdKtlMdAzUiFMGQVGEKhCEYPcFFo3dVufZ+1APTbp8zsMNw3fmF1Xst65incgOUbKfqApdyTPmDgN1ua+dmnmbwBo2BmjxL/mDAAU/jBiCwghw7QhR5AjcAQCkZTgRJ8wSPAP+DFZWTJRKEynYW5c0M8rkU0qlV0NRrxNxr+66pLIBhEM6OCtgorIVbN9RqHljlbOjmAYUBylsZKXWVbaF8bvZFcnLxgruHL4xGrnBdZQGSydmpOvefcF0WqK6yLWTQbNcS1DygvwPedJuVpfXv/g+q+7e+54jNCry+D4TGxSbA28dQaFyMAoitgNQzMN3bzDsPIr3PX2KzAqLoAFGjA0SNDhA1OkDU6ABR4xGAiXVXcujzBI9mzngGmBmWg4CN2zNP4K+Ai0aQGcPEIMb1wg0wuRlhdTmWlocRTjtNy+HpC6+YTNuxJv/n2bq6P9ZsANCjQazhZV6j0Wii5xenO2V+QqiXMQAAAABJRU5ErkJggg=="/>
+                                            </a>
+                                          </li>
+                                        {% endif %}
+                                    </ul>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                      <div class="col-lg-3 col-md-4">
+                          <div class="container-fluid" style="background:white;" role="tablist">
+
+                          </div>
+                      </div>
+                      <div class="col-lg-9 col-md-8">
+                        <div class="container" style="background:white; padding: 30px;">
+                          <h3>Товары:</h3>
+                          <div class="row">
+                            {% for item in products %}
+                                <div class="col-lg-4 col-md-6 col-sm-12">
+                                  <div class="blog-wrap mb-30">
+                                      <div class="blog-img mb-35">
+                                          <a href="{{ item.get_absolute_url }}"><img src="{{ item.image.url }}" alt=""></a>
+                                      </div>
+                                      <div class="blog-content">
+                                          <h3><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></h3>
+                                          <h5>{{ item.price }}₸</h5>
+                                      </div>
+                                  </div>
+                                </div>
+                            {% endfor %}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock content %}

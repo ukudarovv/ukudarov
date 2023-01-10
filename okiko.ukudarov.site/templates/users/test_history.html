@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Okiko - История тестов
+{% endblock %}
+
+{% block content %}
+<div class="my-account-wrapper bg-gray pt-100 pb-160">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="myaccount-page-wrapper">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4">
+                            <div class="myaccount-tab-menu nav" role="tablist">
+                                <a href="{% url 'profile' %}">Мой профиль</a>
+                                <a href="{% url 'test_history' %}">История выполненных тестов</a>
+                                <a href="{% url 'edit_profile' %}">Редактировать профиль</a>
+                                <a href="{% url 'logout' %}" class="list-group-item">Выйти</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-9 col-md-8">
+                            <div class="tab-content" id="myaccountContent">
+                                <div class="tab-pane fade show active" id="dashboad" role="tabpanel">
+                                    <div class="myaccount-content">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <h3>История выполненных тестов</h3>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="col-md-12">
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">Название</th>
+                                                                <th scope="col">Результат</th>
+                                                                <th scope="col">Дата</th>
+                                                                <th scope="col">Дополнительно</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            {% for item in user_test %}
+                                                                {% if item.finish == True %}
+                                                                    <tr>
+                                                                        <th>{{ item.knowledge_test.title }}</th>
+                                                                        <td>{{ item.finish_question }}/{{ item.all_question }}</td>
+                                                                        <td>{{ item.created_at }}</td>
+                                                                        <td>
+                                                                            <button class="upload_btn" data-bs-toggle="modal" data-bs-target="#exampleModal-{{ item.id }}">
+                                                                                Дополнительно
+                                                                            </button>
+                                                                            <div class="modal fade" id="exampleModal-{{ item.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                                <div class="modal-dialog modal-lg">
+                                                                                    <div class="modal-content">
+                                                                                        <div class="modal-header">
+                                                                                            <h5 class="modal-title" id="exampleModalLabel">Результаты теста</h5>
+                                                                                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x">x</i></button>
+                                                                                        </div>
+                                                                                        <div class="modal-body">
+                                                                                            <table class="table">
+                                                                                              <thead>
+                                                                                                <tr>
+                                                                                                  <th scope="col">Вопрос</th>
+                                                                                                  <th scope="col">Ваш ответ</th>
+                                                                                                  <th scope="col">Результат</th>
+                                                                                                </tr>
+                                                                                              </thead>
+                                                                                              <tbody>
+                                                                                                {% for item in item.user_answer.all %}
+                                                                                                    <tr>
+                                                                                                      <td>{{ item.user_test_question.title }}</td>
+
+                                                                                                      {% if item.isnt_answer == True %}
+                                                                                                          <td>Нет ответа</td>
+                                                                                                          <td>Вы не ответили</td>
+                                                                                                      {% else %}
+                                                                                                          <td>{{ item.user_test_answer.title }}</td>
+                                                                                                          {% if item.correct_answer == True %}
+                                                                                                              <td>Правильно</td>
+                                                                                                          {% else %}
+                                                                                                              <td>Не правильно</td>
+                                                                                                          {% endif %}
+                                                                                                      {% endif %}
+                                                                                                    </tr>
+                                                                                                {% endfor %}
+                                                                                              </tbody>
+                                                                                            </table>
+                                                                                        </div>
+                                                                                        <div class="modal-footer">
+                                                                                            <button type="button" class="upload_btn" data-bs-dismiss="modal">Закрыть</button>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                {% endif %}
+                                                            {% endfor%}
+                                                      </tbody>
+                                                  </table>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

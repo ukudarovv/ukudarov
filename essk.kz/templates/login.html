@@ -1,0 +1,66 @@
+{% extends 'index.html'%}
+{% load static %}
+{% block title %}
+    ESSK - Вход
+{% endblock %}
+
+{% block content %}
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="bread-inner">
+                    <ul class="bread-list">
+                        <li><a href="{% url 'main' %}">Главная<i class="ti-arrow-right"></i></a></li>
+                        <li class="active">Вход</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Start Checkout -->
+<section class="shop checkout section">
+  <div class="container">
+    <div class="row">
+      <form action="{% url 'login' %}" class="row form" method="POST">
+          <div class="col-lg-12 col-12">
+            <div class="checkout-form">
+              <h2>Вход</h2>
+              <p>Заполните все обязательные поля*</p>
+              {% if form.errors %}
+                <div class="alert alert-danger">
+                    {{ form.errors }}
+                </div>
+              {% endif %}
+                {% csrf_token %}
+                <div class="row">
+                  <div class="col-lg-12 col-md-12 col-12">
+                    <div class="form-group">
+                      <label for="{{ form.email.id_for_label }}">Email<span>*</span></label>
+                      {{ form.email }}
+                    </div>
+                  </div>
+                  <div class="col-lg-12 col-md-12 col-12">
+                    <div class="form-group">
+                      <label for="{{ form.password.id_for_label }}">Пароль<span>*</span></label>
+                      {{ form.password }}
+                    </div>
+                  </div>
+                  <div class="col-lg-12 col-md-12 col-12">
+                    <div class="form-group">
+                      <button type="submit" class="btn" name="button">вход</button>
+                      <a href="{% url 'registration' %}"><button type="button" class="btn">регистрация</button></a>
+                      <br>
+                      <a href="{% url 'password_reset' %}"><small>Забыли пароль?</small></a>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'siteadmin/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block title %}
+   Администрирование  Baker Street
+{% endblock %}
+{% block content %}
+<style media="screen">
+  #div_id_shops input {
+      background: #eceff8;
+      border: 2px solid #eceff8;
+      height: 12.8px;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+      padding-left: 10px;
+      font-size: 14px;
+      color: #737373;
+      width: 12.8px;
+  }
+</style>
+<div class="my-account-wrapper pt-200 pb-160">
+    <div class="container">
+        <div class="row pt-20">
+            <div class="col-lg-12">
+                <div class="myaccount-page-wrapper">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4">
+                            {% include "siteadmin/navbar.html" %}
+                        </div>
+                        <div class="col-lg-9 col-md-8">
+                            <div class="tab-content" id="myaccountContent">
+                                <div class="tab-pane fade show active" id="dashboad" role="tabpanel">
+                                    <div class="myaccount-content">
+                                      <div class="row">
+                                          <div class="col-md-12">
+                                              <h3>Создание нового профиля</h3>
+                                          </div>
+                                      </div>
+                                      <div class="row">
+                                          <div class="col-md-12">
+                                              <form method="POST" enctype="multipart/form-data">
+                                                  {%csrf_token%}
+                                                  {{form_2|crispy}}
+                                                  {{form|crispy}}
+                                                  <button name="submit" type="submit" class="btn btn-primary mt-15">Добавить</button>
+                                              </form>
+                                          </div>
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+{% endblock content %}

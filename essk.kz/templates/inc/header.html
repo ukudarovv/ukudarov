@@ -1,0 +1,214 @@
+{% load static %}
+{% load mptt_tags %}
+<div class="preloader">
+  <div class="preloader-inner">
+    <div class="preloader-icon">
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</div>
+<header class="header shop">
+  <div class="topbar">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5 col-md-12 col-12">
+          <div class="top-left">
+            <ul class="list-main">
+              <li><i class="ti-headphone-alt"></i><a href="tel:+77075577444">+7(707)557-74-44</a></li>
+              <li><i class="ti-email"></i><a href="mailto:info@essk.kz">info@essk.kz</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-7 col-md-12 col-12">
+          <div class="right-content">
+            <ul class="list-main">
+              <li><i class="ti-location-pin"></i> <a href="{% url 'contacts' %}">Наши адреса</a></li>
+              {% if not request.user.is_authenticated %}
+                  <li><i class="ti-user"></i> <a href="{% url 'login' %}">Войти</a></li>
+                  <li><i class="ti-unlock"></i> <a href="{% url 'registration' %}">Зарегистрироваться</a></li>
+              {% else %}
+                  <li><i class="ti-user"></i> <a href="{% url 'profile_edit' %}">Мой профиль</a></li>
+                  <li><i class="ti-power-off"></i><a href="{% url 'logout' %}">Выйти</a></li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="middle-inner">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-2 col-md-2 col-12">
+          <div class="logo">
+            <a href="{% url 'main' %}"><img src="{% static 'logo/logo.png' %}" alt="logo"></a>
+          </div>
+          <div class="search-top">
+            <div class="top-search">
+              <a href="#0"><i class="ti-search"></i></a>
+            </div>
+            <div class="search-top">
+              <form action="{% url 'search' %}" method="GET" class="search-form">
+                <input name="search" type="search" placeholder="Поиск...">
+                <button value="search" type="submit"><i class="ti-search"></i></button>
+              </form>
+            </div>
+          </div>
+          <div class="mobile-nav"></div>
+        </div>
+        <div class="col-lg-8 col-md-7 col-12">
+          <div class="search-bar-top">
+            <div class="search-bar">
+              <form action="{% url 'search' %}" method="GET">
+                <input name="search" type="search" placeholder="Поиск..." type="search">
+                <button class="btnn"><i class="ti-search"></i></button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-3 col-12">
+          <div class="right-bar">
+            <div class="sinlge-bar">
+              <a href="#" class="single-icon"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+            </div>
+            <div class="sinlge-bar">
+              <a href=" {% if not request.user.is_authenticated %}
+                            {% url 'login' %}
+                        {% else %}
+                            {% url 'profile_edit' %}
+                        {% endif %}
+                        " class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+            </div>
+            <div class="sinlge-bar shopping">
+              <a href="#" class="single-icon" onclick="myFunction2()"><i class="ti-bag"></i> <span class="total-count">{{ cart.total_products }}</span></a>
+              <div class="shopping-item" id="shopping-item" style="display: none;">
+                <div class="dropdown-cart-header">
+                  <span>{{ cart.total_products }} Товаров</span>
+                  <a href="{% url 'cart' %}">Перейти в корзину</a>
+                </div>
+                <ul class="shopping-list">
+                  {% for item in cart_products %}
+                      <li>
+                        <a href="{% url 'remove_from_cart' id=item.id %}" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
+                        <a class="cart-img" href="#"><img src="{% if item.product.image %}
+                                                                    {{ item.product.image.url }}
+                                                                {% else %}
+                                                                    {% static 'images/no_image.jpg' %}
+                                                                {% endif %}" alt="#"></a>
+                        <h4><a href="{{ item.product.get_absolute_url }}">{{ item.product.title }}</a></h4>
+                        <p class="quantity">{{ item.qty }}x - <span class="amount">{{ item.product.price }}₸</span></p>
+                      </li>
+                  {% endfor %}
+                </ul>
+                <div class="bottom">
+                  <div class="total">
+                    <span>Итог</span>
+                    <span class="total-amount">{{ cart.total_price }}₸</span>
+                  </div>
+                  <a href="{% url 'checkout_user' %}" class="btn animate">Оформить</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="header-inner">
+    <div class="container">
+      <div class="cat-nav-head">
+        <div class="row">
+          <div class="col-lg-3">
+            <div class="all-category">
+              <a class="cd-dropdown-trigger" href="#0"><h3 class="cat-heading"><i class="fa fa-bars" aria-hidden="true"></i>Каталог</h3></a>
+              <div class="">
+          			<nav class="cd-dropdown">
+          				<ul class="cd-dropdown-content">
+                    {% for category in categories %}
+                        {% if category.parent == None %}
+                  					<li class="has-children">
+                  						<a title="{{ category.title }}" href="{{ category.get_absolute_url }}">{{ category.title }}</a>
+                  						<ul class="cd-secondary-dropdown is-hidden">
+                                  {% for s_category in categories %}
+                                      {% if category.id == s_category.parent.id  %}
+                            							<li class="has-children">
+                            								<a title="{{ s_category.title }}" href="{{ s_category.get_absolute_url }}">{{ s_category.title }}</a>
+
+                            								<ul class="is-hidden">
+                                                {% for s_s_category in categories %}
+                                                    {% if s_category.id == s_s_category.parent.id  %}
+                                      									<li><a title="{{ s_s_category.title }}" href="{{ s_s_category.get_absolute_url }}">{{ s_s_category.title }}</a></li>
+                                                    {% endif %}
+                                                {% endfor %}
+                            								</ul>
+                            							</li>
+                                      {% endif %}
+                                  {% endfor %}
+                  						</ul>
+                  					</li>
+                        {% endif %}
+                    {% endfor %}
+          				</ul>
+          			</nav>
+          		</div>
+            </div>
+          </div>
+          <div class="col-lg-9 col-12">
+            <div class="menu-area">
+              <nav class="navbar navbar-expand-lg">
+                <div class="navbar-collapse">
+                  <div class="nav-inner">
+                    <ul class="nav main-menu menu navbar-nav">
+                        <li><a href="{% url 'all_categories' %}">Каталог</a></li>
+                        <li><a href="{% url 'publication_category' id=1 %}">Новости</a></li>
+                        <li><a href="#">Покупателям<i class="ti-angle-down"></i></a>
+                          <ul class="dropdown">
+                            <li><a href="{% url 'payment' %}">Способы оплаты</a></li>
+                            <li><a href="{% url 'delivery' %}">Доставка</a></li>
+                            <!-- <li><a href="{% url 'refund' %}">Возврат</a></li> -->
+                            <li><a href="{% url 'warranty' %}">Гарантия</a></li>
+                          </ul>
+                        </li>
+                        <!-- <li><a href="#">Наши услуги<i class="ti-angle-down"></i></a>
+                          <ul class="dropdown">
+                            <li><a href="#">Монтаж под ключ</a></li>
+                            <li><a href="#">Проектирование</a></li>
+                          </ul>
+                        </li> -->
+                        <!-- <li><a href="#">Тех. поддержка<i class="ti-angle-down"></i></a>
+                          <ul class="dropdown">
+                            <li><a href="#">Сервисный центр</a></li>
+                            <li><a href="#">Техническая консультация</a></li>
+                          </ul>
+                        </li> -->
+                        <li><a href="#">О нас<i class="ti-angle-down"></i></a>
+                          <ul class="dropdown">
+                            <li><a href="{% url 'about_company' %}">О компании</a></li>
+                            <!-- <li><a href="{% url 'certificates' %}">Сертификаты</a></li> -->
+                            <li><a href="{% url 'partners' %}">Партнеры компании</a></li>
+                            <li><a href="{% url 'contacts' %}">Контакты</a></li>
+                          </ul>
+                        </li>
+                      </ul>
+                  </div>
+                </div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<a id="cart-mobile" href="{% url 'cart' %}"><i class="ti-bag"></i> <span class="total-count">{{ cart.total_products }}</span></a>
+<script type="text/javascript">
+  function myFunction2() {
+    var x = document.getElementById("shopping-item");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
+</script>

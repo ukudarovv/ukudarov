@@ -1,0 +1,138 @@
+{% extends 'index.html'%}
+{% load static %}
+{% block title %}
+    ESSK - Мой профиль
+{% endblock %}
+
+{% block content %}
+<div class="breadcrumbs">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="bread-inner">
+          <ul class="bread-list">
+            <li><a href="{% url 'main' %}">Главная<i class="ti-arrow-right"></i></a></li>
+            <li class="active">Мой профиль<i class="ti-arrow-right"></i></li>
+            <li class="active">Заказы</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="blog-single shop-blog grid section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 col-md-8 col-12">
+              <table class="table shopping-summery">
+                  <thead>
+                      <tr class="main-hading">
+                          <th>№</th>
+                          <th>Сумма</th>
+                          <th>Статус</th>
+                          <th>Дата</th>
+                          <th>Подробно</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      {% for item in orders %}
+                          <tr>
+                              <td class="product-des text-center" data-title="№">
+                                  {{ item.id }}
+                              </td>
+                              <td class="price text-center" data-title="Сумма"><span>{{ item.total_price }}₸</span></td>
+                              <td class="price text-center" data-title="Статус"><span>{{ item.get_status_display }}</span></td>
+                              <td class="total-amount text-center" data-title="Дата"><span>{{ item.created_at }}</span></td>
+                              <td class="action text-center" data-title="Подробно"><a data-toggle="modal" data-target="#Modal{{ item.id }}" title="Quick View" href="#"><button class="btn" type="button" name="button">Подробно</button></a></td>
+                          </tr>
+                      {% endfor %}
+                  </tbody>
+              </table>
+            </div>
+            <div class="col-lg-3 col-md-4 col-12">
+                <div class="main-sidebar">
+                    <div class="single-widget category">
+                        <h3 class="title">Меню</h3>
+                        <ul class="categor-list">
+                          <li><a href="{% url 'profile_edit' %}">Мой профиль</a></li>
+                          <li><a href="{% url 'profile_orders' %}">Заказы</a></li>
+                          <!-- <li><a href="#">Рассылка</a></li> -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% for item in orders %}
+    <div class="modal fade" id="Modal{{ item.id }}" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="ti-close" aria-hidden="true"></span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row no-gutters">
+                        <div class="col-lx-11 col-md-11 col-11 mt-3 ml-5">
+                            Заказ №{{ item.id }}
+                        </div>
+                        <div class="col-lx-11 col-md-11 col-11 mt-5 ml-5">
+                            <h4 class="text-center">Товары</h4>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Наименование</th>
+                                        <th scope="col">Цена</th>
+                                        <th scope="col">Кол-во</th>
+                                        <th scope="col">Общая цена</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for p_item in order_products %}
+                                        {% if p_item.order.id == item.id %}
+                                            <tr>
+                                                <th scope="row">
+                                                    <a href="{{ p_item.product.get_absolute_url }}">
+                                                        {{ p_item.product.title }}
+                                                    </a>
+                                                </th>
+                                                <td>
+                                                    <strong>{{ p_item.product.price }}</strong>₸
+                                                </td>
+                                                <td>{{ p_item.qty }}</td>
+                                                <td>{{ p_item.total_price }}₸</td>
+                                            </tr>
+                                        {% endif %}
+                                    {% endfor %}
+                                    <tr>
+                                        <td colspan="1"></td>
+                                        <td>Итого:</td>
+                                        <td>{{ item.total_products }}</td>
+                                        <td><strong>{{ item.total_price }}</strong>₸</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <hr>
+                            <div class="pb-5">
+                              <h4 class="text-center">Дополнительная информация</h4>
+                              <p>Тип плательщика: <strong>{{ item.get_type_display }}</strong></p>
+                              <p>Контактное лицо: <strong>{{ item.person }}</strong></p>
+                              <p>Моб. телефон: <strong>{{ item.phone }}</strong></p>
+                              <p>Эл. почта: <strong>{{ item.email }}</strong></p>
+                              <p>Адрес: <strong>{{ item.country.title }}, {{ item.area.title }}, {{ item.city.title }}, {{ item.address }}</strong></p>
+                              <p>Тип оплаты: <strong>{{ item.payment.title }}</strong></p>
+                              <p>Статус заказ: <strong>{{ item.get_status_display }}</strong></p>
+                              <p>Дата оформления: <strong>{{ item.created_at }}</strong></p>
+                              <p>Комментарий к заказу: <strong>{% if item.comment %}{{ item.comment }}{% else %}Нет{% endif %}</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+
+{% endblock %}

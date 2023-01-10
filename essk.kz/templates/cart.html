@@ -1,0 +1,127 @@
+{% extends 'index.html'%}
+{% load static %}
+{% block title %}
+    ESSK - Корзина
+{% endblock %}
+
+{% block content %}
+<!-- Breadcrumbs -->
+<div class="breadcrumbs">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="bread-inner">
+          <ul class="bread-list">
+            <li><a href="{% url 'main' %}">Главная<i class="ti-arrow-right"></i></a></li>
+            <li class="active"><a href="#">Корзина</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Breadcrumbs -->
+
+<!-- Shopping Cart -->
+<div class="shopping-cart section">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <!-- Shopping Summery -->
+        <table class="table shopping-summery">
+          <thead>
+            <tr class="main-hading">
+              <th>Товар</th>
+              <th>Название</th>
+              <th class="text-center">Цена</th>
+              <th class="text-center">Количество</th>
+              <th class="text-center">Итог</th>
+              <th class="text-center"><i class="ti-trash remove-icon"></i></th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in cart_products %}
+                <tr>
+                  <td class="image">
+                    <img src="{% if item.product.image %}
+                                  {{ item.product.image.url }}
+                              {% else %}
+                                  {% static 'images/no_image.jpg' %}
+                              {% endif %}" alt="#">
+                  </td>
+                  <td class="product-des" data-title="Название">
+                    <p class="product-name"><a href="{{ item.product.get_absolute_url }}">{{ item.product.title }}</a></p>
+                    <p class="product-des">{{ item.product.m_description }}</p>
+                  </td>
+                  <td class="price" data-title="Цена">
+                    <span>
+                      {% if item.product.price > 0 %}
+                          {{ item.product.price }}₸
+                      {% elif item.product.price == 0 %}
+                          Нет цены
+                      {% endif %}
+                        {% if item.product.new_price > 0 %}
+                          <span class="old">{{ item.product.price }}₸</span>
+                          <span>{{ item.product.new_price }}₸</span>
+                        {% endif %}
+                    </span>
+                  </td>
+                  <td class="qty" data-title="Кол."><!-- Input Order -->
+                    <div class="input-group">
+                      <form action="{% url 'cart_update' id=item.id %}" method="POST">
+                        {% csrf_token %}
+                        <input type="text" name="qty" class="input-number" data-min="1" data-max="200" value="{{ item.qty }}">
+                        <div class="button plus">
+                          <button name="submit" type="submit" class="btn btn-primary">
+                            <i class="ti-reload"></i>
+                          </button>
+                        </div>
+                      </form>
+                    </div>
+                    <!--/ End Input Order -->
+                  </td>
+                  <td class="total-amount" data-title="Итог"><span>{{ item.total_price }}₸</span></td>
+                  <td class="action"><a href="{% url 'remove_from_cart' id=item.id %}"><i class="ti-trash remove-icon"></i></a></td>
+                </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <!--/ End Shopping Summery -->
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <!-- Total Amount -->
+        <div class="total-amount">
+          <div class="row">
+            <div class="col-lg-8 col-md-5 col-12">
+              <div class="left">
+                <div class="coupon">
+                  <form action="#" target="_blank">
+                    <input name="Coupon" placeholder="Промокод">
+                    <button class="btn">Применить</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-7 col-12">
+              <div class="right">
+                <ul>
+                  <li>Кол. товаров<span>{{ cart.total_products }} шт.</span></li>
+                  <li>НДС <span>{{ nds }}₸</span> <br><small>(12% включен в цену)</small></li>
+                  <li class="last">Итог<span>{{ cart.total_price }},00₸</span></li>
+                </ul>
+                <div class="button5">
+                  <a href="{% url 'checkout_user' %}" class="btn">Оформить заказ</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--/ End Total Amount -->
+      </div>
+    </div>
+  </div>
+</div>
+<!--/ End Shopping Cart -->
+{% endblock %}

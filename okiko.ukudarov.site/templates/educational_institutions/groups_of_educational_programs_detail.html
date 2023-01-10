@@ -1,0 +1,87 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block title %}
+    Okiko - Группа образовательных программ {{ groups_of_educational_programs.title }}
+{% endblock %}
+{% block content %}
+<div class="_216b01">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-10">
+                <div class="section3125 rpt145">
+                    <div class="row">
+                        <div class="col-lg-7">
+                            <div class="dp_dt150">
+                                <div class="prfledt1">
+                                    <h2>{{ groups_of_educational_programs.code }} {{ groups_of_educational_programs.title }}</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="_215b15">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="course_tabs">
+                    <nav>
+                        <div class="nav nav-tabs tab_crse" id="nav-tab" role="tablist">
+                            <a class="nav-item nav-link active" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-selected="true">Основная информация</a>
+                            <a class="nav-item nav-link" id="nav-courses-tab" data-toggle="tab" href="#nav-courses" role="tab" aria-selected="false">Образовательные программы</a>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="_215b17">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="course_tab_content">
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade active show" id="nav-about" role="tabpanel">
+                            <div class="_htg451">
+                                <div class="_htg452">
+                                    <h6>Академическая степень:</h6>
+                                    <span>{{ groups_of_educational_programs.scientific_degrees.title }}</span>
+                                    <hr>
+                                    <h6>Область образования:</h6>
+                                    <span>{{ groups_of_educational_programs.areas_of_education.code }} {{ groups_of_educational_programs.areas_of_education.title }}</span>
+                                    <hr>
+                                    <h6>Направление подготовки:</h6>
+                                    <span>{{ groups_of_educational_programs.areas_of_training.code }} {{ groups_of_educational_programs.areas_of_training.title }}</span>
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="nav-courses" role="tabpanel">
+                            <div class="certicates">
+                                <div class="row">
+                                    {% for item in educational_programs %}
+                                        <div class="fcrse_1 mt-30">
+                                            <div class="hs_content">
+                                                <a href="{{ item.get_absolute_url }}" class="crse14s title900">{{ item.code }} {{ item.title }}</a>
+                                                <a href="#" class="crse-cate">{{ item.university }}</a>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

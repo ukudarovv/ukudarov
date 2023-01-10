@@ -1,0 +1,99 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block title %}
+    Okiko - Образовательная программа {{ educational_programs.title }}
+{% endblock %}
+{% block content %}
+<div class="_216b01">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-10">
+                <div class="section3125 rpt145">
+                    <div class="row">
+                        <div class="col-lg-9">
+                            <div class="dp_dt150">
+                                <div class="prfledt1">
+                                    <h2>{{ educational_programs.code }} {{ educational_programs.title }} в {{ educational_programs.university.abbreviation }}</h2>
+                                    <a href="{% url 'applications_for_admission' id=educational_programs.id %}">
+                                        <button class="studio-link-btn btn500">Оставить заявку на поступление</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="_215b15">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="course_tabs">
+                    <nav>
+                        <div class="nav nav-tabs tab_crse" id="nav-tab" role="tablist">
+                            <a class="nav-item nav-link active" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-selected="true">Общие сведения</a>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="_215b17">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="course_tab_content">
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade active show" id="nav-about" role="tabpanel">
+                            <div class="_htg451">
+                                <div class="_htg452">
+                                    <h6>Цена за год:</h6>
+                                    <span>{{ educational_programs.price }} тг.</span>
+                                    <hr>
+                                    <h6>Цель образовательной программы:</h6>
+                                    <span>{{ educational_programs.description }}</span>
+                                    <hr>
+                                    <h6>Академическая степень:</h6>
+                                    <span>{{ educational_programs.scientific_degrees.title }}</span>
+                                    <hr>
+                                    <h6>Языки обучения:</h6>
+                                    <span>{{ educational_programs.languages_of_instruction }}</span>
+                                    <hr>
+                                    <h6>ВУЗ:</h6>
+                                    <span>{{ educational_programs.university.title }}</span>
+                                    <hr>
+                                    <h6>Срок обучения:</h6>
+                                    <span>{{ educational_programs.duration_of_training }}</span>
+                                    <hr>
+                                    <h6>Объем кредитов:</h6>
+                                    <span>{{ educational_programs.volume_of_loans }}</span>
+                                    <hr>
+                                    <h6>Группа образовательных программ:</h6>
+                                    <span>{{ educational_programs.groups_of_educational_programs.title }}</span>
+                                    <hr>
+                                    <h6>Профильные предметы на ЕНТ:</h6>
+                                    <span>{{ educational_programs.unt_subjects.title }}</span>
+                                    <hr>
+                                    <h6>Область образования:</h6>
+                                    <span>{{ educational_programs.areas_of_education.code }} {{ educational_programs.areas_of_education.title }}</span>
+                                    <hr>
+                                    <h6>Направление подготовки:</h6>
+                                    <span>{{ educational_programs.areas_of_training.code }} {{ educational_programs.areas_of_training.title }}</span>
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Dina Atyrau - Оформить заказ
+{% endblock %}
+{% block description %}
+    Дина Атырау - Оформить заказ
+{% endblock %}
+{% block content %}
+<div class="breadcrumb-area breadcrumb-mt breadcrumb-ptb-2">
+    <div class="container">
+        <div class="breadcrumb-content">
+            <h2>Оформить заказ</h2>
+            <ul>
+                <li>
+                    <a href="{% url 'base' %}">Главная </a>
+                </li>
+                <li><span> > </span></li>
+                <li>
+                    <a href="{% url 'cart' %}">Корзина </a>
+                </li>
+                <li><span> > </span></li>
+                <li class="active"> Оформить заказ </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="checkout-area bg-gray">
+    <div class="container">
+      <form action="{% url 'make_order' %}" method="POST">
+          <div class="row">
+              <div class="col-lg-6">
+                  <div class="checkout-left-wrap">
+
+                      {% csrf_token %}
+                      {{ form|crispy }}
+
+
+                  </div>
+              </div>
+              <div class="col-lg-6">
+                  <div class="payment-details mb-40">
+                      <h4 class="checkout-title">Товары в заказе</h4>
+                      <ul>
+                        {% for item in cart.products.all %}
+                          <li>{{ item.product.title }} <span>{{ item.product.price }}₸ x {{ item.qty }}</span></li>
+                        {% endfor %}
+                      </ul>
+                      <div class="total-order">
+                          <ul>
+                              <li>Итого: <span>{{ cart.final_price }}₸</span></li>
+                          </ul>
+                      </div>
+                  </div>
+                  <button type="submit" class="btn btn-success btn-block mb-3" name="button">Оформить заказ</button>
+              </div>
+          </div>
+        </form>
+        <div class="back-continue-wrap">
+            <a href="{% url 'cart' %}">В корзину</a>
+        </div>
+    </div>
+</div>
+{% endblock content %}

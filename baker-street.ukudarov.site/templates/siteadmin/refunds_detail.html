@@ -1,0 +1,229 @@
+{% extends 'siteadmin/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block title %}
+   Администрирование  Baker Street
+{% endblock %}
+{% block content %}
+<style media="screen">
+  table {
+border: 1px solid #ccc;
+border-collapse: collapse;
+margin: 0;
+padding: 0;
+width: 100%;
+table-layout: fixed;
+}
+
+table caption {
+font-size: 1.5em;
+margin: .5em 0 .75em;
+}
+
+table tr {
+background-color: #f8f8f8;
+border: 1px solid #ddd;
+padding: .35em;
+}
+
+table th,
+table td {
+padding: .625em;
+text-align: center;
+}
+
+table th {
+font-size: .85em;
+letter-spacing: .1em;
+text-transform: uppercase;
+}
+
+@media screen and (max-width: 600px) {
+table {
+  border: 0;
+}
+
+table caption {
+  font-size: 1.3em;
+}
+
+table thead {
+  border: none;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+table tr {
+  border-bottom: 3px solid #ddd;
+  display: block;
+  margin-bottom: .625em;
+}
+
+table td {
+  border-bottom: 1px solid #ddd;
+  display: block;
+  font-size: .8em;
+  text-align: right;
+}
+
+table td::before {
+  /*
+  * aria-label has no advantage, it won't be read inside a table
+  content: attr(aria-label);
+  */
+  content: attr(data-label);
+  float: left;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+table td:last-child {
+  border-bottom: 0;
+}
+td:nth-of-type(1):before { content: "Возврат №"; }
+td:nth-of-type(2):before { content: "Сумма"; }
+td:nth-of-type(3):before { content: "Дата"; }
+td:nth-of-type(4):before { content: "Подробно"; }
+
+.dop td:nth-of-type(1):before { content: "Наименование"; }
+.dop td:nth-of-type(2):before { content: "Цена"; }
+.dop td:nth-of-type(3):before { content: "Кол-во"; }
+.dop td:nth-of-type(4):before { content: "Общая цена"; }
+}
+
+  }
+</style>
+<div class="my-account-wrapper pt-200 pb-160">
+    <div class="container">
+        <div class="row pt-20">
+            <div class="col-lg-12">
+                <div class="myaccount-page-wrapper">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4">
+                            <div class="myaccount-tab-menu nav" role="tablist">
+                              <a href="{% url 'admin_base' %}">Главная</a>
+                              <a href="{% url 'next_prepared_products' %}">Товары на завтра</a>
+                              <a href="{% url 'admin_orders' %}">Заказы</a>
+                              <a href="{% url 'admin_realization_orders' %}">Заказы (Под реализацию)</a>
+                              <a href="{% url 'admin_refunds' %}">Возвраты</a>
+                              <a href="{% url 'admin_stocks' %}">Акции</a>
+                              <a href="{% url 'admin_products' %}">Товары</a>
+                              <a href="{% url 'admin_categories' %}">Категории</a>
+                              <a href="{% url 'admin_deliveryman' %}">Доставщики</a>
+                              <a href="{% url 'admin_shops' %}">Магазины</a>
+                              <a href="{% url 'admin_users' %}">Пользователи</a>
+                              <a href="{% url 'admin_shop_admins' %}">Администраторы магазинов</a>
+                              <a href="{% url 'admin_all_pay_inv' %}">Счета на оплату</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-9 col-md-8">
+                            <div class="tab-content" id="myaccountContent">
+                                <div class="tab-pane fade show active" id="dashboad" role="tabpanel">
+                                    <div class="myaccount-content">
+                                      <div class="row">
+                                          <div class="col-md-12">
+                                              <h3 style="border-bottom: 0 !important;">Возвраты магазина</h3>
+                                          </div>
+                                      </div>
+                                      <div class="row">
+                                          <div class="col-md-12">
+                                              <div class="col-md-12">
+                                                  <table role="table">
+                                                      <thead role="rowgroup">
+                                                          <tr role="row">
+                                                            <th role="columnheader">Заказ №</th>
+                                                            <th role="columnheader">Сумма</th>
+                                                            <th role="columnheader">Дата</th>
+                                                            <th role="columnheader">Подробно</th>
+                                                          </tr>
+                                                      </thead>
+                                                      <tbody role="rowgroup">
+                                                          {% for item in refunds %}
+                                                              <tr role="row">
+                                                                <td role="cell">{{ item.id }}</td>
+                                                                <td role="cell">{{ item.total_price }}₸</td>
+                                                                <td role="cell">{{ item.created_at }}</td>
+                                                                <td role="cell">
+                                                                  <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal-{{ item.id }}">
+                                                                      Перейти
+                                                                  </button>
+                                                                  <div class="modal fade" id="exampleModal-{{ item.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                      <div class="modal-dialog modal-lg">
+                                                                          <div class="modal-content">
+                                                                              <div class="modal-header">
+                                                                                  <h5 class="modal-title" id="exampleModalLabel">Детализация возврата {{ item.id }}</h5>
+                                                                                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x"></i></button>
+                                                                              </div>
+                                                                              <div class="modal-body">
+                                                                                  <h4 class="text-center">Товары</h4>
+                                                                                  <table class="table">
+                                                                                      <thead>
+                                                                                          <tr>
+                                                                                              <th scope="col">Наименование</th>
+                                                                                              <th scope="col">Цена</th>
+                                                                                              <th scope="col">Кол-во</th>
+                                                                                              <th scope="col">Общая цена</th>
+                                                                                          </tr>
+                                                                                      </thead>
+                                                                                      <tbody class="dop">
+                                                                                            {% for item_p in refund_products %}
+                                                                                              {% if item_p.refund.id == item.id  %}
+                                                                                                  <tr>
+                                                                                                      <td>
+                                                                                                          {{ item_p.product.title }}
+                                                                                                      </td>
+                                                                                                      <td>
+                                                                                                          <strong>{{ item_p.product.price }}</strong>₸
+                                                                                                      </td>
+                                                                                                      <td>{{ item_p.qty }}</td>
+                                                                                                      <td>{{ item_p.total_price }}₸</td>
+                                                                                                  </tr>
+                                                                                              {% endif %}
+                                                                                            {% endfor %}
+                                                                                      </tbody>
+                                                                                  </table>
+                                                                                  <div>
+                                                                                    <div class="container text-right">
+                                                                                        Итого: <strong>{{ item.total_price }}</strong>₸
+                                                                                    </div>
+                                                                                  </div>
+                                                                                  <hr>
+                                                                                  <h4 class="text-center">Дополнительная информация</h4>
+                                                                                  <div class="text-left">
+                                                                                      <p>Заказчик: <strong>{{ item.buyer_shop.title }}</strong></p>
+                                                                                      <p>Дата оформления: <strong>{{ item.created_at }}</strong></p>
+                                                                                      <p>Комментарий к заказу: <strong>{% if item.comment %}{{ item.comment }}{% else %}Нет{% endif %}</strong></p>
+                                                                                  </div>
+                                                                              </div>
+                                                                              <div class="modal-footer">
+                                                                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                                                                              </div>
+                                                                          </div>
+                                                                      </div>
+                                                                  </div>
+                                                                </td>
+
+                                                              </tr>
+                                                          {% endfor %}
+                                                      </tbody>
+                                                  </table>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+{% endblock content %}

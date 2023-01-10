@@ -1,0 +1,790 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	  <meta name='copyright' content=''>
+	  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta property="og:url" content="https://essk.kz">
+    <meta property="og:title" content="ESSK - Expert Security Systems Kazakhstan">
+    <meta property="og:type" content="website">
+    <link rel="canonical" href="https://essk.kz">
+    <meta name="yandex-verification" content="7d9d7d8f435e6607" />
+    <meta name="facebook-domain-verification" content="1pw4ny5983994xquel7718b9zxpggo" />
+
+    <meta name="description" content="
+                                        С 2009 года компания «Expert Security Systems Kazakhstan » специализируется на поставке комплексных систем безопасности и пожаротушения, а также осуществляет электромонтажные работы, индивидуальные проекты «под ключ» для узкоспециализированных производственных и коммерческих организаций.
+                                        {% block description %}
+                                        {% endblock %}
+                                      ">
+    <meta name="keywords" content="
+                                        ESSK, essk, expert security systems kazakhstan, expert, security, systems, kazakhstan, atyrau, ajax, Hikvision, hilook, hiwatch, ax-pro, bolid, intant, zilant, video, audio, slinex, paritet, perco, itc, ironlogic, macroscop, andgood, ezcvi, dahua, wd, western digital, stelberry, seagate, utepo, kcep, anviz, rubezh,
+                                      ">
+
+    <title>
+        {% block title %}
+            ESSK - Expert Security Systems Kazakhstan - Главная страница
+        {% endblock %}
+    </title>
+
+
+  	<link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}">
+    <link rel="apple-touch-icon" href="{% static 'images/favicon.png' %}">
+  	<!-- Web Font -->
+  	<link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
+
+  	<!-- StyleSheet -->
+
+  	<!-- Bootstrap -->
+  	<link rel="stylesheet" href="{% static 'menu/css/style.css' %}">
+  	<script src="{% static 'menu/js/modernizr.js' %}"></script>
+
+  	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+  	<!-- Magnific Popup -->
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.min.css' %}">
+  	<!-- Font Awesome -->
+    <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
+  	<!-- Fancybox -->
+  	<link rel="stylesheet" href="{% static 'css/jquery.fancybox.min.css' %}">
+  	<!-- Themify Icons -->
+    <link rel="stylesheet" href="{% static 'css/themify-icons.css' %}">
+  	<!-- Nice Select CSS -->
+    <link rel="stylesheet" href="{% static 'css/niceselect.css' %}">
+  	<!-- Animate CSS -->
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+  	<!-- Flex Slider CSS -->
+    <link rel="stylesheet" href="{% static 'css/flex-slider.min.css' %}">
+  	<!-- Owl Carousel -->
+    <link rel="stylesheet" href="{% static 'css/owl-carousel.css' %}">
+  	<!-- Slicknav -->
+    <link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}">
+
+  	<!-- Eshop StyleSheet -->
+  	<link rel="stylesheet" href="{% static 'css/reset.css' %}">
+  	<link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+<body class="js">
+
+
+
+    {% include "inc/header.html" %}
+
+    {% block content %}
+
+    <section class="hero-area4">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="home-slider-4 owl-carousel owl-theme owl-loaded">
+
+                {% for item in banners %}
+                    <div class="big-content">
+                      <a href="{{ item.url}}">
+                        <img src="{% if item.image %}
+                                      {{ item.image.url }}
+                                  {% else %}
+                                      {% static 'images/no_image.jpg' %}
+                                  {% endif %}" alt="">
+                      </a>
+                    </div>
+                {% endfor %}
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Start Midium Banner  -->
+    <section class="midium-banner mt-5">
+      <div class="container">
+        <div class="row">
+          <!-- Single Banner  -->
+          <div class="col-lg-6 col-md-6 col-12 mb-5">
+            <div class="single-banner">
+                  <video autoplay playsinline muted loop id="myVideo" width="100%">
+                    <source src="{% static 'video/ax_pro.mp4' %}" type="video/mp4">
+                  </video>
+            </div>
+            <div class="text-center">
+                <h5><a target="_blank" href="{% url 'ax_pro' %}">Беспроводная система охраны <br><strong>AxPro</strong></a></h5>
+            </div>
+          </div>
+          <!-- /End Single Banner  -->
+          <!-- Single Banner  -->
+          <div class="col-lg-6 col-md-6 col-12">
+              <div class="single-banner">
+                    <video autoplay playsinline muted loop id="myVideo" width="100%">
+                      <source src="https://ajax.systems/cdn/index/first-block/showreel-animation.lg.mp4?1663000080" type="video/mp4">
+                    </video>
+              </div>
+              <div class="text-center">
+                  <h5><a target="_blank" href="https://essk.kz/category/124/">Беспроводная система охраны <br><strong>Ajax</strong></a></h5>
+              </div>
+          </div>
+          <!-- /End Single Banner  -->
+        </div>
+      </div>
+    </section>
+    <!-- End Midium Banner -->
+
+    <!-- <section class="cown-down">
+      <div class="section-inner ">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-6 col-12 padding-right">
+              <div class="image">
+                <video autoplay playsinline muted loop id="myVideo" width="100%">
+                  <source src="https://ajax.systems/cdn/index/first-block/showreel-animation.lg.mp4?1663000080" type="video/mp4">
+                </video>
+              </div>
+            </div>
+            <div class="col-lg-6 col-12 padding-left">
+              <div class="content">
+                <div class="heading-block">
+                  <h3 class="title">Беспроводная система охраны <br><strong>Ajax</strong></h3>
+                  <p class="text">Suspendisse massa leo, vestibulum cursus nulla sit amet, frungilla placerat lorem. Cars fermentum, sapien. </p>
+                  <a href=""><button class="btn">Узнать больше</button></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> -->
+
+  	<!-- Start Product Area -->
+    <div class="product-area section">
+            <div class="container">
+				<div class="row">
+					<div class="col-12">
+						<div class="section-title">
+							<h2>Наша продукция</h2>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12">
+						<div class="product-info">
+							<div class="nav-main">
+								<!-- Tab Nav -->
+								<ul class="nav nav-tabs" id="myTab" role="tablist">
+                  <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#new" role="tab">Новинки</a></li>
+									<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#productw" role="tab">Товар недели</a></li>
+									<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#offers" role="tab">Спецпредложения</a></li>
+									<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#sale" role="tab">Распродажа</a></li>
+								</ul>
+								<!--/ End Tab Nav -->
+							</div>
+							<div class="tab-content" id="myTabContent">
+
+                <div class="tab-pane fade show active" id="new" role="tabpanel">
+									<div class="tab-single">
+										<div class="row">
+                      {% for item in new_products %}
+                          <div class="col-xl-3 col-lg-4 col-md-4 col-6">
+                            <div class="single-product">
+                              <div class="product-img">
+                                <a href="{{ item.get_absolute_url }}">
+                                  <img class="default-img" src="{% if item.image %}
+                                                                    {{ item.image.url }}
+                                                                {% else %}
+                                                                    {% static 'images/no_image.jpg' %}
+                                                                {% endif %}" alt="#">
+                                  <img class="hover-img" src="{% if item.image %}
+                                                                  {{ item.image.url }}
+                                                              {% else %}
+                                                                  {% static 'images/no_image.jpg' %}
+                                                              {% endif %}" alt="#">
+                                </a>
+                                <div class="button-head">
+                                  <div class="product-action">
+                                    <a data-toggle="modal" data-target="#exampleModalNew{{ item.id }}" title="Quick View" href="#"><i class=" ti-eye"></i><span>Быстрый просмотр</span></a>
+                                    <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Избранное</span></a>
+                                    <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Сравнить</span></a>
+                                  </div>
+                                  <div class="product-action-2">
+                                    <a title="Add to cart" href="{% url 'add_to_cart' id=item.id %}">В корзину</a>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="product-content">
+                                <h3><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></h3>
+                                <div class="product-price">
+                                  <span>{{ item.price }}₸</span>
+                                  {% if item.new_price > 0 %}
+                                      <span class="old">{{ item.price }}₸</span>
+                                      <span>{{ item.new_price }}₸</span>
+                                  {% endif %}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                      {% endfor %}
+										</div>
+									</div>
+								</div>
+
+								<div class="tab-pane fade" id="productw" role="tabpanel">
+									<div class="tab-single">
+										<div class="row">
+                        {% for item in week_products %}
+                            <div class="col-xl-3 col-lg-4 col-md-4 col-6">
+                              <div class="single-product">
+                                <div class="product-img">
+                                  <a href="{{ item.get_absolute_url }}">
+                                    <img class="default-img" src="{% if item.image %}
+                                                                      {{ item.image.url }}
+                                                                  {% else %}
+                                                                      {% static 'images/no_image.jpg' %}
+                                                                  {% endif %}" alt="#">
+                                    <img class="hover-img" src="{% if item.image %}
+                                                                    {{ item.image.url }}
+                                                                {% else %}
+                                                                    {% static 'images/no_image.jpg' %}
+                                                                {% endif %}" alt="#">
+                                  </a>
+                                  <div class="button-head">
+                                    <div class="product-action">
+                                      <a data-toggle="modal" data-target="#exampleModalWeek{{ item.id }}" title="Quick View" href="#"><i class=" ti-eye"></i><span>Быстрый просмотр</span></a>
+                                      <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Избранное</span></a>
+                                      <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Сравнить</span></a>
+                                    </div>
+                                    <div class="product-action-2">
+                                      <a title="Add to cart" href="{% url 'add_to_cart' id=item.id %}">В корзину</a>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="product-content">
+                                  <h3><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></h3>
+                                  <div class="product-price">
+                                    <span>{{ item.price }}₸</span>
+                                    {% if item.new_price > 0 %}
+                                        <span class="old">{{ item.price }}₸</span>
+          															<span>{{ item.new_price }}₸</span>
+                                    {% endif %}
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                        {% endfor %}
+										</div>
+									</div>
+								</div>
+
+								<div class="tab-pane fade" id="offers" role="tabpanel">
+									<div class="tab-single">
+										<div class="row">
+                      {% for item in offers_products %}
+                          <div class="col-xl-3 col-lg-4 col-md-4 col-6">
+                            <div class="single-product">
+                              <div class="product-img">
+                                <a href="{{ item.get_absolute_url }}">
+                                  <img class="default-img" src="{% if item.image %}
+                                                                    {{ item.image.url }}
+                                                                {% else %}
+                                                                    {% static 'images/no_image.jpg' %}
+                                                                {% endif %}" alt="#">
+                                  <img class="hover-img" src="{% if item.image %}
+                                                                  {{ item.image.url }}
+                                                              {% else %}
+                                                                  {% static 'images/no_image.jpg' %}
+                                                              {% endif %}" alt="#">
+                                </a>
+                                <div class="button-head">
+                                  <div class="product-action">
+                                    <a data-toggle="modal" data-target="#exampleModalOffers{{ item.id }}" title="Quick View" href="#"><i class=" ti-eye"></i><span>Быстрый просмотр</span></a>
+                                    <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Избранное</span></a>
+                                    <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Сравнить</span></a>
+                                  </div>
+                                  <div class="product-action-2">
+                                    <a title="Add to cart" href="{% url 'add_to_cart' id=item.id %}">В корзину</a>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="product-content">
+                                <h3><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></h3>
+                                <div class="product-price">
+                                  <span>{{ item.price }}₸</span>
+                                  {% if item.new_price > 0 %}
+                                      <span class="old">{{ item.price }}₸</span>
+                                      <span>{{ item.new_price }}₸</span>
+                                  {% endif %}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                      {% endfor %}
+										</div>
+									</div>
+								</div>
+
+								<div class="tab-pane fade" id="sale" role="tabpanel">
+									<div class="tab-single">
+										<div class="row">
+                        {% for item in sale_products %}
+                            <div class="col-xl-3 col-lg-4 col-md-4 col-6">
+                              <div class="single-product">
+                                <div class="product-img">
+                                  <a href="{{ item.get_absolute_url }}">
+                                    <img class="default-img" src="{% if item.image %}
+                                                                      {{ item.image.url }}
+                                                                  {% else %}
+                                                                      {% static 'images/no_image.jpg' %}
+                                                                  {% endif %}" alt="#">
+                                    <img class="hover-img" src="{% if item.image %}
+                                                                    {{ item.image.url }}
+                                                                {% else %}
+                                                                    {% static 'images/no_image.jpg' %}
+                                                                {% endif %}" alt="#">
+                                  </a>
+                                  <div class="button-head">
+                                    <div class="product-action">
+                                      <a data-toggle="modal" data-target="#exampleModalSale{{ item.id }}" title="Quick View" href="#"><i class=" ti-eye"></i><span>Быстрый просмотр</span></a>
+                                      <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Избранное</span></a>
+                                      <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Сравнить</span></a>
+                                    </div>
+                                    <div class="product-action-2">
+                                      <a title="Add to cart" href="{% url 'add_to_cart' id=item.id %}">В корзину</a>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="product-content">
+                                  <h3><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></h3>
+                                  <div class="product-price">
+                                    <span>{{ item.price }}₸</span>
+                                    {% if item.new_price > 0 %}
+                                        <span class="old">{{ item.price }}₸</span>
+                                        <span>{{ item.new_price }}₸</span>
+                                    {% endif %}
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                        {% endfor %}
+										</div>
+									</div>
+								</div>
+
+
+							</div>
+						</div>
+					</div>
+				</div>
+      </div>
+    </div>
+  	<!-- End Product Area -->
+
+  	<section class="shop-blog section">
+  		<div class="container">
+  			<div class="row">
+  				<div class="col-12">
+  					<div class="section-title">
+  						<h2>Новости и мероприятия</h2>
+  					</div>
+  				</div>
+  			</div>
+  			<div class="row">
+          {% for item in publication %}
+      				<div class="col-lg-4 col-md-6 col-12">
+      					<div class="shop-single-blog">
+                  <img src="{% if item.image %}
+                                {{ item.image.url }}
+                            {% else %}
+                                {% static 'images/no_image.jpg' %}
+                            {% endif %}" alt="#">
+      						<div class="content">
+      							<p class="date">{{ item.created_at_date.date }}</p>
+      							<a href="{{ item.get_absolute_url }}" class="title">{{ item.title }}</a>
+      						</div>
+      					</div>
+      				</div>
+  				{% endfor %}
+
+  			</div>
+  		</div>
+  	</section>
+
+    {% for item in new_products %}
+        <div class="modal fade" id="exampleModalNew{{ item.id }}" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="ti-close" aria-hidden="true"></span></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row no-gutters">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                <div class="product-gallery">
+                                  <div class="quickview-slider-active">
+                                      <div class="single-slider">
+                                        <img src="{% if item.image %}
+                                                      {{ item.image.url }}
+                                                  {% else %}
+                                                      {% static 'images/no_image.jpg' %}
+                                                  {% endif %}" alt="#">
+                                      </div>
+                                  </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                <div class="quickview-content">
+                                    <h2>{{ item.title }}</h2>
+                                    <div class="quickview-ratting-review">
+                                        <div class="quickview-ratting-wrap">
+                                            <div class="quickview-ratting">
+                                                <i class="yellow fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                            <a href="#"> (0 Отзывы)</a>
+                                        </div>
+                                        <div class="quickview-stock">
+                                            <span><i class="fa fa-check-circle-o"></i> В наличии</span>
+                                        </div>
+                                    </div>
+                                    <h3>
+                                        {{ item.price }}₸
+                                        {% if item.new_price > 0 %}
+                                          <span class="old">{{ item.price }}₸</span>
+                                          <span>{{ item.new_price }}₸</span>
+                                        {% endif %}
+                                    </h3>
+                                    <div class="quickview-peragraph">
+                                        <p>{{ item.m_description }}</p>
+                                    </div>
+                                    <div class="add-to-cart mt-3">
+                                        <a href="{% url 'add_to_cart' id=item.id %}" class="btn">В корзину</a>
+                                        <a href="#" class="btn min"><i class="ti-heart"></i></a>
+                                        <a href="#" class="btn min"><i class="fa fa-compress"></i></a>
+                                    </div>
+                                    <div class="default-social">
+                                        <h4 class="share-now">Поделиться:</h4>
+                                        <ul>
+                                            <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                                            <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                                            <li><a class="youtube" href="#"><i class="fa fa-pinterest-p"></i></a></li>
+                                            <li><a class="dribbble" href="#"><i class="fa fa-google-plus"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+    {% for item in sale_products %}
+        <div class="modal fade" id="exampleModalSale{{ item.id }}" tabindex="-1" role="dialog">
+          <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="ti-close" aria-hidden="true"></span></button>
+                  </div>
+                  <div class="modal-body">
+                      <div class="row no-gutters">
+                          <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                              <div class="product-gallery">
+                                <div class="quickview-slider-active">
+                                    <div class="single-slider">
+                                      <img src="{% if item.image %}
+                                                    {{ item.image.url }}
+                                                {% else %}
+                                                    {% static 'images/no_image.jpg' %}
+                                                {% endif %}" alt="#">
+                                    </div>
+                                </div>
+                              </div>
+                          </div>
+                          <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                              <div class="quickview-content">
+                                  <h2>{{ item.title }}</h2>
+                                  <div class="quickview-ratting-review">
+                                      <div class="quickview-ratting-wrap">
+                                          <div class="quickview-ratting">
+                                              <i class="yellow fa fa-star"></i>
+                                              <i class="fa fa-star"></i>
+                                              <i class="fa fa-star"></i>
+                                              <i class="fa fa-star"></i>
+                                              <i class="fa fa-star"></i>
+                                          </div>
+                                          <a href="#"> (0 Отзывы)</a>
+                                      </div>
+                                      <div class="quickview-stock">
+                                          <span><i class="fa fa-check-circle-o"></i> В наличии</span>
+                                      </div>
+                                  </div>
+                                  <h3>
+                                      {{ item.price }}₸
+                                      {% if item.new_price > 0 %}
+                                        <span class="old">{{ item.price }}₸</span>
+                                        <span>{{ item.new_price }}₸</span>
+                                      {% endif %}
+                                  </h3>
+                                  <div class="quickview-peragraph">
+                                      <p>{{ item.m_description }}</p>
+                                  </div>
+                                  <div class="add-to-cart mt-3">
+                                      <a href="{% url 'add_to_cart' id=item.id %}" class="btn">В корзину</a>
+                                      <a href="#" class="btn min"><i class="ti-heart"></i></a>
+                                      <a href="#" class="btn min"><i class="fa fa-compress"></i></a>
+                                  </div>
+                                  <div class="default-social">
+                                      <h4 class="share-now">Поделиться:</h4>
+                                      <ul>
+                                          <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                                          <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                                          <li><a class="youtube" href="#"><i class="fa fa-pinterest-p"></i></a></li>
+                                          <li><a class="dribbble" href="#"><i class="fa fa-google-plus"></i></a></li>
+                                      </ul>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+    {% endfor %}
+
+    {% for item in week_products %}
+        <div class="modal fade" id="exampleModalWeek{{ item.id }}" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="ti-close" aria-hidden="true"></span></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row no-gutters">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                <div class="product-gallery">
+                                  <div class="quickview-slider-active">
+                                      <div class="single-slider">
+                                        <img src="{% if item.image %}
+                                                      {{ item.image.url }}
+                                                  {% else %}
+                                                      {% static 'images/no_image.jpg' %}
+                                                  {% endif %}" alt="#">
+                                      </div>
+                                  </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                <div class="quickview-content">
+                                    <h2>{{ item.title }}</h2>
+                                    <div class="quickview-ratting-review">
+                                        <div class="quickview-ratting-wrap">
+                                            <div class="quickview-ratting">
+                                                <i class="yellow fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                            <a href="#"> (0 Отзывы)</a>
+                                        </div>
+                                        <div class="quickview-stock">
+                                            <span><i class="fa fa-check-circle-o"></i> В наличии</span>
+                                        </div>
+                                    </div>
+                                    <h3>
+                                        {{ item.price }}₸
+                                        {% if item.new_price > 0 %}
+                                          <span class="old">{{ item.price }}₸</span>
+                                          <span>{{ item.new_price }}₸</span>
+                                        {% endif %}
+                                    </h3>
+                                    <div class="quickview-peragraph">
+                                        <p>{{ item.m_description }}</p>
+                                    </div>
+                                    <div class="add-to-cart mt-3">
+                                        <a href="{% url 'add_to_cart' id=item.id %}" class="btn">В корзину</a>
+                                        <a href="#" class="btn min"><i class="ti-heart"></i></a>
+                                        <a href="#" class="btn min"><i class="fa fa-compress"></i></a>
+                                    </div>
+                                    <div class="default-social">
+                                        <h4 class="share-now">Поделиться:</h4>
+                                        <ul>
+                                            <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                                            <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                                            <li><a class="youtube" href="#"><i class="fa fa-pinterest-p"></i></a></li>
+                                            <li><a class="dribbble" href="#"><i class="fa fa-google-plus"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+    {% for item in offers_products %}
+        <div class="modal fade" id="exampleModalOffers{{ item.id }}" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="ti-close" aria-hidden="true"></span></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row no-gutters">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                <div class="product-gallery">
+                                  <div class="quickview-slider-active">
+                                      <div class="single-slider">
+                                        <img src="{% if item.image %}
+                                                      {{ item.image.url }}
+                                                  {% else %}
+                                                      {% static 'images/no_image.jpg' %}
+                                                  {% endif %}" alt="#">
+                                      </div>
+                                  </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                <div class="quickview-content">
+                                    <h2>{{ item.title }}</h2>
+                                    <div class="quickview-ratting-review">
+                                        <div class="quickview-ratting-wrap">
+                                            <div class="quickview-ratting">
+                                                <i class="yellow fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                            <a href="#"> (0 Отзывы)</a>
+                                        </div>
+                                        <div class="quickview-stock">
+                                            <span><i class="fa fa-check-circle-o"></i> В наличии</span>
+                                        </div>
+                                    </div>
+                                    <h3>
+                                        {{ item.price }}₸
+                                        {% if item.new_price > 0 %}
+                                          <span class="old">{{ item.price }}₸</span>
+                                          <span>{{ item.new_price }}₸</span>
+                                        {% endif %}
+                                    </h3>
+                                    <div class="quickview-peragraph">
+                                        <p>{{ item.m_description }}</p>
+                                    </div>
+                                    <div class="add-to-cart mt-3">
+                                        <a href="{% url 'add_to_cart' id=item.id %}" class="btn">В корзину</a>
+                                        <a href="#" class="btn min"><i class="ti-heart"></i></a>
+                                        <a href="#" class="btn min"><i class="fa fa-compress"></i></a>
+                                    </div>
+                                    <div class="default-social">
+                                        <h4 class="share-now">Поделиться:</h4>
+                                        <ul>
+                                            <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                                            <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                                            <li><a class="youtube" href="#"><i class="fa fa-pinterest-p"></i></a></li>
+                                            <li><a class="dribbble" href="#"><i class="fa fa-google-plus"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+    {% endblock %}
+
+    {% include "inc/footer.html" %}
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11020020059"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-11020020059');
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-248686997-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-248686997-1');
+    </script>
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript" >
+       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+       m[i].l=1*new Date();
+       for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+       k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+       (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+       ym(91115801, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true,
+            webvisor:true,
+            ecommerce:"dataLayer"
+       });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/91115801" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+
+    <script src="{% static 'menu/js/jquery-2.1.1.js' %}"></script>
+    <script src="{% static 'menu/js/jquery.menu-aim.js' %}"></script>
+    <script src="{% static 'menu/js/main.js' %}"></script>
+	  <!-- Jquery -->
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/jquery-migrate-3.0.0.js' %}"></script>
+  	<script src="{% static 'js/jquery-ui.min.js' %}"></script>
+  	<!-- Popper JS -->
+  	<script src="{% static 'js/popper.min.js' %}"></script>
+  	<!-- Bootstrap JS -->
+  	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+  	<!-- Color JS -->
+  	<!-- <script src="{% static 'js/colors.js' %}"></script> -->
+  	<!-- Slicknav JS -->
+  	<script src="{% static 'js/slicknav.min.js' %}"></script>
+  	<!-- Owl Carousel JS -->
+  	<script src="{% static 'js/owl-carousel.js' %}"></script>
+  	<!-- Magnific Popup JS -->
+  	<script src="{% static 'js/magnific-popup.js' %}"></script>
+  	<!-- Waypoints JS -->
+  	<script src="{% static 'js/waypoints.min.js' %}"></script>
+  	<!-- Countdown JS -->
+  	<script src="{% static 'js/finalcountdown.min.js' %}"></script>
+  	<!-- Nice Select JS -->
+  	<script src="{% static 'js/nicesellect.js' %}"></script>
+  	<!-- Flex Slider JS -->
+  	<script src="{% static 'js/flex-slider.js' %}"></script>
+  	<!-- ScrollUp JS -->
+  	<script src="{% static 'js/scrollup.js' %}"></script>
+  	<!-- Onepage Nav JS -->
+  	<script src="{% static 'js/onepage-nav.min.js' %}"></script>
+  	<!-- Easing JS -->
+  	<script src="{% static 'js/easing.js' %}"></script>
+  	<!-- Active JS -->
+  	<script src="{% static 'js/active.js' %}"></script>
+
+    {% block javascript %}
+
+    {% endblock %}
+</body>
+</html>

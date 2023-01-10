@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Dina Atyrau - Добавление характеристик
+{% endblock %}
+
+{% block content %}
+
+<div class="my-account-wrapper bg-gray pt-200 pb-160">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="myaccount-page-wrapper">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4">
+                            {% include "inc/left_panel_profile.html" %}
+                        </div>
+                        <div class="col-lg-9 col-md-8">
+                            <div class="tab-content" id="myaccountContent">
+                                <div class="tab-pane fade show active" id="dashboad" role="tabpanel">
+                                    <div class="myaccount-content">
+                                      <div class="row">
+                                          <div class="col-md-12">
+                                              <h3>Добавление характеристик</h3>
+                                          </div>
+                                      </div>
+                                      <div class="row">
+                                          {% if messages %}
+                                              {% for message in messages %}
+                                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                                  <strong>{{ message }}</strong>
+                                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                  </button>
+                                                </div>
+                                              {% endfor %}
+                                          {% endif %}
+                                          <div class="col-md-12">
+                                              <form method='POST' enctype="multipart/form-data">
+                                                  {%csrf_token%}
+                                                  {{form|crispy}}
+                                                  <button name="submit" type="submit" class="btn btn-primary">Добавить</button>
+                                              </form>
+                                          </div>
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

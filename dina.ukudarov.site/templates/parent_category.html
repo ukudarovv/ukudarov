@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Dina Atyrau - {{ parent_category.name }}
+{% endblock %}
+{% block description %}
+    Дина Атырау - {{ parent_category.name }}
+{% endblock %}
+{% block content %}
+
+<div class="categori-banner-area section-padding-11 pt-40 mt-130 mb-50">
+    <div class="container-fluid">
+            <div class="row">
+              <div class="col-xl-3 col-lg-4 col-md-12">
+                  <div class="fashion-categore-list-2">
+                      <div class="fashion3-categori-title">
+                          <h3>Категории</h3>
+                      </div>
+                      <ul>
+                          {% for category in categories %}
+                              <li><a href="{{ category.get_absolute_url }}">{{ category.name }}</a></li>
+                          {% endfor %}
+                      </ul>
+                  </div>
+              </div>
+              <div class="col-xl-9 col-lg-8 col-md-12">
+                <div class="row">
+                  {% for item in parent_category.middlecategory_set.all %}
+                    <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6">
+                        <div class="blog-wrap mb-50">
+                            <div class="blog-img mb-20">
+                                <a href="{{ item.get_absolute_url }}">
+                                  <img src="{% if item.image %}
+                                                {{ item.image }}
+                                            {% else %}
+                                                {% static 'img/no_image.jpg' %}
+                                            {% endif %}
+                                             " alt=""></a>
+                            </div>
+                            <div class="blog-content text-center">
+                                <h3><a href="{{ item.get_absolute_url }}">{{ item.name }}</a></h3>
+                            </div>
+                        </div>
+                    </div>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+        </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,2895 @@
+{% load static %}
+<html>
+
+<head>
+  <meta http-equiv=Content-Type content="text/html; charset=windows-1251">
+  <meta name=ProgId content=Excel.Sheet>
+  <meta name=Generator content="Microsoft Excel 15">
+
+  <style id="XL_Styles">
+    @page {
+      margin: 0.1in 1in 0.1in 1in;
+      width: 1100px;
+      height: 800px;
+      size: landscape;
+      prince-shrink-to-fit: auto;
+    }
+
+    .img_podpis {
+      mso-ignore: vglayout;
+      position: absolute;
+      z-index: 1;
+      margin-left: -20px;
+      margin-top: -5px;
+      width: 190px;
+      height: 80px;
+    }
+
+    .img_pechat {
+      mso-ignore: vglayout;
+      position: absolute;
+      z-index: 2;
+      margin-left: -37px;
+      margin-top: -16px;
+      width: 210;
+      height: 180px;
+    }
+
+      {
+      mso-displayed-decimal-separator: "\,";
+      mso-displayed-thousand-separator: " ";
+    }
+
+    .xl1524138 {
+      padding: 0px;
+      mso-ignore: padding;
+      color: black;
+      font-size: 8.0pt;
+      font-weight: 400;
+      font-style: normal;
+      text-decoration: none;
+      font-family: Arial;
+      mso-generic-font-family: auto;
+      mso-font-charset: 0;
+      mso-number-format: General;
+      text-align: general;
+      vertical-align: bottom;
+      mso-background-source: auto;
+      mso-pattern: auto;
+      white-space: nowrap;
+    }
+
+    .xl6324138 {
+      padding: 0px;
+      mso-ignore: padding;
+      color: black;
+      font-size: 7.0pt;
+      font-weight: 400;
+      font-style: normal;
+      text-decoration: none;
+      font-family: Arial;
+      mso-generic-font-family: auto;
+      mso-font-charset: 0;
+      mso-number-format: General;
+      text-align: left;
+      vertical-align: bottom;
+      mso-background-source: auto;
+      mso-pattern: auto;
+      white-space: nowrap;
+    }
+
+    .xl6424138 {
+      padding: 0px;
+      mso-ignore: padding;
+      color: black;
+      font-size: 8.0pt;
+      font-weight: 400;
+      font-style: normal;
+      text-decoration: none;
+      font-family: Arial;
+      mso-generic-font-family: auto;
+      mso-font-charset: 0;
+      mso-number-format: General;
+      text-align: left;
+      vertical-align: bottom;
+      mso-background-source: auto;
+      mso-pattern: auto;
+      white-space: nowrap;
+    }
+
+    .xl6524138 {
+      padding: 0px;
+      mso-ignore: padding;
+      color: black;
+      font-size: 7.0pt;
+      font-weight: 400;
+      font-style: normal;
+      text-decoration: none;
+      font-family: Arial;
+      mso-generic-font-family: auto;
+      mso-font-charset: 0;
+      mso-number-format: General;
+      text-align: right;
+      vertical-align: bottom;
+      mso-background-source: auto;
+      mso-pattern: auto;
+      white-space: nowrap;
+    }
+
+    .xl6624138 {
+      padding: 0px;
+      mso-ignore: padding;
+      color: black;
+      font-size: 7.0pt;
+      font-weight: 400;
+      font-style: normal;
+      text-decoration: none;
+      font-family: Arial;
+      mso-generic-font-family: auto;
+      mso-font-charset: 0;
+      mso-number-format: General;
+      text-align: left;
+      vertical-align: top;
+      mso-background-source: auto;
+      mso-pattern: auto;
+      white-space: normal;
+    }
+
+    .xl6724138 {
+      padding: 0px;
+      mso-ignore: padding;
+      color: black;
+      font-size: 7.0pt;
+      font-weight: 400;
+      font-style: normal;
+      text-decoration: none;
+      font-family: Arial;
+      mso-generic-font-family: auto;
+      mso-font-charset: 0;
+      mso-number-format: General;
+      text-align: center;
+      vertical-align: bottom;
+      mso-background-source: auto;
+      mso-pattern: auto;
+      white-space: normal;
+    }
+
+    .xl6824138 {
+      padding: 0px;
+      mso-ignore: padding;
+      color: black;
+      font-size: 7.0pt;
+      font-weight: 700;
+      font-style: normal;
+      text-decoration: none;
+      font-family: Arial;
+      mso-generic-font-family: auto;
+      mso-font-charset: 0;
+      mso-number-format: General;
+      text-align: center;
+      vertical-align: bottom;
+      mso-background-source: auto;
+      mso-pattern: auto;
+      white-space: nowrap;
+    }
+
+    .xl6924138 {
+      padding: 0px;
+      mso-ignore: padding;
+      color: black;
+      font-size: 8.0pt;
+      font-weight: 400;
+      font-style: normal;
+      text-decoration: none;
+      font-family: Arial;
+      mso-generic-font-family: auto;
+      mso-font-charset: 0;
+      mso-number-format: General;
+      text-align: center;
+      vertical-align: middle;
+      mso-background-source: auto;
+      mso-pattern: auto;
+      white-space: normal;
+    }
+
+    .xl7024138 {
+      padding: 0px;
+      mso-ignore: padding;
+      color: black;
+      font-size: 8.0pt;
+      font-weight: 400;
+      font-style: normal;
+      text-decoration: none;
+      font-family: Arial;
+      mso-generic-font-family: auto;
+      mso-font-charset: 0;
+      mso-number-format: General;
+      text-align: left;
+      vertical-align: middle;
+      mso-background-source: auto;
+      mso-pattern: auto;
+      white-space: normal;
+    }
+
+    .xl7124138 {
+      padding: 0px;
+      mso-ignore: padding;
+      color: black;
+      font-size: 8.0pt;
+      font-weight: 400;
+      font-style: normal;
+      text-decoration: none;
+      font-family: Arial;
+      mso-generic-font-family: auto;
+      mso-font-charset: 0;
+      mso-number-format: General;
+      text-align: left;
+      vertical-align: bottom;
+      mso-background-source: auto;
+      mso-pattern: auto;
+      white-space: normal;
+    }
+
+    .xl7224138 {
+      padding: 0px;
+      mso-ignore: padding;
+      color: black;
+      font-size: 7.0pt;
+      font-weight: 400;
+      font-style: normal;
+      text-decoration: none;
+      font-family: Arial;
+      mso-generic-font-family: auto;
+      mso-font-charset: 0;
+      mso-number-format: General;
+      text-align: left;
+      vertical-align: bottom;
+      border-top: none;
+      border-right: .5pt solid black;
+      border-bottom: none;
+      border-left: none;
+      mso-background-source: auto;
+      mso-pattern: auto;
+      white-space: nowrap;
+    }
+
+    .xl7324138 {
+      padding: 0px;
+      mso-ignore: padding;
+      color: black;
+      font-size: 7.0pt;
+      font-weight: 400;
+      font-style: normal;
+      text-decoration: none;
+      font-family: Arial;
+      mso-generic-font-family: auto;
+      mso-font-charset: 0;
+      mso-number-format: General;
+      text-align: center;
+      vertical-align: bottom;
+      mso-background-source: auto;
+      mso-pattern: auto;
+      white-space: nowrap;
+    }
+
+    .xl7424138 {
+      padding: 0px;
+      mso-ignore: padding;
+      color: black;
+      font-size: 7.0pt;
+      font-weight: 700;
+      font-style: normal;
+      text-decoration: none;
+      font-family: Arial;
+      mso-generic-font-family: auto;
+      mso-font-charset: 0;
+      mso-number-format: General;
+      text-align: left;
+      vertical-align: bottom;
+      mso-background-source: auto;
+      mso-pattern: auto;
+      white-space: nowrap;
+    }
+
+    .xl7524138 {
+      padding: 0px;
+      mso-ignore: padding;
+      color: black;
+      font-size: 7.0pt;
+      font-weight: 400;
+      font-style: normal;
+      text-decoration: none;
+      font-family: Arial;
+      mso-generic-font-family: auto;
+      mso-font-charset: 0;
+      mso-number-format: General;
+      text-align: center;
+      vertical-align: bottom;
+      border-top: none;
+      border-right: none;
+      border-bottom: .5pt solid black;
+      border-left: none;
+      mso-background-source: auto;
+      mso-pattern: auto;
+      white-space: normal;
+    }
+
+    .xl7624138 {
+      padding: 0px;
+      mso-ignore: padding;
+      color: windowtext;
+      font-size: 8.0pt;
+      font-weight: 400;
+      font-style: normal;
+      text-decoration: none;
+      font-family: Arial;
+      mso-generic-font-family: auto;
+      mso-font-charset: 0;
+      mso-number-format: General;
+      text-align: general;
+      vertical-align: bottom;
+      border-top: none;
+      border-right: none;
+      border-bottom: .5pt solid black;
+      border-left: none;
+      mso-background-source: auto;
+      mso-pattern: auto;
+      white-space: nowrap;
+    }
+
+    .xl7724138 {
+      padding: 0px;
+      mso-ignore: padding;
+      color: black;
+      font-size: 7.0pt;
+      font-weight: 400;
+      font-style: italic;
+      text-decoration: none;
+      font-family: Arial;
+      mso-generic-font-family: auto;
+      mso-font-charset: 0;
+      mso-number-format: General;
+      text-align: center;
+      vertical-align: bottom;
+      border-top: .5pt solid black;
+      border-right: none;
+      border-bottom: none;
+      border-left: none;
+      mso-background-source: auto;
+      mso-pattern: auto;
+      white-space: nowrap;
+    }
+
+    .xl7824138 {
+      padding: 0px;
+      mso-ignore: padding;
+      color: windowtext;
+      font-size: 8.0pt;
+      font-weight: 400;
+      font-style: normal;
+      text-decoration: none;
+      font-family: Arial;
+      mso-generic-font-family: auto;
+      mso-font-charset: 0;
+      mso-number-format: General;
+      text-align: general;
+      vertical-align: bottom;
+      border-top: .5pt solid black;
+      border-right: none;
+      border-bottom: none;
+      border-left: none;
+      mso-background-source: auto;
+      mso-pattern: auto;
+      white-space: nowrap;
+    }
+
+    .xl7924138 {
+      padding: 0px;
+      mso-ignore: padding;
+      color: black;
+      font-size: 7.0pt;
+      font-weight: 400;
+      font-style: italic;
+      text-decoration: none;
+      font-family: Arial;
+      mso-generic-font-family: auto;
+      mso-font-charset: 0;
+      mso-number-format: General;
+      text-align: left;
+      vertical-align: bottom;
+      border-top: none;
+      border-right: none;
+      border-bottom: .5pt solid black;
+      border-left: none;
+      mso-background-source: auto;
+      mso-pattern: auto;
+      white-space: normal;
+    }
+
+    .xl8024138 {
+      padding: 0px;
+      mso-ignore: padding;
+      color: black;
+      font-size: 7.0pt;
+      font-weight: 400;
+      font-style: normal;
+      text-decoration: none;
+      font-family: Arial;
+      mso-generic-font-family: auto;
+      mso-font-charset: 0;
+      mso-number-format: General;
+      text-align: center;
+      vertical-align: bottom;
+      border-top: none;
+      border-right: none;
+      border-bottom: .5pt solid black;
+      border-left: none;
+      mso-background-source: auto;
+      mso-pattern: auto;
+      white-space: nowrap;
+    }
+
+    .xl8124138 {
+      padding: 0px;
+      mso-ignore: padding;
+      color: black;
+      font-size: 7.0pt;
+      font-weight: 400;
+      font-style: normal;
+      text-decoration: none;
+      font-family: Arial;
+      mso-generic-font-family: auto;
+      mso-font-charset: 0;
+      mso-number-format: Standard;
+      text-align: right;
+      vertical-align: middle;
+      border-top: .5pt solid black;
+      border-right: none;
+      border-bottom: .5pt solid black;
+      border-left: .5pt solid black;
+      mso-background-source: auto;
+      mso-pattern: auto;
+      white-space: normal;
+    }
+
+    .xl8224138 {
+      padding: 0px;
+      mso-ignore: padding;
+      color: windowtext;
+      font-size: 8.0pt;
+      font-weight: 400;
+      font-style: normal;
+      text-decoration: none;
+      font-family: Arial;
+      mso-generic-font-family: auto;
+      mso-font-charset: 0;
+      mso-number-format: General;
+      text-align: general;
+      vertical-align: bottom;
+      border-top: .5pt solid black;
+      border-right: none;
+      border-bottom: .5pt solid black;
+      border-left: none;
+      mso-background-source: auto;
+      mso-pattern: auto;
+      white-space: nowrap;
+    }
+
+    .xl8324138 {
+      padding: 0px;
+      mso-ignore: padding;
+      color: windowtext;
+      font-size: 8.0pt;
+      font-weight: 400;
+      font-style: normal;
+      text-decoration: none;
+      font-family: Arial;
+      mso-generic-font-family: auto;
+      mso-font-charset: 0;
+      mso-number-format: General;
+      text-align: general;
+      vertical-align: bottom;
+      border-top: .5pt solid black;
+      border-right: .5pt solid black;
+      border-bottom: .5pt solid black;
+      border-left: none;
+      mso-background-source: auto;
+      mso-pattern: auto;
+      white-space: nowrap;
+    }
+
+    .xl8424138 {
+      padding: 0px;
+      mso-ignore: padding;
+      color: black;
+      font-size: 7.0pt;
+      font-weight: 400;
+      font-style: normal;
+      text-decoration: none;
+      font-family: Arial;
+      mso-generic-font-family: auto;
+      mso-font-charset: 0;
+      mso-number-format: 0;
+      text-align: center;
+      vertical-align: middle;
+      border-top: .5pt solid black;
+      border-right: none;
+      border-bottom: .5pt solid black;
+      border-left: .5pt solid black;
+      mso-background-source: auto;
+      mso-pattern: auto;
+      white-space: normal;
+    }
+
+    .xl8524138 {
+      padding: 0px;
+      mso-ignore: padding;
+      color: black;
+      font-size: 7.0pt;
+      font-weight: 400;
+      font-style: normal;
+      text-decoration: none;
+      font-family: Arial;
+      mso-generic-font-family: auto;
+      mso-font-charset: 0;
+      mso-number-format: 0;
+      text-align: left;
+      vertical-align: middle;
+      border-top: .5pt solid black;
+      border-right: none;
+      border-bottom: .5pt solid black;
+      border-left: .5pt solid black;
+      mso-background-source: auto;
+      mso-pattern: auto;
+      white-space: normal;
+    }
+
+    .xl8624138 {
+      padding: 0px;
+      mso-ignore: padding;
+      color: black;
+      font-size: 7.0pt;
+      font-weight: 400;
+      font-style: normal;
+      text-decoration: none;
+      font-family: Arial;
+      mso-generic-font-family: auto;
+      mso-font-charset: 0;
+      mso-number-format: 0;
+      text-align: right;
+      vertical-align: middle;
+      border-top: .5pt solid black;
+      border-right: none;
+      border-bottom: .5pt solid black;
+      border-left: .5pt solid black;
+      mso-background-source: auto;
+      mso-pattern: auto;
+      white-space: normal;
+    }
+
+    .xl8724138 {
+      padding: 0px;
+      mso-ignore: padding;
+      color: black;
+      font-size: 7.0pt;
+      font-weight: 400;
+      font-style: normal;
+      text-decoration: none;
+      font-family: Arial;
+      mso-generic-font-family: auto;
+      mso-font-charset: 0;
+      mso-number-format: General;
+      text-align: left;
+      vertical-align: bottom;
+      border-top: none;
+      border-right: none;
+      border-bottom: .5pt solid black;
+      border-left: none;
+      mso-background-source: auto;
+      mso-pattern: auto;
+      white-space: nowrap;
+    }
+
+    .xl8824138 {
+      padding: 0px;
+      mso-ignore: padding;
+      color: black;
+      font-size: 7.0pt;
+      font-weight: 400;
+      font-style: normal;
+      text-decoration: none;
+      font-family: Arial;
+      mso-generic-font-family: auto;
+      mso-font-charset: 0;
+      mso-number-format: General;
+      text-align: center;
+      vertical-align: middle;
+      border-top: .5pt solid black;
+      border-right: none;
+      border-bottom: none;
+      border-left: none;
+      mso-background-source: auto;
+      mso-pattern: auto;
+      white-space: normal;
+    }
+
+    .xl8924138 {
+      padding: 0px;
+      mso-ignore: padding;
+      color: windowtext;
+      font-size: 8.0pt;
+      font-weight: 400;
+      font-style: normal;
+      text-decoration: none;
+      font-family: Arial;
+      mso-generic-font-family: auto;
+      mso-font-charset: 0;
+      mso-number-format: General;
+      text-align: general;
+      vertical-align: bottom;
+      border-top: .5pt solid black;
+      border-right: .5pt solid black;
+      border-bottom: none;
+      border-left: none;
+      mso-background-source: auto;
+      mso-pattern: auto;
+      white-space: nowrap;
+    }
+
+    .xl9024138 {
+      padding: 0px;
+      mso-ignore: padding;
+      color: windowtext;
+      font-size: 8.0pt;
+      font-weight: 400;
+      font-style: normal;
+      text-decoration: none;
+      font-family: Arial;
+      mso-generic-font-family: auto;
+      mso-font-charset: 0;
+      mso-number-format: General;
+      text-align: general;
+      vertical-align: bottom;
+      border-top: none;
+      border-right: .5pt solid black;
+      border-bottom: .5pt solid black;
+      border-left: none;
+      mso-background-source: auto;
+      mso-pattern: auto;
+      white-space: nowrap;
+    }
+
+    .xl9124138 {
+      padding: 0px;
+      mso-ignore: padding;
+      color: black;
+      font-size: 7.0pt;
+      font-weight: 400;
+      font-style: normal;
+      text-decoration: none;
+      font-family: Arial;
+      mso-generic-font-family: auto;
+      mso-font-charset: 0;
+      mso-number-format: General;
+      text-align: center;
+      vertical-align: middle;
+      border-top: .5pt solid black;
+      border-right: none;
+      border-bottom: .5pt solid black;
+      border-left: .5pt solid black;
+      mso-background-source: auto;
+      mso-pattern: auto;
+      white-space: normal;
+    }
+
+    .xl9224138 {
+      padding: 0px;
+      mso-ignore: padding;
+      color: black;
+      font-size: 7.0pt;
+      font-weight: 400;
+      font-style: normal;
+      text-decoration: none;
+      font-family: Arial;
+      mso-generic-font-family: auto;
+      mso-font-charset: 0;
+      mso-number-format: 0;
+      text-align: center;
+      vertical-align: bottom;
+      border-top: .5pt solid black;
+      border-right: none;
+      border-bottom: .5pt solid black;
+      border-left: .5pt solid black;
+      mso-background-source: auto;
+      mso-pattern: auto;
+      white-space: normal;
+    }
+
+    .xl9324138 {
+      padding: 0px;
+      mso-ignore: padding;
+      color: black;
+      font-size: 7.0pt;
+      font-weight: 400;
+      font-style: normal;
+      text-decoration: none;
+      font-family: Arial;
+      mso-generic-font-family: auto;
+      mso-font-charset: 0;
+      mso-number-format: General;
+      text-align: center;
+      vertical-align: middle;
+      border-top: .5pt solid black;
+      border-right: none;
+      border-bottom: none;
+      border-left: .5pt solid black;
+      mso-background-source: auto;
+      mso-pattern: auto;
+      white-space: normal;
+    }
+
+    .xl9424138 {
+      padding: 0px;
+      mso-ignore: padding;
+      color: windowtext;
+      font-size: 8.0pt;
+      font-weight: 400;
+      font-style: normal;
+      text-decoration: none;
+      font-family: Arial;
+      mso-generic-font-family: auto;
+      mso-font-charset: 0;
+      mso-number-format: General;
+      text-align: general;
+      vertical-align: bottom;
+      border-top: none;
+      border-right: none;
+      border-bottom: .5pt solid black;
+      border-left: .5pt solid black;
+      mso-background-source: auto;
+      mso-pattern: auto;
+      white-space: nowrap;
+    }
+
+    .xl9524138 {
+      padding: 0px;
+      mso-ignore: padding;
+      color: black;
+      font-size: 7.0pt;
+      font-weight: 400;
+      font-style: normal;
+      text-decoration: none;
+      font-family: Arial;
+      mso-generic-font-family: auto;
+      mso-font-charset: 0;
+      mso-number-format: 0;
+      text-align: center;
+      vertical-align: bottom;
+      border-top: .5pt solid black;
+      border-right: none;
+      border-bottom: .5pt solid black;
+      border-left: none;
+      mso-background-source: auto;
+      mso-pattern: auto;
+      white-space: normal;
+    }
+
+    .xl9624138 {
+      padding: 0px;
+      mso-ignore: padding;
+      color: black;
+      font-size: 7.0pt;
+      font-weight: 400;
+      font-style: normal;
+      text-decoration: none;
+      font-family: Arial;
+      mso-generic-font-family: auto;
+      mso-font-charset: 0;
+      mso-number-format: 0;
+      text-align: center;
+      vertical-align: middle;
+      border-top: .5pt solid black;
+      border-right: none;
+      border-bottom: .5pt solid black;
+      border-left: none;
+      mso-background-source: auto;
+      mso-pattern: auto;
+      white-space: normal;
+    }
+
+    .xl9724138 {
+      padding: 0px;
+      mso-ignore: padding;
+      color: black;
+      font-size: 7.0pt;
+      font-weight: 400;
+      font-style: normal;
+      text-decoration: none;
+      font-family: Arial;
+      mso-generic-font-family: auto;
+      mso-font-charset: 0;
+      mso-number-format: "\@";
+      text-align: center;
+      vertical-align: middle;
+      border-top: .5pt solid black;
+      border-right: none;
+      border-bottom: .5pt solid black;
+      border-left: .5pt solid black;
+      mso-background-source: auto;
+      mso-pattern: auto;
+      white-space: normal;
+    }
+
+    .xl9824138 {
+      padding: 0px;
+      mso-ignore: padding;
+      color: black;
+      font-size: 7.0pt;
+      font-weight: 400;
+      font-style: italic;
+      text-decoration: none;
+      font-family: Arial;
+      mso-generic-font-family: auto;
+      mso-font-charset: 0;
+      mso-number-format: General;
+      text-align: center;
+      vertical-align: bottom;
+      mso-background-source: auto;
+      mso-pattern: auto;
+      white-space: nowrap;
+    }
+
+    .xl9924138 {
+      padding: 0px;
+      mso-ignore: padding;
+      color: black;
+      font-size: 7.0pt;
+      font-weight: 400;
+      font-style: normal;
+      text-decoration: none;
+      font-family: Arial;
+      mso-generic-font-family: auto;
+      mso-font-charset: 0;
+      mso-number-format: General;
+      text-align: left;
+      vertical-align: bottom;
+      mso-background-source: auto;
+      mso-pattern: auto;
+      white-space: normal;
+    }
+
+    .xl10024138 {
+      padding: 0px;
+      mso-ignore: padding;
+      color: black;
+      font-size: 7.0pt;
+      font-weight: 700;
+      font-style: normal;
+      text-decoration: none;
+      font-family: Arial;
+      mso-generic-font-family: auto;
+      mso-font-charset: 0;
+      mso-number-format: General;
+      text-align: center;
+      vertical-align: bottom;
+      border-top: none;
+      border-right: none;
+      border-bottom: .5pt solid black;
+      border-left: none;
+      mso-background-source: auto;
+      mso-pattern: auto;
+      white-space: normal;
+    }
+
+    .xl10124138 {
+      padding: 0px;
+      mso-ignore: padding;
+      color: black;
+      font-size: 7.0pt;
+      font-weight: 700;
+      font-style: normal;
+      text-decoration: none;
+      font-family: Arial;
+      mso-generic-font-family: auto;
+      mso-font-charset: 0;
+      mso-number-format: "\@";
+      text-align: center;
+      vertical-align: middle;
+      border-top: .5pt solid black;
+      border-right: none;
+      border-bottom: .5pt solid black;
+      border-left: .5pt solid black;
+      mso-background-source: auto;
+      mso-pattern: auto;
+      white-space: nowrap;
+    }
+
+    .xl10224138 {
+      padding: 0px;
+      mso-ignore: padding;
+      color: black;
+      font-size: 7.0pt;
+      font-weight: 400;
+      font-style: normal;
+      text-decoration: none;
+      font-family: Arial;
+      mso-generic-font-family: auto;
+      mso-font-charset: 0;
+      mso-number-format: General;
+      text-align: center;
+      vertical-align: bottom;
+      border-top: .5pt solid black;
+      border-right: none;
+      border-bottom: .5pt solid black;
+      border-left: .5pt solid black;
+      mso-background-source: auto;
+      mso-pattern: auto;
+      white-space: normal;
+    }
+
+    .xl10324138 {
+      padding: 0px;
+      mso-ignore: padding;
+      color: black;
+      font-size: 7.0pt;
+      font-weight: 700;
+      font-style: normal;
+      text-decoration: none;
+      font-family: Arial;
+      mso-generic-font-family: auto;
+      mso-font-charset: 0;
+      mso-number-format: 0;
+      text-align: center;
+      vertical-align: bottom;
+      border-top: .5pt solid black;
+      border-right: none;
+      border-bottom: .5pt solid black;
+      border-left: .5pt solid black;
+      mso-background-source: auto;
+      mso-pattern: auto;
+      white-space: normal;
+    }
+
+    .xl10424138 {
+      padding: 0px;
+      mso-ignore: padding;
+      color: black;
+      font-size: 7.0pt;
+      font-weight: 700;
+      font-style: normal;
+      text-decoration: none;
+      font-family: Arial;
+      mso-generic-font-family: auto;
+      mso-font-charset: 0;
+      mso-number-format: "Short Date";
+      text-align: center;
+      vertical-align: bottom;
+      border-top: .5pt solid black;
+      border-right: none;
+      border-bottom: .5pt solid black;
+      border-left: .5pt solid black;
+      mso-background-source: auto;
+      mso-pattern: auto;
+      white-space: normal;
+    }
+
+    .xl10524138 {
+      padding: 0px;
+      mso-ignore: padding;
+      color: black;
+      font-size: 7.0pt;
+      font-weight: 400;
+      font-style: normal;
+      text-decoration: none;
+      font-family: Arial;
+      mso-generic-font-family: auto;
+      mso-font-charset: 0;
+      mso-number-format: General;
+      text-align: left;
+      vertical-align: bottom;
+      border-top: none;
+      border-right: none;
+      border-bottom: .5pt solid black;
+      border-left: none;
+      mso-background-source: auto;
+      mso-pattern: auto;
+      white-space: normal;
+    }
+
+    .xl10624138 {
+      padding: 0px;
+      mso-ignore: padding;
+      color: black;
+      font-size: 7.0pt;
+      font-weight: 400;
+      font-style: normal;
+      text-decoration: none;
+      font-family: Arial;
+      mso-generic-font-family: auto;
+      mso-font-charset: 0;
+      mso-number-format: 0;
+      text-align: right;
+      vertical-align: bottom;
+      border-top: .5pt solid black;
+      border-right: none;
+      border-bottom: .5pt solid black;
+      border-left: .5pt solid black;
+      mso-background-source: auto;
+      mso-pattern: auto;
+      white-space: nowrap;
+    }
+
+    .xl10724138 {
+      padding: 0px;
+      mso-ignore: padding;
+      color: black;
+      font-size: 7.0pt;
+      font-weight: 400;
+      font-style: normal;
+      text-decoration: none;
+      font-family: Arial;
+      mso-generic-font-family: auto;
+      mso-font-charset: 0;
+      mso-number-format: General;
+      text-align: center;
+      vertical-align: bottom;
+      border-top: .5pt solid black;
+      border-right: none;
+      border-bottom: .5pt solid black;
+      border-left: .5pt solid black;
+      mso-background-source: auto;
+      mso-pattern: auto;
+      white-space: nowrap;
+    }
+
+    .xl10824138 {
+      padding: 0px;
+      mso-ignore: padding;
+      color: black;
+      font-size: 7.0pt;
+      font-weight: 400;
+      font-style: normal;
+      text-decoration: none;
+      font-family: Arial;
+      mso-generic-font-family: auto;
+      mso-font-charset: 0;
+      mso-number-format: Standard;
+      text-align: right;
+      vertical-align: bottom;
+      border-top: .5pt solid black;
+      border-right: none;
+      border-bottom: .5pt solid black;
+      border-left: .5pt solid black;
+      mso-background-source: auto;
+      mso-pattern: auto;
+      white-space: normal;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id=XL align=center x:publishsource="Excel">
+
+    <table border=0 cellpadding=0 cellspacing=0 style='border-collapse: collapse;table-layout:fixed;width:833pt;'>
+      <col width=30 style='mso-width-source:userset;mso-width-alt:1389;width:23pt'>
+      <col width=22 span=9 style='mso-width-source:userset;mso-width-alt:1024;
+ width:17pt'>
+      <col width=12 style='mso-width-source:userset;mso-width-alt:548;width:9pt'>
+      <col width=22 span=5 style='mso-width-source:userset;mso-width-alt:1024;
+ width:17pt'>
+      <col width=12 span=2 style='mso-width-source:userset;mso-width-alt:548;
+ width:9pt'>
+      <col width=22 span=10 style='mso-width-source:userset;mso-width-alt:1024;
+ width:17pt'>
+      <col width=30 style='mso-width-source:userset;mso-width-alt:1389;width:23pt'>
+      <col width=22 span=5 style='mso-width-source:userset;mso-width-alt:1024;
+ width:17pt'>
+      <col width=12 style='mso-width-source:userset;mso-width-alt:548;width:9pt'>
+      <col width=22 span=2 style='mso-width-source:userset;mso-width-alt:1024;
+ width:17pt'>
+      <col width=12 style='mso-width-source:userset;mso-width-alt:548;width:9pt'>
+      <col width=22 span=10 style='mso-width-source:userset;mso-width-alt:1024;
+ width:17pt'>
+      <col width=54 style='mso-width-source:userset;mso-width-alt:2486;width:41pt'>
+      <col width=6 style='mso-width-source:userset;mso-width-alt:256;width:4pt'>
+      <tr height=14 style='mso-height-source:userset;height:10.5pt'>
+        <td height=14 class=xl6324138 width=30 style='height:10.5pt;width:23pt'></td>
+        <td class=xl6324138 width=22 style='width:17pt'></td>
+        <td class=xl6324138 width=22 style='width:17pt'></td>
+        <td class=xl6324138 width=22 style='width:17pt'></td>
+        <td class=xl6324138 width=22 style='width:17pt'></td>
+        <td class=xl6324138 width=22 style='width:17pt'></td>
+        <td class=xl6324138 width=22 style='width:17pt'></td>
+        <td class=xl6324138 width=22 style='width:17pt'></td>
+        <td class=xl6324138 width=22 style='width:17pt'></td>
+        <td class=xl6324138 width=22 style='width:17pt'></td>
+        <td class=xl6324138 width=12 style='width:9pt'></td>
+        <td class=xl6324138 width=22 style='width:17pt'></td>
+        <td class=xl6324138 width=22 style='width:17pt'></td>
+        <td class=xl6324138 width=22 style='width:17pt'></td>
+        <td class=xl6324138 width=22 style='width:17pt'></td>
+        <td class=xl6324138 width=22 style='width:17pt'></td>
+        <td class=xl6324138 width=12 style='width:9pt'></td>
+        <td class=xl6324138 width=12 style='width:9pt'></td>
+        <td class=xl6324138 width=22 style='width:17pt'></td>
+        <td class=xl6324138 width=22 style='width:17pt'></td>
+        <td class=xl6324138 width=22 style='width:17pt'></td>
+        <td class=xl6324138 width=22 style='width:17pt'></td>
+        <td class=xl6324138 width=22 style='width:17pt'></td>
+        <td class=xl6324138 width=22 style='width:17pt'></td>
+        <td class=xl6324138 width=22 style='width:17pt'></td>
+        <td class=xl6324138 width=22 style='width:17pt'></td>
+        <td class=xl6324138 width=22 style='width:17pt'></td>
+        <td class=xl6324138 width=22 style='width:17pt'></td>
+        <td class=xl6324138 width=30 style='width:23pt'></td>
+        <td class=xl6324138 width=22 style='width:17pt'></td>
+        <td class=xl6324138 width=22 style='width:17pt'></td>
+        <td class=xl6324138 width=22 style='width:17pt'></td>
+        <td class=xl6324138 width=22 style='width:17pt'></td>
+        <td class=xl6324138 width=22 style='width:17pt'></td>
+        <td class=xl6324138 width=12 style='width:9pt'></td>
+        <td class=xl6324138 width=22 style='width:17pt'></td>
+        <td class=xl6324138 width=22 style='width:17pt'></td>
+        <td class=xl6324138 width=12 style='width:9pt'></td>
+        <td class=xl6324138 width=22 style='width:17pt'></td>
+        <td colspan=10 class=xl9824138 width=252 style='width:194pt'>Приложение 26</td>
+        <td class=xl1524138 width=6 style='width:4pt'></td>
+      </tr>
+      <tr height=14 style='mso-height-source:userset;height:10.5pt'>
+        <td height=14 class=xl6324138 style='height:10.5pt'></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td colspan=10 class=xl9824138>к приказу Министра финансов</td>
+        <td class=xl1524138></td>
+      </tr>
+      <tr height=14 style='mso-height-source:userset;height:10.5pt'>
+        <td height=14 class=xl6324138 style='height:10.5pt'></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td colspan=10 class=xl9824138>Республики Казахстан</td>
+        <td class=xl1524138></td>
+      </tr>
+      <tr height=14 style='mso-height-source:userset;height:10.5pt'>
+        <td height=14 class=xl6324138 style='height:10.5pt'></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td colspan=10 class=xl9824138>от 20 декабря 2012 года № 562</td>
+        <td class=xl1524138></td>
+      </tr>
+      <tr height=14 style='mso-height-source:userset;height:10.5pt'>
+        <td height=14 class=xl6324138 style='height:10.5pt'></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6424138></td>
+      </tr>
+      <tr height=16 style='mso-height-source:userset;height:12.0pt'>
+        <td height=16 class=xl6324138 style='height:12.0pt'></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6524138>Форма З-2</td>
+        <td class=xl1524138></td>
+      </tr>
+      <tr height=14 style='mso-height-source:userset;height:10.5pt'>
+        <td height=14 class=xl6624138 width=30 style='height:10.5pt;width:23pt'></td>
+        <td class=xl6624138 width=22 style='width:17pt'></td>
+        <td class=xl6624138 width=22 style='width:17pt'></td>
+        <td class=xl6624138 width=22 style='width:17pt'></td>
+        <td class=xl6624138 width=22 style='width:17pt'></td>
+        <td class=xl6624138 width=22 style='width:17pt'></td>
+        <td class=xl6624138 width=22 style='width:17pt'></td>
+        <td class=xl6624138 width=22 style='width:17pt'></td>
+        <td class=xl6624138 width=22 style='width:17pt'></td>
+        <td class=xl6624138 width=22 style='width:17pt'></td>
+        <td class=xl6624138 width=12 style='width:9pt'></td>
+        <td class=xl6624138 width=22 style='width:17pt'></td>
+        <td class=xl6624138 width=22 style='width:17pt'></td>
+        <td class=xl6624138 width=22 style='width:17pt'></td>
+        <td class=xl6624138 width=22 style='width:17pt'></td>
+        <td class=xl6624138 width=22 style='width:17pt'></td>
+        <td class=xl6624138 width=12 style='width:9pt'></td>
+        <td class=xl6624138 width=12 style='width:9pt'></td>
+        <td class=xl6624138 width=22 style='width:17pt'></td>
+        <td class=xl6624138 width=22 style='width:17pt'></td>
+        <td class=xl6624138 width=22 style='width:17pt'></td>
+        <td class=xl6624138 width=22 style='width:17pt'></td>
+        <td class=xl6624138 width=22 style='width:17pt'></td>
+        <td class=xl6624138 width=22 style='width:17pt'></td>
+        <td class=xl6624138 width=22 style='width:17pt'></td>
+        <td class=xl6624138 width=22 style='width:17pt'></td>
+        <td class=xl6624138 width=22 style='width:17pt'></td>
+        <td class=xl6624138 width=22 style='width:17pt'></td>
+        <td class=xl6624138 width=30 style='width:23pt'></td>
+        <td class=xl6624138 width=22 style='width:17pt'></td>
+        <td class=xl6624138 width=22 style='width:17pt'></td>
+        <td class=xl6624138 width=22 style='width:17pt'></td>
+        <td class=xl6624138 width=22 style='width:17pt'></td>
+        <td class=xl6624138 width=22 style='width:17pt'></td>
+        <td class=xl6624138 width=12 style='width:9pt'></td>
+        <td class=xl6624138 width=22 style='width:17pt'></td>
+        <td class=xl6624138 width=22 style='width:17pt'></td>
+        <td class=xl6624138 width=12 style='width:9pt'></td>
+        <td class=xl6624138 width=22 style='width:17pt'></td>
+        <td class=xl6624138 width=22 style='width:17pt'></td>
+        <td class=xl6624138 width=22 style='width:17pt'></td>
+        <td class=xl6624138 width=22 style='width:17pt'></td>
+        <td class=xl6624138 width=22 style='width:17pt'></td>
+        <td class=xl6624138 width=22 style='width:17pt'></td>
+        <td class=xl6624138 width=22 style='width:17pt'></td>
+        <td class=xl6624138 width=22 style='width:17pt'></td>
+        <td class=xl6624138 width=22 style='width:17pt'></td>
+        <td class=xl6624138 width=22 style='width:17pt'></td>
+        <td class=xl6624138 width=54 style='width:41pt'></td>
+        <td class=xl6424138></td>
+      </tr>
+      <tr height=14 style='mso-height-source:userset;height:10.5pt'>
+        <td height=14 class=xl6324138 style='height:10.5pt'></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl1524138></td>
+      </tr>
+      <tr height=50 style='mso-height-source:userset;height:37.5pt'>
+        <td colspan=13 height=50 class=xl9924138 width=284 style='height:37.5pt;
+  width:219pt'>Организация (индивидуальный предприниматель)</td>
+        <td colspan=23 class=xl10024138 width=484 style='width:373pt'>ИП PRIDE г.
+          Атырау мкр-н Мунайшы ул.1 д.23</td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138 colspan=3>ИИН/БИН</td>
+        <td colspan=7 class=xl10124138 style='border-right:.5pt solid black'><span style='mso-spacerun:yes'> </span>930630300277</td>
+        <td class=xl1524138></td>
+      </tr>
+      <tr height=16 style='mso-height-source:userset;height:12.0pt'>
+        <td height=16 class=xl6324138 style='height:12.0pt'></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl1524138></td>
+      </tr>
+      <tr height=14 style='mso-height-source:userset;height:10.5pt'>
+        <td height=14 class=xl6324138 style='height:10.5pt'></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6424138></td>
+      </tr>
+      <tr height=29 style='mso-height-source:userset;height:21.75pt'>
+        <td height=29 class=xl6324138 style='height:21.75pt'></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6724138 width=22 style='width:17pt'></td>
+        <td colspan=4 class=xl10224138 width=88 style='border-right:.5pt solid black;
+  width:68pt'>Номер документа</td>
+        <td colspan=4 class=xl10224138 width=120 style='border-right:.5pt solid black;
+  border-left:none;width:92pt'>Дата составления</td>
+        <td class=xl1524138></td>
+      </tr>
+      <tr height=14 style='mso-height-source:userset;height:10.5pt'>
+        <td height=14 class=xl6324138 style='height:10.5pt'></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6824138></td>
+        <td colspan=4 class=xl10324138 width=88 style='border-right:.5pt solid black;
+  width:68pt'>{{ invoice.number }}</td>
+        <td colspan=4 class=xl10424138 width=120 style='border-right:.5pt solid black;
+  border-left:none;width:92pt'>{{ invoice.created_at }}</td>
+        <td class=xl1524138></td>
+      </tr>
+      <tr height=14 style='mso-height-source:userset;height:10.5pt'>
+        <td height=14 class=xl6324138 style='height:10.5pt'></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl1524138></td>
+      </tr>
+      <tr height=17 style='mso-height-source:userset;height:12.75pt'>
+        <td colspan=49 height=17 class=xl6824138 style='height:12.75pt'>НАКЛАДНАЯ НА
+          ОТПУСК ЗАПАСОВ НА СТОРОНУ</td>
+        <td class=xl1524138></td>
+      </tr>
+      <tr height=14 style='mso-height-source:userset;height:11.25pt'>
+        <td height=14 class=xl6324138 style='height:11.25pt'></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl1524138></td>
+      </tr>
+      <tr height=14 style='mso-height-source:userset;height:11.25pt'>
+        <td height=14 class=xl6324138 style='height:11.25pt'></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl1524138></td>
+      </tr>
+      <tr height=29 style='mso-height-source:userset;height:21.75pt'>
+        <td colspan=11 height=29 class=xl9124138 width=240 style='border-right:.5pt solid black;
+  height:21.75pt;width:185pt'>Организация (индивидуальный предприниматель) -
+          отправитель</td>
+        <td colspan=11 class=xl9124138 width=222 style='border-right:.5pt solid black;
+  border-left:none;width:171pt'>Организация (индивидуальный предприниматель) -
+          получатель</td>
+        <td colspan=9 class=xl9124138 width=206 style='border-right:.5pt solid black;
+  border-left:none;width:159pt'>Ответственный за поставку (Ф.И.О.)</td>
+        <td colspan=9 class=xl9124138 width=178 style='border-right:.5pt solid black;
+  border-left:none;width:137pt'>Транспортная организация</td>
+        <td colspan=9 class=xl9124138 width=230 style='border-right:.5pt solid black;
+  border-left:none;width:177pt'>Товарно-транспортная накладная (номер, дата)</td>
+        <td class=xl6924138 width=6 style='width:4pt'></td>
+      </tr>
+      <tr height=40 style='mso-height-source:userset;height:30.0pt'>
+        <td colspan=11 height=40 class=xl9724138 width=240 style='border-right:.5pt solid black;
+  height:30.0pt;width:185pt'>ИП Pride</td>
+        <td colspan=11 class=xl9724138 width=222 style='border-right:.5pt solid black;
+  border-left:none;width:171pt'>{{ order.buyer_shop.title }}</td>
+        <td colspan=9 class=xl9724138 width=206 style='border-right:.5pt solid black;
+  border-left:none;width:159pt'>&nbsp;</td>
+        <td colspan=9 class=xl9724138 width=178 style='border-right:.5pt solid black;
+  border-left:none;width:137pt'>&nbsp;</td>
+        <td colspan=9 class=xl9724138 width=230 style='border-right:.5pt solid black;
+  border-left:none;width:177pt'>&nbsp;</td>
+        <td class=xl7024138 width=6 style='width:4pt'></td>
+      </tr>
+      <tr height=14 style='mso-height-source:userset;height:10.5pt'>
+        <td height=14 class=xl6324138 style='height:10.5pt'></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6424138></td>
+      </tr>
+      <tr height=22 style='mso-height-source:userset;height:16.5pt'>
+        <td colspan=2 rowspan=2 height=43 class=xl9324138 width=52 style='border-right:
+  .5pt solid black;border-bottom:.5pt solid black;height:32.25pt;width:40pt'>Номер
+          по порядку</td>
+        <td colspan=12 rowspan=2 class=xl9324138 width=254 style='border-right:.5pt solid black;
+  border-bottom:.5pt solid black;width:196pt'>Наименование, характеристика</td>
+        <td colspan=5 rowspan=2 class=xl9324138 width=90 style='border-right:.5pt solid black;
+  border-bottom:.5pt solid black;width:69pt'>Номенкла-<br>
+          турный номер</td>
+        <td colspan=3 rowspan=2 class=xl8824138 width=66 style='border-right:.5pt solid black;
+  border-bottom:.5pt solid black;width:51pt'>Единица измерения</td>
+        <td colspan=9 class=xl9124138 width=206 style='border-right:.5pt solid black;
+  border-left:none;width:159pt'>Количество</td>
+        <td colspan=6 rowspan=2 class=xl9324138 width=122 style='border-right:.5pt solid black;
+  border-bottom:.5pt solid black;width:94pt'>Цена за единицу, в KZT</td>
+        <td colspan=6 rowspan=2 class=xl9324138 width=122 style='border-right:.5pt solid black;
+  border-bottom:.5pt solid black;width:94pt'>Сумма без НДС, в KZT</td>
+        <td colspan=6 rowspan=2 class=xl9324138 width=164 style='border-right:.5pt solid black;
+  border-bottom:.5pt solid black;width:126pt'>Сумма НДС, в KZT</td>
+        <td class=xl7124138 width=6 style='width:4pt'></td>
+      </tr>
+      <tr height=21 style='mso-height-source:userset;height:15.75pt'>
+        <td colspan=5 height=21 class=xl9124138 width=110 style='border-right:.5pt solid black;
+  height:15.75pt;border-left:none;width:85pt'>подлежит отпуску</td>
+        <td colspan=4 class=xl9124138 width=96 style='border-right:.5pt solid black;
+  border-left:none;width:74pt'>отпущено</td>
+        <td class=xl7124138 width=6 style='width:4pt'></td>
+      </tr>
+      <tr height=14 style='mso-height-source:userset;height:11.25pt'>
+        <td colspan=2 height=14 class=xl9224138 width=52 style='border-right:.5pt solid black;
+  height:11.25pt;width:40pt'>1</td>
+        <td colspan=12 class=xl9224138 width=254 style='border-right:.5pt solid black;
+  border-left:none;width:196pt'>2</td>
+        <td colspan=5 class=xl9224138 width=90 style='border-right:.5pt solid black;
+  border-left:none;width:69pt'>3</td>
+        <td colspan=3 class=xl9524138 width=66 style='border-right:.5pt solid black;
+  width:51pt'>4</td>
+        <td colspan=5 class=xl9224138 width=110 style='border-right:.5pt solid black;
+  border-left:none;width:85pt'>5</td>
+        <td colspan=4 class=xl9224138 width=96 style='border-right:.5pt solid black;
+  border-left:none;width:74pt'>6</td>
+        <td colspan=6 class=xl9224138 width=122 style='border-right:.5pt solid black;
+  border-left:none;width:94pt'>7</td>
+        <td colspan=6 class=xl9224138 width=122 style='border-right:.5pt solid black;
+  border-left:none;width:94pt'>8</td>
+        <td colspan=6 class=xl9224138 width=164 style='border-right:.5pt solid black;
+  border-left:none;width:126pt'>9</td>
+        <td class=xl6424138></td>
+      </tr>
+
+      {% for item in order_products %}
+      <tr height=14 style='mso-height-source:userset;height:10.5pt'>
+        <td colspan=2 height=14 class=xl8424138 width=52 style='border-right:.5pt solid black;
+      height:10.5pt;width:40pt'>{{ item.number }}</td>
+        <td colspan=12 class=xl8524138 width=254 style='border-right:.5pt solid black;
+      border-left:none;width:196pt'>{{ item.product.title }}</td>
+        <td colspan=5 class=xl8424138 width=90 style='border-right:.5pt solid black;
+      border-left:none;width:69pt'>&nbsp;</td>
+        <td colspan=3 class=xl9624138 width=66 style='border-right:.5pt solid black;
+      width:51pt'>шт</td>
+        <td colspan=5 class=xl8624138 width=110 style='border-right:.5pt solid black;
+      border-left:none;width:85pt'>&nbsp;</td>
+        <td colspan=4 class=xl8624138 width=96 style='border-right:.5pt solid black;
+      border-left:none;width:74pt'>{{ item.qty }}</td>
+        <td colspan=6 class=xl8124138 width=122 style='border-right:.5pt solid black;
+      border-left:none;width:94pt'>{{ item.product.price }}</td>
+        <td colspan=6 class=xl8124138 width=122 style='border-right:.5pt solid black;
+      border-left:none;width:94pt'>{{ item.total_price }}</td>
+        <td colspan=6 class=xl8124138 width=164 style='border-right:.5pt solid black;
+      border-left:none;width:126pt'>0,00</td>
+        <td class=xl1524138></td>
+      </tr>
+      {% endfor %}
+      <tr height=14 style='mso-height-source:userset;height:10.5pt'>
+        <td height=14 class=xl6324138 style='height:10.5pt'></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6524138>Итого</td>
+        <td colspan=5 class=xl10624138 style='border-right:.5pt solid black'>0</td>
+        <td colspan=4 class=xl10624138 style='border-right:.5pt solid black;
+  border-left:none'>{{ total_qty }}</td>
+        <td colspan=6 class=xl10724138 style='border-right:.5pt solid black;
+  border-left:none'>х</td>
+        <td colspan=6 class=xl10824138 width=122 style='border-right:.5pt solid black;
+  border-left:none;width:94pt'>{{ order.total_price }}</td>
+        <td colspan=6 class=xl10824138 width=164 style='border-right:.5pt solid black;
+  border-left:none;width:126pt'>0,00</td>
+        <td class=xl1524138></td>
+      </tr>
+      <tr height=14 style='mso-height-source:userset;height:10.5pt'>
+        <td height=14 class=xl6324138 style='height:10.5pt'></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl1524138></td>
+      </tr>
+      <tr height=29 style='mso-height-source:userset;height:21.75pt'>
+        <td height=29 class=xl6324138 colspan=10 style='height:21.75pt'>Всего
+          отпущено количество запасов (прописью)</td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td colspan=9 class=xl7924138 width=178 style='width:137pt'>{{ total_qty }} ({{ order_total_qty }})</td>
+        <td colspan=8 class=xl6724138 width=184 style='width:142pt'>на сумму
+          (прописью), в KZT</td>
+        <td colspan=19 class=xl7924138 width=430 style='width:331pt'>{{ order_total }}</td>
+        <td class=xl1524138></td>
+      </tr>
+      <tr height=14 style='mso-height-source:userset;height:10.5pt'>
+        <td height=14 class=xl6324138 style='height:10.5pt'></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td align=left valign=top>
+
+          <span>
+            <img class="img_podpis" src="{% static 'images/podpis.png' %}">
+          </span>
+          <span style='mso-ignore:vglayout2'>
+            <table cellpadding=0 cellspacing=0>
+              <tr>
+                <td height=14 class=xl6324138 width=22 style='height:10.5pt;width:17pt'></td>
+              </tr>
+            </table>
+          </span>
+        </td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl1524138></td>
+      </tr>
+      <tr height=30 style='mso-height-source:userset;height:23.25pt'>
+        <td height=30 class=xl6324138 colspan=4 style='height:23.25pt'>Отпуск
+          разрешил</td>
+        <td class=xl6324138></td>
+        <td colspan=5 class=xl7524138 width=110 style='width:85pt'>Директор</td>
+        <td class=xl6724138 width=12 style='width:9pt'>/</td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6724138 width=12 style='width:9pt'>/</td>
+        <td colspan=7 class=xl6724138 width=144 style='width:111pt'>Умиткалиев С.С.</td>
+        <td class=xl7224138>&nbsp;</td>
+        <td class=xl6324138></td>
+        <td class=xl6324138 colspan=4>По доверенности</td>
+        <td class=xl6324138></td>
+        <td colspan=17 class=xl9924138 width=354 style='width:273pt'></td>
+        <td class=xl6324138></td>
+        <td class=xl1524138></td>
+      </tr>
+      <tr height=14 style='mso-height-source:userset;height:10.5pt'>
+        <td height=14 style='height:10.5pt' align=left valign=top>
+          <span>
+            <img class="img_pechat" src="{% static 'images/pechat.png' %}" v:shapes="Рисунок_x0020_2">
+          </span>
+          <span style='mso-ignore:vglayout2'>
+            <table cellpadding=0 cellspacing=0>
+              <tr>
+                <td height=14 class=xl6324138 width=30 style='height:10.5pt;width:23pt'></td>
+              </tr>
+            </table>
+          </span>
+        </td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td colspan=5 class=xl7724138>должность</td>
+        <td class=xl6324138></td>
+        <td colspan=5 class=xl7724138>подпись</td>
+        <td class=xl6324138></td>
+        <td colspan=7 class=xl7724138>расшифровка подписи</td>
+        <td class=xl7224138>&nbsp;</td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl1524138></td>
+      </tr>
+      <tr height=14 style='mso-height-source:userset;height:10.5pt'>
+        <td height=14 class=xl6324138 style='height:10.5pt'></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl7224138>&nbsp;</td>
+        <td class=xl6324138></td>
+        <td class=xl6324138 colspan=3>выданной</td>
+        <td colspan=19 class=xl10524138 width=398 style='width:307pt'>&nbsp;</td>
+        <td class=xl6324138></td>
+        <td class=xl1524138></td>
+      </tr>
+      <tr height=10 style='mso-height-source:userset;height:7.5pt'>
+        <td height=10 class=xl6324138 style='height:7.5pt'></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl7224138>&nbsp;</td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6424138></td>
+      </tr>
+      <tr height=10 style='mso-height-source:userset;height:7.5pt'>
+        <td height=10 class=xl6324138 colspan=4 style='height:7.5pt'>Главный
+          бухгалтер</td>
+        <td class=xl6324138></td>
+        <td colspan=5 class=xl8024138>&nbsp;</td>
+        <td class=xl7324138>/</td>
+        <td colspan=11 class=xl6724138 width=222 style='width:171pt'>не предусмотрен</td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl7224138>&nbsp;</td>
+        <td class=xl6324138></td>
+        <td colspan=22 class=xl8724138>&nbsp;</td>
+        <td class=xl6324138></td>
+        <td class=xl6424138></td>
+      </tr>
+      <tr height=14 style='mso-height-source:userset;height:10.5pt'>
+        <td height=14 class=xl6324138 style='height:10.5pt'></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td colspan=5 class=xl7724138>подпись</td>
+        <td class=xl6324138></td>
+        <td colspan=11 class=xl7724138>расшифровка подписи</td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl7224138>&nbsp;</td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl1524138></td>
+      </tr>
+      <tr height=14 style='mso-height-source:userset;height:10.5pt'>
+        <td height=14 class=xl7424138 style='height:10.5pt'>М.П.</td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl7224138>&nbsp;</td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl1524138></td>
+      </tr>
+      <tr height=10 style='mso-height-source:userset;height:7.5pt'>
+        <td height=10 class=xl6324138 style='height:7.5pt'></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl7224138>&nbsp;</td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6424138></td>
+      </tr>
+      <tr height=17 style='mso-height-source:userset;height:12.75pt'>
+        <td height=17 class=xl6324138 colspan=2 style='height:12.75pt'>Отпустил</td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td colspan=5 class=xl8024138>&nbsp;</td>
+        <td class=xl7324138>/</td>
+        <td colspan=11 class=xl7524138 width=222 style='width:171pt'>&nbsp;</td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl7224138>&nbsp;</td>
+        <td class=xl6324138></td>
+        <td class=xl6324138 colspan=4>Запасы получил</td>
+        <td class=xl6324138></td>
+        <td colspan=6 class=xl8024138>&nbsp;</td>
+        <td class=xl7324138>/</td>
+        <td colspan=10 class=xl7524138 width=220 style='width:170pt'>&nbsp;</td>
+        <td class=xl6324138></td>
+        <td class=xl1524138></td>
+      </tr>
+      <tr height=14 style='mso-height-source:userset;height:10.5pt'>
+        <td height=14 class=xl6324138 style='height:10.5pt'></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td colspan=5 class=xl7724138>подпись</td>
+        <td class=xl6324138></td>
+        <td colspan=11 class=xl7724138>расшифровка подписи</td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl7224138>&nbsp;</td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td colspan=6 class=xl7724138>подпись</td>
+        <td class=xl6324138></td>
+        <td colspan=10 class=xl7724138>расшифровка подписи</td>
+        <td class=xl6324138></td>
+        <td class=xl1524138></td>
+      </tr>
+      <tr height=14 style='mso-height-source:userset;height:11.25pt'>
+        <td height=14 class=xl6324138 style='height:11.25pt'></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl6324138></td>
+        <td class=xl1524138></td>
+      </tr>
+      <tr height=14 style='mso-height-source:userset;height:11.25pt'>
+        <td height=14 class=xl6424138 style='height:11.25pt'></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl1524138></td>
+      </tr>
+      <tr height=14 style='mso-height-source:userset;height:11.25pt'>
+        <td height=14 class=xl6424138 style='height:11.25pt'></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl1524138></td>
+      </tr>
+      <tr height=14 style='mso-height-source:userset;height:11.25pt'>
+        <td height=14 class=xl6424138 style='height:11.25pt'></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl1524138></td>
+      </tr>
+      <tr height=14 style='mso-height-source:userset;height:11.25pt'>
+        <td height=14 class=xl6424138 style='height:11.25pt'></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl1524138></td>
+      </tr>
+      <tr height=14 style='mso-height-source:userset;height:11.25pt'>
+        <td height=14 class=xl6424138 style='height:11.25pt'></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl6424138></td>
+        <td class=xl1524138></td>
+      </tr>
+      <![if supportMisalignedColumns]>
+      <tr height=0 style='display:none'>
+        <td width=30 style='width:23pt'></td>
+        <td width=22 style='width:17pt'></td>
+        <td width=22 style='width:17pt'></td>
+        <td width=22 style='width:17pt'></td>
+        <td width=22 style='width:17pt'></td>
+        <td width=22 style='width:17pt'></td>
+        <td width=22 style='width:17pt'></td>
+        <td width=22 style='width:17pt'></td>
+        <td width=22 style='width:17pt'></td>
+        <td width=22 style='width:17pt'></td>
+        <td width=12 style='width:9pt'></td>
+        <td width=22 style='width:17pt'></td>
+        <td width=22 style='width:17pt'></td>
+        <td width=22 style='width:17pt'></td>
+        <td width=22 style='width:17pt'></td>
+        <td width=22 style='width:17pt'></td>
+        <td width=12 style='width:9pt'></td>
+        <td width=12 style='width:9pt'></td>
+        <td width=22 style='width:17pt'></td>
+        <td width=22 style='width:17pt'></td>
+        <td width=22 style='width:17pt'></td>
+        <td width=22 style='width:17pt'></td>
+        <td width=22 style='width:17pt'></td>
+        <td width=22 style='width:17pt'></td>
+        <td width=22 style='width:17pt'></td>
+        <td width=22 style='width:17pt'></td>
+        <td width=22 style='width:17pt'></td>
+        <td width=22 style='width:17pt'></td>
+        <td width=30 style='width:23pt'></td>
+        <td width=22 style='width:17pt'></td>
+        <td width=22 style='width:17pt'></td>
+        <td width=22 style='width:17pt'></td>
+        <td width=22 style='width:17pt'></td>
+        <td width=22 style='width:17pt'></td>
+        <td width=12 style='width:9pt'></td>
+        <td width=22 style='width:17pt'></td>
+        <td width=22 style='width:17pt'></td>
+        <td width=12 style='width:9pt'></td>
+        <td width=22 style='width:17pt'></td>
+        <td width=22 style='width:17pt'></td>
+        <td width=22 style='width:17pt'></td>
+        <td width=22 style='width:17pt'></td>
+        <td width=22 style='width:17pt'></td>
+        <td width=22 style='width:17pt'></td>
+        <td width=22 style='width:17pt'></td>
+        <td width=22 style='width:17pt'></td>
+        <td width=22 style='width:17pt'></td>
+        <td width=22 style='width:17pt'></td>
+        <td width=54 style='width:41pt'></td>
+        <td width=6 style='width:4pt'></td>
+      </tr>
+      <![endif]>
+    </table>
+
+  </div>
+
+
+  <!----------------------------->
+  <!--КОНЕЦ ФРАГМЕНТА ПУБЛИКАЦИИ МАСТЕРА ВЕБ-СТРАНИЦ EXCEL-->
+  <!----------------------------->
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+{% extends 'index.html'%}
+{% load static %}
+{% block title %}
+    ESSK - Спасибо!
+{% endblock %}
+
+{% block content %}
+<section class="error-page">
+    <div class="table">
+        <div class="table-cell">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 offset-lg-3 col-12">
+                        <div class="error-inner">
+                            <h5>Ваша заявка принята!</h5>
+                            <p>В скором времени с вами свяжется наш менеджер</p>
+                            <div class="button">
+                                <a href="{% url 'main' %}" class="btn">На главную</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

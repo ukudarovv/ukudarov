@@ -1,0 +1,142 @@
+{% extends 'index.html'%}
+{% load static %}
+{% block title %}
+    ESSK - Мой профиль
+{% endblock %}
+
+{% block content %}
+<div class="breadcrumbs">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="bread-inner">
+          <ul class="bread-list">
+            <li><a href="{% url 'main' %}">Главная<i class="ti-arrow-right"></i></a></li>
+            <li class="active">Мой профиль</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="shop checkout section">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-9 col-md-8 col-12">
+              <div class="row">
+                <form action="{% url 'profile_edit' %}" class="row form" method="POST">
+                    <div class="col-lg-9 col-md-8 col-12">
+                      <div class="checkout-form">
+                          <h2 class="mb-3">Мой профиль</h2>
+                          {% if messages %}
+                              {% for message in messages %}
+                                <div class="alert alert-danger">
+                                    {{ message }}
+                                </div>
+                              {% endfor %}
+                          {% endif %}
+                          {% if form.errors %}
+                            <div class="alert alert-danger">
+                                {{ form.errors }}
+                            </div>
+                          {% endif %}
+                          {% if form_2.errors %}
+                            <div class="alert alert-danger">
+                                {{ form_2.errors }}
+                            </div>
+                          {% endif %}
+                          {% csrf_token %}
+                          <div class="row">
+                            <div class="col-lg-6 col-md-6 col-12">
+                              <div class="form-group">
+                                <label for="{{ form.first_name.id_for_label }}">Имя</label>
+                                {{ form.first_name }}
+                              </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-12">
+                              <div class="form-group">
+                                <label for="{{ form.last_name.id_for_label }}">Фамилия</label>
+                                {{ form.last_name }}
+                              </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-12">
+                              <div class="form-group">
+                                <label for="{{ form.email.id_for_label }}">Email</label>
+                                {{ form.email }}
+                              </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-12">
+                              <div class="form-group">
+                                <label for="{{ form.phone.id_for_label }}">Номер телефона</label>
+                                {{ form.phone }}
+                              </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-12">
+                              <div class="form-group">
+                                <label>Страна</label>
+                                <div class="nice-select" tabindex="0"><span class="current">Казахстан</span></div>
+                              </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-12">
+                              <div class="form-group">
+                                <label for="{{ form_2.city.id_for_label }}">Город</label>
+                                <select name="{{ form_2.city.name }}">
+                                    <option selected>
+                                    {% if address %}
+                                        {{ address.city.title }}
+                                    {% else %}
+                                        ------------------
+                                    {% endif %}
+                                    </option>
+                                  {% for instance_a in area %}
+                                      <option disabled="disabled">{{ instance_a.title }}</option>
+                                      {% for instance_c in form_2.city.field.queryset %}
+                                          {% if instance_a.id == instance_c.area.id %}
+                                          <option value="{{ instance_c.pk }}">---{{ instance_c.title }}</option>
+                                          {% endif %}
+                                      {% endfor %}
+                                  {% endfor %}
+                                </select>
+                              </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-12">
+                              <div class="form-group">
+                                <label for="{{ form_2.street.id_for_label }}">Адрес</label>
+                                {{ form_2.street }}
+                              </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-12">
+                              <div class="form-group">
+                                <label for="{{ form_2.index.id_for_label }}">Индекс</label>
+                                {{ form_2.index }}
+                              </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-12">
+                              <div class="form-group">
+                                <button type="submit" class="btn" name="button">Сохранить</button>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                </form>
+              </div>
+          </div>
+          <div class="col-lg-3 col-md-4 col-12">
+              <div class="main-sidebar">
+                  <div class="single-widget category">
+                      <h3 class="title">Меню</h3>
+                      <ul class="categor-list">
+                          <li><a href="{% url 'profile_edit' %}">Мой профиль</a></li>
+                          <li><a href="{% url 'profile_orders' %}">Заказы</a></li>
+                          <!-- <li><a href="#">Рассылка</a></li> -->
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+{% endblock %}

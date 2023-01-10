@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Dina Atyrau - Карта Дины, Главное здание, Блок Б, 2 этаж
+{% endblock %}
+{% block description %}
+    Дина Атырау - Карта Дины, Главное здание, Блок Б, 2 этаж
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <nav style="margin-top:150px;" aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'base' %}">Главная</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'main_plan' %}">Карта Дины</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'main_building' %}">Главное здание</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Блок Б, 2 этаж</li>
+      </ol>
+    </nav>
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Блок Б, 2 этаж</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+          <h3 class="mr-3">Этажи:</h3>
+          <div class="btn-group me-2">
+            <a href="{% url 'block_b_1_floor' %}" class="mr-1">
+              <button type="button" class="btn btn-sm btn-outline-secondary">1</button>
+            </a>
+            <a href="{% url 'block_b_2_floor' %}">
+              <button type="button" class="btn btn-sm btn-outline-secondary">2</button>
+            </a>
+          </div>
+        </div>
+      </div>
+    <div style="margin-top:50px;" data-planograph="2b9000937702fa636d349fea20d801fe-glavnoezdanieblokb22504211447"></div>
+    <script src="https://planograph.net/js/run.js" defer></script>
+</div>
+
+
+
+{% endblock content %}

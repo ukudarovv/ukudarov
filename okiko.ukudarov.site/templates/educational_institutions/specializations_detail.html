@@ -1,0 +1,113 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block title %}
+    Okiko - Специальность {{ specializations.title }}
+{% endblock %}
+{% block content %}
+<div class="_216b01">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-10">
+                <div class="section3125 rpt145">
+                    <div class="row">
+                        <div class="col-lg-7">
+                            <div class="dp_dt150">
+                                <div class="prfledt1">
+                                    <h2>{{ specializations.code }} {{ specializations.title }}</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="_215b15">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="course_tabs">
+                    <nav>
+                        <div class="nav nav-tabs tab_crse" id="nav-tab" role="tablist">
+                            <a class="nav-item nav-link active" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-selected="true">Основная информация</a>
+                            <a class="nav-item nav-link" id="nav-courses-tab" data-toggle="tab" href="#nav-courses" role="tab" aria-selected="false">ВУЗы</a>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="_215b17">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="course_tab_content">
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade active show" id="nav-about" role="tabpanel">
+                            <div class="_htg451">
+                                <div class="_htg452">
+                                    <h6>Код специальности:</h6>
+                                    <span>{{ specializations.code }}</span>
+                                    <hr>
+                                    <h6>Академическая степень:</h6>
+                                    <span>{{ specializations.scientific_degrees.title }}</span>
+                                    <hr>
+                                    <h6>Группа образовательных программ:</h6>
+                                    <span>{{ specializations.groups_of_educational_programs.title }}</span>
+                                    <hr>
+                                    <h6>Профильные предметы на ЕНТ:</h6>
+                                    <span>{{ specializations.unt_subjects }}</span>
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="nav-courses" role="tabpanel">
+                            <div class="crse_content">
+                                <div class="_14d25">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="catey-tabs">
+                                                <ul class="nav nav-pills justify-content-center mb-3" id="pills-tab" role="tablist">
+
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" id="apills-{{ item.id }}-tab" data-toggle="pill" href="#apills-{{ item.id }}" role="tab" aria-controls="apills-{{ item.id }}" aria-selected="false">{{ item.title }}</a>
+                                                        </li>
+
+                                                </ul>
+                                                <div class="tab-content" id="pills-tabContent">
+
+                                                        <div class="tab-pane fade active show" id="apills-{{ item.id }}" role="tabpanel" aria-labelledby="apills-{{ item.id }}-tab">
+                                                            <div class="certicates">
+                                                                <div class="row">
+
+                                                                            <div class="fcrse_1 mt-30">
+                                                                                <div class="hs_content">
+                                                                                    <a href="/universities/university/5/" class="crse14s title900">{{ item_1.code }} {{ item_1.title }}</a>
+                                                                                    <a href="#" class="crse-cate">{{ item_1.groups_of_educational_programs }}</a>
+                                                                                </div>
+                                                                            </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

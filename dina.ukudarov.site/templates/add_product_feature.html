@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="my-account-wrapper bg-gray pt-200 pb-160">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="myaccount-page-wrapper">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4">
+                            {% include "inc/left_panel_profile.html" %}
+                        </div>
+                        <div class="col-lg-9 col-md-8">
+                          {% if messages %}
+                              {% for message in messages %}
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                  <strong>{{ message }}</strong>
+                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                              {% endfor %}
+                          {% endif %}
+                            <div class="tab-content" id="myaccountContent">
+                                <div class="tab-pane fade show active" id="dashboad" role="tabpanel">
+                                    <div class="myaccount-content">
+                                      <div class="row">
+                                          <div class="col-md-12">
+                                              <h3>Добавление характеристики
+                                                {% for item in product %}
+                                                  <p id="product-title">Товар: {{ item.title }}</p>
+                                                {% endfor %}
+                                              </h3>
+                                          </div>
+                                      </div>
+                                      <div class="row">
+                                          <div class="col-md-12">
+                                              <div>
+
+
+                                                <div class="product-feature-choices">
+
+                                                </div>
+                                                <div class="product-feature-choices-values" style="margin-top: 10px;">
+
+                                                </div>
+                                                <input type="submit" class="btn btn-success" value="Добавить" style="display: none; margin-top: 10px;" id="create-product-feature">
+                                              </div>
+                                          </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+{% block js %}
+<script type="text/javascript">
+    $(window).load ( function(){
+      {% for item in product %}
+        getProduct('{{ item.id }}', '{{ item.title }}')
+      {% endfor %}
+    });
+    $(document).on('click', "#create-product-feature", function (){
+        let product = $("#product-title").text()
+        let category_feature = $("#product-category-features-id option:selected").text()
+        let value = $("#product-category-features-choices-id option:selected").text()
+        let data = {
+            product: product,
+            category_feature: category_feature,
+            value: value
+        }
+        $.ajax({
+            method: "GET",
+            dataType: "json",
+            data: data,
+            url: '/product-specs/attach-new-product-feature/',
+            success: function (data){
+                console.log('asdasd')
+            }
+        })
+        location.reload();
+    })
+    function getProduct(productId, title){
+        $(".product-feature-choices").css('display', 'block')
+        $(".product-feature-choices-values").css('display', 'block')
+        let data = {
+            product_id: productId
+        }
+        $.ajax({
+            method: "GET",
+            data:data,
+            dataType: "json",
+            url: "/product-specs/attach-feature/",
+            success: function (data){
+                $(".product-feature-choices").append(data.features)
+            }
+        })
+    }
+    $(document).on('change', 'select[name="product-category-features"]', function (){
+        let data = {
+            category_id: this.value,
+            product_feature_name: $("#product-category-features-id option:selected").text()
+        }
+        $.ajax({
+            method: "GET",
+            dataType: "json",
+            data: data,
+            url: "/product-specs/product-feature/",
+            success: function (data){
+                $(".product-feature-choices-values").append(data.features)
+            }
+        })
+    })
+    $(document).on('change', 'select[name="product-category-features-choices"]', function (){
+        $("#create-product-feature").css('display', 'block')
+    })
+    $('select[name="category-validators"]').on('change', function() {
+        $(".product").empty()
+        $(".errors").empty()
+        $("#search-product-results").empty()
+        $(".product-search-ajax").css('display', 'block')
+    });
+</script>
+{% endblock js %}

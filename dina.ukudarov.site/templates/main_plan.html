@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Dina Atyrau - Карта Дины
+{% endblock %}
+{% block description %}
+    Дина Атырау - Карта Дины
+{% endblock %}
+{% block content %}
+<div class="container">
+    <nav style="margin-top:150px;" aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'base' %}">Главная</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Карта Дины</li>
+      </ol>
+    </nav>
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Карта Дины</h1>
+    </div>
+    <div style="margin-top:50px;" data-planograph="2b9000937702fa636d349fea20d801fe-dinaatyrau1002211306"></div>
+    <script src="https://planograph.net/js/run.js" defer></script>
+</div>
+
+
+
+{% endblock content %}

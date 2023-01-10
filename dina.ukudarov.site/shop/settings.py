@@ -81,9 +81,9 @@ WSGI_APPLICATION = 'shop.wsgi.application'
 DATABASES = {
      'default': {
          'ENGINE': 'django.db.backends.mysql',
-         'NAME':'u1584479_dina-atyrau',
-         'USER':'u1584479_default',
-         'PASSWORD':'Oqrl3PI9GGA22rQw',
+         'NAME':'-atyrau',
+         'USER':'',
+         'PASSWORD':'',
          'HOST':'localhost',
          'OPTIONS':{
            'init_command':"SET sql_mode='STRICT_TRANS_TABLES'"
@@ -140,8 +140,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 EMAIL_HOST = 'mail.hosting.reg.ru'
 EMAIL_PORT = 465
-EMAIL_HOST_USER = 'support@dina-atyrau.com'
-EMAIL_HOST_PASSWORD = 'raushan1956'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 

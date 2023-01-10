@@ -84,9 +84,9 @@ WSGI_APPLICATION = 'iscarbox.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME':'u1164392_default',
-        'USER':'u1164392_default',
-        'PASSWORD':'MwCv_UB5',
+        'NAME':'',
+        'USER':'',
+        'PASSWORD':'',
         'HOST':'localhost',
         'OPTIONS':{
             'init_command':"SET sql_mode='STRICT_TRANS_TABLES'"
@@ -144,8 +144,8 @@ EMAIL_HOST = 'mail.hosting.reg.ru'
 EMAIL_PORT = 465
 # EMAIL_HOST_USER = 'sale@iscarbox.ru'
 # EMAIL_HOST_PASSWORD = 'saleiscarbox'
-EMAIL_HOST_USER = 'support@iscarbox.ru'
-EMAIL_HOST_PASSWORD = 'supportiscarbox'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 
